@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
 import NavLinks from "./navlinks";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineUser } from "react-icons/ai";
@@ -45,12 +45,14 @@ export function Navbar({ className }: NavBarProps) {
             <Button className="bg-highlight">Long Term Rental</Button>
           </div> */}
           {/* <ProfileDropDown></ProfileDropDown> */}
-          <Button className="bg-primary">
-            <div className="flex items-center gap-1">
-              <AiOutlineUser />
-              <span>Sign In</span>
-            </div>
-          </Button>
+          <Link to={"login"}>
+            <Button className="bg-primary">
+              <div className="flex items-center gap-1">
+                <AiOutlineUser />
+                <span>Sign In</span>
+              </div>
+            </Button>
+          </Link>
         </div>
       </div>
       {<CollapsibleNavLink isCollapsed={isCollapsed} links={navLinks} />}
