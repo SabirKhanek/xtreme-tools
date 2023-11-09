@@ -16,25 +16,29 @@ export function CollapsibleNavLink({
 }: CollapsibleNavLinksProps) {
   return (
     <ul
-      className={`border border-t-light-grey sm:hidden  transition-all ease-in-out duration-200 overflow-hidden h-fit max-h-[1000px] ${
+      className={` sm:hidden   transition-all ease-in-out duration-200 overflow-hidden h-fit max-h-[1000px] ${
         className || ""
-      } ${!isCollapsed ? "!max-h-0" : ""}`}>
+      } ${!isCollapsed ? "!max-h-0" : "border border-t-white sm:border-[0px]"}`}
+    >
       {links.map((link, index) => {
         return (
           <>
             <li key={index}>
               <NavLink
                 className={({ isActive }) =>
-                  `text-center block py-2 hover:bg-bluer-white transition-all ease-in-out duration-1000 ${
+                  `text-center block py-2 hover:bg-white/20 transition-all ease-in-out duration-150 ${
                     isActive
                       ? "text-black font-medium"
-                      : "text-grey hover:text-black"
+                      : "text-white/60 hover:text-black"
                   }`
                 }
-                to={link.route}>
+                to={link.route}
+              >
                 {link.name}
               </NavLink>
-              <hr className={`w-3/4 bg-light-grey mx-auto my-0`} />
+              {index !== links.length - 1 && (
+                <hr className={`w-3/4 bg-light-grey mx-auto my-0`} />
+              )}
             </li>
           </>
         );

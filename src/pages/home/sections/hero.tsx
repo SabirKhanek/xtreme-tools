@@ -15,7 +15,7 @@ export function HeroSection({ className }: HeroSectionProps) {
       <Navbar />
       <div className={`${getResponsiveClasses()} py-24`}>
         <div className="flex flex-col items-center gap-3 text-center">
-          <div className="flex flex-col items-center w-[570px] gap-3">
+          <div className="flex flex-col items-center max-w-[570px] gap-3">
             <h1 className="uppercase text-primary font-semibold">
               Empowering Innovation
             </h1>
