@@ -56,7 +56,7 @@ export function Navbar({ className }: NavBarProps) {
   );
 }
 
-const navLinks = [
+export const navLinks = [
   {
     name: "Home",
     route: "/",

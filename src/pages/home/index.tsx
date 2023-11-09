@@ -1,3 +1,4 @@
+import { Footer } from "../../components/footer";
 import { HeroSection } from "./sections/hero";
 import { ToolsSection } from "./sections/tools";
 
@@ -13,6 +14,7 @@ export function HomePage({ className }: HomePageProps) {
     >
       <HeroSection />
       <ToolsSection />
+      <Footer />
     </div>
   );
 }
