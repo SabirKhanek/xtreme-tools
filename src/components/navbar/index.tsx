@@ -17,7 +17,9 @@ export function Navbar({ className }: NavBarProps) {
   const responsiveClasses = getResponsiveClasses();
 
   return (
-    <nav className={`border-b bg-transparent border-b-white/20 ${className}`}>
+    <nav
+      className={`relative border-b bg-transparent border-b-white/20 ${className}`}
+    >
       <div
         className={`${responsiveClasses} flex justify-between py-3 items-center gap-10`}
       >
@@ -27,7 +29,7 @@ export function Navbar({ className }: NavBarProps) {
               className="md:hidden hover:bg-light-grey transition-all duration-100"
               onClick={() => setIsCollapsed(!isCollapsed)}
             >
-              <FaBars className="text-4xl border rounded-md text-black p-1 border-grey" />
+              <FaBars className="text-4xl border border-black rounded-md text-black p-1 border-grey" />
             </button>
             <img
               src="/logo.svg"
