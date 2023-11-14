@@ -1,4 +1,3 @@
-
 export interface ToolCardProps {
   image: string;
   header: string;
@@ -30,7 +29,7 @@ export function ToolCard({
   };
   return (
     <div
-      className={`w-full group cursor-pointer ${getBgClass()} h-72 p-7 flex flex-col rounded  transition-all duration-500 ease-in-out ${className} ${
+      className={`w-full group cursor-pointer ${getBgClass()} h-72 xl:h-[350px] p-7 flex flex-col rounded  transition-all duration-500 ease-in-out ${className} ${
         bgTransparent ? "border-[0.5px] border-white" : "shadow-md"
       }`}
     >

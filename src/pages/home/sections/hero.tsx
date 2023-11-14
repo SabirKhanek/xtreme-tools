@@ -3,6 +3,8 @@ import { getResponsiveClasses } from "../../../shared/constants/getResponsiveCla
 import { Navbar } from "../../../components/navbar";
 import h_l_b_r from "./assets/h_l_b_r.svg";
 import h_r_l from "./assets/h_r_l.png";
+import hero_ssg1 from "./assets/hero_ssg1.svg";
+import hero_ssg2 from "./assets/hero_ssg2.svg";
 export interface HeroSectionProps {
   className?: string;
 }
@@ -47,10 +49,16 @@ export function HeroSection({ className }: HeroSectionProps) {
           stroke-dasharray="8 8"
         />
       </svg>
+      <img
+        src={hero_ssg2}
+        className="absolute  left-1/2 -translate-x-[1/2] top-[200px] -translate-y-3/4"
+        alt=""
+      />
+      <img src={hero_ssg1} className="absolute bottom-20 left-9" alt="" />
 
       <Navbar className="z-10" />
-      <div className={`${getResponsiveClasses()} z-10 py-24`}>
-        <div className="flex justify-between items-center gap-20 text-center">
+      <div className={`${getResponsiveClasses()} z-10 py-[195px]`}>
+        <div className="flex justify-between items-center gap-20 text-center relative">
           <div className="w-[200px] hidden h-[150px] lg:flex p-8 shrink-0 justify-center items-center relative bg-white/50 rounded-md">
             <svg
               className="absolute -top-10 -left-10"
@@ -118,7 +126,7 @@ export function HeroSection({ className }: HeroSectionProps) {
               />
             </svg>
             <svg
-              className="absolute left-0 -top-[230px] scale-90 xl:scale-[65%] xl:-top-[200px] xl:-left-5"
+              className="absolute scale-125 -top-[275px]  xl:scale-100 xl:-top-[250px] xl:-left-2"
               width="155"
               height="241"
               viewBox="0 0 155 241"
