@@ -3,6 +3,8 @@ import { Button } from "../../../components/button";
 import { Input } from "../../../components/input";
 import { PasswordStrength } from "../../../components/password_strength";
 import { useState } from "react";
+import { toast } from "react-toastify";
+
 export interface signupProps {
   className?: string;
 }
@@ -24,7 +26,7 @@ export function SignUp({ className }: signupProps) {
             </Link>
           </p>
         </div>
-        <form>
+        <form onSubmit={(e) => e.preventDefault()}>
           <div className="flex justify-center items-center gap-4 my-3">
             <Input label="First Name" />
             <Input label="Last Name" />
@@ -59,7 +61,12 @@ export function SignUp({ className }: signupProps) {
           />
 
           <div className="mt-10 flex justify-center">
-            <Button className="bg-primary">Sign Up</Button>
+            <Button
+              onClick={() => toast("Functionality not implemented yet")}
+              className="bg-primary"
+            >
+              Sign Up
+            </Button>
           </div>
         </form>
       </div>
