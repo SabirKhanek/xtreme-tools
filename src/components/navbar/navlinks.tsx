@@ -22,7 +22,7 @@ export default function NavLinks({ links, className }: NavLinksProps) {
                   isActive
                     ? "text-black font-medium"
                     : "text-white/60 hover:text-black"
-                } hover:underline`
+                } hover:text-white/70`
               }
             >
               {link.name}

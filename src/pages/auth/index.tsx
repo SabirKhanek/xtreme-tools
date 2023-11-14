@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import auth_1 from "./assets/auth_1.svg";
 import tr_circle from "./assets/tr_cirle.svg";
 import auth_2 from "./assets/auth_2.svg";
@@ -20,7 +20,9 @@ export function Auth({ className }: AuthProps) {
         alt=""
       />
       <div className="mx-auto my-0 flex flex-col gap-10 w-full min-h-screen justify-center items-center max-w-2xl">
-        <img src="/logo.svg" alt="" />
+        <Link to="/">
+          <img src="/logo.svg" alt="" />
+        </Link>
         <Outlet />
       </div>
     </div>
