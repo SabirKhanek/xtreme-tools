@@ -36,9 +36,9 @@ export function LoginPage({ className }: LoginPageProps) {
               </Link>
             }
           />
-          <Link to="/signup" className="mt-10 flex justify-center">
-            <Button className="bg-primary">Sign Up</Button>
-          </Link>
+          <div className="mt-10 flex justify-center">
+            <Button className="bg-primary">Sign In</Button>
+          </div>
         </form>
       </div>
     </div>

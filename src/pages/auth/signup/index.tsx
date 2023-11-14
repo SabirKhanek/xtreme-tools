@@ -58,9 +58,9 @@ export function SignUp({ className }: signupProps) {
             containerClass="my-3"
           />
 
-          <Link to="/signup" className="mt-10 flex justify-center">
+          <div className="mt-10 flex justify-center">
             <Button className="bg-primary">Sign Up</Button>
-          </Link>
+          </div>
         </form>
       </div>
     </div>
