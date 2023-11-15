@@ -41,6 +41,7 @@ const tools = [
     image: em4,
     header: "Email Text Extraction",
     body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
+    href: "/tools/email_marketing/email_extractor",
   },
   {
     image: em5,

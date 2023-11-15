@@ -1,9 +1,12 @@
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 export interface ToolCardProps {
   image: string;
   header: string;
   body: string;
   className?: string;
   bgTransparent?: boolean;
+  href?: string;
 }
 
 export function ToolCard({
@@ -12,7 +15,9 @@ export function ToolCard({
   body,
   bgTransparent,
   className,
+  href,
 }: ToolCardProps) {
+  const navigate = useNavigate();
   const getBgClass = () => {
     if (bgTransparent) {
       return "bg-transparent hover:bg-white/40";
@@ -32,6 +37,10 @@ export function ToolCard({
       className={`w-full group cursor-pointer ${getBgClass()} h-72 xl:h-[350px] p-7 flex flex-col rounded  transition-all duration-500 ease-in-out ${className} ${
         bgTransparent ? "border-[0.5px] border-white" : "shadow-md"
       }`}
+      onClick={() => {
+        if (!href) toast("Tool not implemented yet!");
+        else navigate(href);
+      }}
     >
       <div className="min-h-[60px]">
         <img src={image} width={60} alt="" />

@@ -69,6 +69,7 @@ export function ToolSection({
                 body={tool.body}
                 header={tool.header}
                 bgTransparent={bgGradient}
+                href={tool.href}
               />
             );
           })}

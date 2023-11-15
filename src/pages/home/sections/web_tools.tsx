@@ -30,6 +30,7 @@ const tools = [
     image: wt2,
     header: "Secure Password Generator",
     body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
+    href: "/tools/web/secure_password_generator",
   },
   {
     image: wt3,

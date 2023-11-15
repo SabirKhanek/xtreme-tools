@@ -9,16 +9,21 @@ import { Button } from "../button";
 
 export interface NavBarProps {
   className?: string;
+  bgClassApplied?: boolean;
 }
 
-export function Navbar({ className }: NavBarProps) {
+export function Navbar({ className, bgClassApplied }: NavBarProps) {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
 
   const responsiveClasses = getResponsiveClasses();
 
   return (
     <nav
-      className={`relative border-b bg-transparent border-b-white/20 ${className}`}
+      className={`relative border-b bg-transparent border-b-white/20 ${className} ${
+        bgClassApplied
+          ? "bg-[linear-gradient(289deg,#58126A_-40.56%,#F6B2E1_119.32%)]"
+          : " dsf"
+      }`}
     >
       <div
         className={`${responsiveClasses} flex justify-between py-3 items-center gap-10`}
@@ -45,7 +50,7 @@ export function Navbar({ className }: NavBarProps) {
             <Button className="bg-highlight">Long Term Rental</Button>
           </div> */}
           {/* <ProfileDropDown></ProfileDropDown> */}
-          <Link to={"login"}>
+          <Link to={"/login"}>
             <Button className="bg-primary">
               <div className="flex items-center gap-1">
                 <AiOutlineUser />
