@@ -129,6 +129,7 @@ export function SecurePasswordGenerator({
             type="range"
             min={8}
             max={32}
+            data-theme="mytheme"
             value={passwordStrength}
             onChange={(e: any) => setPasswordStrength(e.target.value)}
             className="range range-primary"

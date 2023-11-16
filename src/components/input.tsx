@@ -7,6 +7,7 @@ export interface InputProps {
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   containerClass?: string;
+  placeholder?:string;
   labelAction?: React.ReactNode;
 }
 export function Input({
@@ -19,6 +20,7 @@ export function Input({
   onChange,
   containerClass,
   labelAction,
+  placeholder
 }: InputProps) {
   return (
     <div className={`${containerClass}`}>
@@ -39,6 +41,7 @@ export function Input({
         type={type}
         name={name}
         value={value}
+        placeholder={placeholder}
         onChange={onChange}
         className={`bg-[#E6B0D92E]/20 rounded-lg text-black/70 w-full p-1 outline-[#E6B0D92E]/50 text-lg ${className}`}
       />

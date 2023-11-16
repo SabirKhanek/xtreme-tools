@@ -1,6 +1,6 @@
 import defaultTheme from "tailwindcss/defaultTheme";
 import daisyui from "daisyui";
-import theme from "daisyui/src/theming/themes"
+import theme from "daisyui/src/theming/themes";
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -29,15 +29,17 @@ export default {
   plugins: [daisyui],
   daisyui: {
     themes: [
-      {
-        light: {
-          ...theme["[data-theme=light]"],
-          primary: "#58126A",
-          "primary-focus": "mediumblue",
-        },
-      },
       "winter",
       "night",
+      {
+        mytheme: {
+          primary: "#58126A",
+          secondary: "#f6d860",
+          accent: "#37cdbe",
+          neutral: "#3d4451",
+          "base-100": "#ffffff",
+        },
+      },
     ],
   },
   darkMode: ["class", '[data-theme="night"]'],

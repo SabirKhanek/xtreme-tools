@@ -41,6 +41,7 @@ const tools = [
     image: wt4,
     header: "TOC Generator",
     body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
+    href: "/tools/web/toc_generator",
   },
   {
     image: wt5,

@@ -120,7 +120,7 @@ const toolsList = [
       },
       {
         name: "TOC Generator",
-        src: "/tools/email_marketing/email_extractor#",
+        src: "/tools/web/toc_generator",
       },
       {
         name: "Secure Password Generator",

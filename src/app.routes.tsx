@@ -7,6 +7,7 @@ import { ForgetPassword } from "./pages/auth/forget";
 import { Tools } from "./pages/tools";
 import { EmailExtractor } from "./pages/tools/email_marketing/email_extractor";
 import { SecurePasswordGenerator } from "./pages/tools/web/secure_password_generator";
+import { TOCGenerator } from "./pages/tools/web/toc_generator";
 
 export const routesConfig: RouteObject[] = [
   { path: "/", element: <HomePage /> },
@@ -34,6 +35,10 @@ export const routesConfig: RouteObject[] = [
           {
             path: "secure_password_generator",
             element: <SecurePasswordGenerator />,
+          },
+          {
+            path: "toc_generator",
+            element: <TOCGenerator />,
           },
         ],
       },
