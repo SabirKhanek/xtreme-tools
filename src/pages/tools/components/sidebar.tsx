@@ -4,7 +4,7 @@ import { LuBarChart2 } from "react-icons/lu";
 import { MdOutlineEmail } from "react-icons/md";
 import { FaArrowRightLong } from "react-icons/fa6";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 export interface ToolsSidebarProps {
   className?: string;
@@ -12,6 +12,15 @@ export interface ToolsSidebarProps {
 export function ToolsSidebar({ className }: ToolsSidebarProps) {
   const pathname = useLocation().pathname;
   const [expanded, setExpanded] = useState<number | null>(null);
+  useEffect(() => {
+    const expandedId = toolsList.findIndex((tool) => {
+      return tool.sublinks
+        .map((sublink) => sublink.src)
+        .join(" ; ")
+        .includes(pathname);
+    });
+    if (expanded !== expandedId) setExpanded(expandedId);
+  }, []);
   return (
     <div className={`${className} p-5 py-10 shadow rounded-2xl min-h-[80vh]`}>
       <h2 className="text-primary font-semibold text-xl">Tools Collection</h2>
@@ -39,7 +48,6 @@ export function ToolsSidebar({ className }: ToolsSidebarProps) {
             >
               {val.sublinks.map((sublink, index) => {
                 const isActivePath = pathname.includes(sublink.src);
-                console.log(pathname, sublink.src, isActivePath);
                 return (
                   <Link key={index} to={sublink.src}>
                     <div

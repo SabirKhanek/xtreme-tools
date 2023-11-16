@@ -1,6 +1,7 @@
 import { toast } from "react-toastify";
 import { Button } from "../../../../components/button";
 import { useState } from "react";
+import { FaDownload } from "react-icons/fa6";
 export interface EmailExtractorProps {
   className?: string;
 }
@@ -41,7 +42,7 @@ export function EmailExtractor({ className }: EmailExtractorProps) {
           Online Tool for Extracting Email Addresses From Any Text in Seconds
         </p>
       </div>
-      <div className="w-full border border-black rounded-xl grid grid-rows-1 grid-cols-[65%_35%] gap-x-3 h-[69.5vh] p-6">
+      <div className="w-full border border-black rounded-xl grid grid-rows-1 grid-cols-[50%_50%] xl:grid-cols-[60%_40%] gap-x-3 h-[69.5vh] p-6">
         <div className="p-3 flex flex-col">
           <div className="border-b border-[#CFCFCF] p-2 flex justify-between items-center">
             <h2 className="text-black font-semibold text-2xl">
@@ -117,8 +118,10 @@ export function EmailExtractor({ className }: EmailExtractorProps) {
             <Button className="text-sm py-2 bg-[#58126A54]">
               {emails.length} Email{emails.length > 1 && "s"}
             </Button>
-            <Button className=" bg-primary" onClick={handleDownload}>
-              Download CSV
+            <Button className="bg-primary " onClick={handleDownload}>
+              <span className="flex justify-center items-center gap-2">
+                <FaDownload /> <span>CSV</span>
+              </span>
             </Button>
           </div>
         </div>

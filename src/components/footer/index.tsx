@@ -61,7 +61,7 @@ export function Footer({ className }: FooterProps) {
 
         <div className="flex justify-between items-center text-white/75">
           <div className="text-sm text-label text-center w-full my-5">
-            2023 xtreme tools. All right reserved.
+            2023 Xtreme Tools All Rights Reserved.
           </div>
         </div>
       </div>

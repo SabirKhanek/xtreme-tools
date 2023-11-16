@@ -2,6 +2,8 @@ import { Outlet } from "react-router-dom";
 import { Navbar } from "../../components/navbar";
 import { getResponsiveClasses } from "../../shared/constants/getResponsiveClasses";
 import { ToolsSidebar } from "./components/sidebar";
+import { SubscribeSection } from "../home/sections/subscribe";
+import { Footer } from "../../components/footer";
 
 export interface ToolsProps {
   className?: string;
@@ -20,6 +22,8 @@ export function Tools({ className }: ToolsProps) {
           </div>
         </div>
       </div>
+      <SubscribeSection className="mt-10" />
+      <Footer />
     </div>
   );
 }
