@@ -36,6 +36,7 @@ const tools = [
     image: wt3,
     header: "Privacy Policy Generator",
     body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
+    href: "/tools/web/privacy_policy_generator",
   },
   {
     image: wt4,

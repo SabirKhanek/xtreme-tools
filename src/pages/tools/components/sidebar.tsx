@@ -128,7 +128,7 @@ const toolsList = [
       },
       {
         name: "Privacy Policy Generator",
-        src: "/tools/email_marketing/email_extractor#",
+        src: "/tools/web/privacy_policy_generator",
       },
     ],
   },

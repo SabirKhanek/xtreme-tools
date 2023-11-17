@@ -1,4 +1,4 @@
-export function getContent(name: string, url: string) {
+export function getTocContent(name: string, url: string) {
   return `<h2><strong>Terms and Conditions</strong></h2>
 <p>Welcome to ${name}!</p>
 <p>These terms and conditions outline the rules and regulations for the use of ${name}'s Website, located at ${url}.</p>
