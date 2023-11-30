@@ -1,5 +1,4 @@
 import { Axios } from "axios";
-import { axios } from "../shared/axios";
 
 export async function generateFavicon(image: File, is16x16: boolean) {
   const formData = new FormData();
