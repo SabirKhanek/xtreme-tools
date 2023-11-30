@@ -52,5 +52,6 @@ const tools = [
     image: em6,
     header: "SMTP Tester",
     body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
+    href: "/tools/email_marketing/smtp_tester"
   },
 ];

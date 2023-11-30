@@ -9,6 +9,8 @@ import { EmailExtractor } from "./pages/tools/email_marketing/email_extractor";
 import { SecurePasswordGenerator } from "./pages/tools/web/secure_password_generator";
 import { TOCGenerator } from "./pages/tools/web/toc_generator";
 import { PrivacyPolicyGenerator } from "./pages/tools/web/privacy_policy_generator";
+import { SMTPTester } from "./pages/tools/email_marketing/smtp_tester";
+import { FaviconGenerator } from "./pages/tools/web/favicon_generator";
 
 export const routesConfig: RouteObject[] = [
   { path: "/", element: <HomePage /> },
@@ -27,12 +29,19 @@ export const routesConfig: RouteObject[] = [
       {
         path: "email_marketing",
         element: <Outlet />,
-        children: [{ path: "email_extractor", element: <EmailExtractor /> }],
+        children: [
+          { path: "email_extractor", element: <EmailExtractor /> },
+          { path: "smtp_tester", element: <SMTPTester /> },
+        ],
       },
       {
         path: "web",
         element: <Outlet />,
         children: [
+          {
+            path: "favicon_generator",
+            element: <FaviconGenerator />,
+          },
           {
             path: "secure_password_generator",
             element: <SecurePasswordGenerator />,

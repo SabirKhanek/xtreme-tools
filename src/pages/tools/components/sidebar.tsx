@@ -94,7 +94,7 @@ const toolsList = [
       },
       {
         name: "SMTP Tester",
-        src: "/tools/email_marketing/email_extractor#",
+        src: "/tools/email_marketing/smtp_tester",
       },
       {
         name: "Free Email Checker",
@@ -116,7 +116,7 @@ const toolsList = [
     sublinks: [
       {
         name: "Favicon Generator",
-        src: "/tools/email_marketing/email_extractor#",
+        src: "/tools/web/favicon_generator",
       },
       {
         name: "TOC Generator",

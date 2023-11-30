@@ -25,6 +25,7 @@ const tools = [
     image: wt1,
     header: "Free Favicon Generator",
     body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
+    href: "/tools/web/favicon_generator"
   },
   {
     image: wt2,

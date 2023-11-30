@@ -14,9 +14,10 @@ export function PrivacyPolicyGenerator({
 }: PrivacyPolicyGeneratorProps) {
   const [webName, setWebName] = useState("");
   const [webUrl, setWebUrl] = useState("");
-
+  const [show, setShow] = useState(false);
   const [content, setContent] = useState("");
   useEffect(() => {
+    if (!show) return;
     if (webName === "" || webUrl === "") return;
     else setContent(getPrivacyContent(webName, webUrl));
   }, [webName, webUrl]);
@@ -71,7 +72,10 @@ export function PrivacyPolicyGenerator({
                   }`}
                   onClick={() => {
                     if (webName === "" || webUrl === "") return;
-                    else setContent(getPrivacyContent(webName, webUrl));
+                    else {
+                      setShow(true);
+                      setContent(getPrivacyContent(webName, webUrl));
+                    }
                   }}
                 >
                   <span className="flex justify-center items-center text-primary gap-2">

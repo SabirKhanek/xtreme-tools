@@ -12,11 +12,14 @@ export interface TOCGeneratorProps {
 export function TOCGenerator({ className }: TOCGeneratorProps) {
   const [webName, setWebName] = useState("");
   const [webUrl, setWebUrl] = useState("");
-
+  const [show, setShow] = useState(false);
   const [content, setContent] = useState("");
   useEffect(() => {
+    if (!show) return;
     if (webName === "" || webUrl === "") return;
-    else setContent(getTocContent(webName, webUrl));
+    else {
+      setContent(getTocContent(webName, webUrl));
+    }
   }, [webName, webUrl]);
   return (
     <div className={`${className}`}>
@@ -69,7 +72,10 @@ export function TOCGenerator({ className }: TOCGeneratorProps) {
                   }`}
                   onClick={() => {
                     if (webName === "" || webUrl === "") return;
-                    else setContent(getTocContent(webName, webUrl));
+                    else {
+                      setShow(true);
+                      setContent(getTocContent(webName, webUrl));
+                    }
                   }}
                 >
                   <span className="flex justify-center items-center text-primary gap-2">

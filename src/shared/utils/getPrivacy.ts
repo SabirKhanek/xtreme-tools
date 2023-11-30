@@ -5,7 +5,7 @@ At ${name}, accessible from ${url}, one of our main priorities is the privacy of
 
 If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.</p><p>
 
-This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in ${name}. This policy is not applicable to any information collected offline or via channels other than this website. Our Privacy Policy was created with the help of the <a href="https://promoterkit.com/tools/web/privacy-policy-generator">PromoterKit's Privacy Policy Generator</a>.</p><h2>
+This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in ${name}. This policy is not applicable to any information collected offline or via channels other than this website. Our Privacy Policy was created with the help of the <a href="#">XtremeTools's Privacy Policy Generator</a>.</p><h2>
 
 Consent</h2><p>
 
