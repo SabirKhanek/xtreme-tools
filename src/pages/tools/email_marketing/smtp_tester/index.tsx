@@ -46,13 +46,13 @@ export function SMTPTester({ className }: SMTPTesterProps) {
         from,
       };
       if (auth) {
-        requestObj.user = user;
+        requestObj.username = user;
         requestObj.password = password;
       }
       setIsLoading(true);
       try {
         const response = await testSMTP(requestObj);
-        if (response.status === "success")
+        if (response.success === true)
           toast.success(`SMTP server at host: ${host} is up and running`);
         else toast.error("SMTP request failed");
       } catch (err) {

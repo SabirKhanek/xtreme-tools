@@ -6,7 +6,7 @@ export interface TestSMTPRequest {
   secure: "none" | "auto";
   from: string;
   to: string;
-  user?: string;
+  username?: string;
   password?: string;
 }
 export async function testSMTP(obj: TestSMTPRequest) {
