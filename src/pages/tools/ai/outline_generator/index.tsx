@@ -96,6 +96,27 @@ export function OutlineGenerator({ className }: OutlineGeneratorProps) {
           )}
         </div>
       </div>
+      <div className="w-full border border-black rounded-xl p-6 my-5">
+        <h2 className="font-semibold text-lg">What is outline generator</h2>
+        <p className="text-black/70 my-2">
+          Instead of spending hours surfing the internet to find a keyword,
+          title, ideas, and more to write a great outline, you can use our
+          Outline Generator. Our Outline Generator helps you draft a content
+          outline for free. You can draft your content outline using this free
+          integrated tool in seconds without wasting your time on searching and
+          writing. H-educate's Outline Generator is the most accessible and
+          professional Outline Generator in the market, which relies on
+          Artificial Intelligence AI to help you create content outlines. This
+          content generator outlines your content from introduction to
+          conclusion, helping you save time and effort.
+        </p>
+        <span className="text-black/70 font-semibold text-lg">
+          <span className="text-primary">Contact Us </span>
+          <span>
+            for suggestions, complaints, or just feedback without hesitation.
+          </span>
+        </span>
+      </div>
     </div>
   );
 }

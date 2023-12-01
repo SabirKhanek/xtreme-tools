@@ -32,6 +32,7 @@ const tools = [
     image: ai2,
     header: "Free Paragraph Rewriter",
     body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
+    href: "/tools/ai/ai_rewriter",
   },
   {
     image: ai3,
