@@ -75,12 +75,16 @@ const toolsList = [
     icon: FaMicrochip,
     sublinks: [
       {
-        name: "AI Text Writer",
-        src: "/tools/email_marketing/email_extractor#",
+        name: "AI Writer",
+        src: "/tools/ai/ai_writer",
       },
       {
-        name: "AI Content Writer",
-        src: "/tools/email_marketing/email_extractor#",
+        name: "AI Rewriter",
+        src: "/tools/ai/ai_rewriter",
+      },
+      {
+        name: "AI Outline Generator",
+        src: "/tools/ai/outline_generator",
       },
     ],
   },

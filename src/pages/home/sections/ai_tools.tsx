@@ -26,6 +26,7 @@ const tools = [
     image: ai1,
     header: "Free AI Writer",
     body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
+    href: "/tools/ai/ai_writer",
   },
   {
     image: ai2,
@@ -36,6 +37,7 @@ const tools = [
     image: ai3,
     header: "Free Outline Generator",
     body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
+    href: "/tools/ai/outline_generator",
   },
   {
     image: ai4,

@@ -11,6 +11,9 @@ import { TOCGenerator } from "./pages/tools/web/toc_generator";
 import { PrivacyPolicyGenerator } from "./pages/tools/web/privacy_policy_generator";
 import { SMTPTester } from "./pages/tools/email_marketing/smtp_tester";
 import { FaviconGenerator } from "./pages/tools/web/favicon_generator";
+import { AiWriter } from "./pages/tools/ai/ai_writer";
+import { AIRewriter } from "./pages/tools/ai/ai_rewriter";
+import { OutlineGenerator } from "./pages/tools/ai/outline_generator";
 
 export const routesConfig: RouteObject[] = [
   { path: "/", element: <HomePage /> },
@@ -32,6 +35,15 @@ export const routesConfig: RouteObject[] = [
         children: [
           { path: "email_extractor", element: <EmailExtractor /> },
           { path: "smtp_tester", element: <SMTPTester /> },
+        ],
+      },
+      {
+        path: "ai",
+        element: <Outlet />,
+        children: [
+          { path: "ai_writer", element: <AiWriter /> },
+          { path: "ai_rewriter", element: <AIRewriter /> },
+          { path: "outline_generator", element: <OutlineGenerator /> },
         ],
       },
       {
