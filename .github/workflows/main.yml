@@ -7,7 +7,7 @@ on:
 
 env:
   FRONTEND_REPO: SabirKhanek/xtreme-tools
-  BACKEND_REPO: SabirKhanek/xtreme-tools
+  BACKEND_REPO: SabirKhanek/xtreme-tools-server
   FRONTEND_BRANCH: main
   BACKEND_BRANCH: main
   USERNAME: SabirKhanek
