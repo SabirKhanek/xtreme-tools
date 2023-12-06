@@ -16,3 +16,12 @@ export async function paraphraseText(input: string) {
   });
   return resp.data;
 }
+
+export async function translateText(input: string, from: string, to: string) {
+  const resp = await axios.post("/ai/translate", {
+    input,
+    from,
+    to,
+  });
+  return resp.data;
+}

@@ -14,6 +14,7 @@ import { FaviconGenerator } from "./pages/tools/web/favicon_generator";
 import { AiWriter } from "./pages/tools/ai/ai_writer";
 import { AIRewriter } from "./pages/tools/ai/ai_rewriter";
 import { OutlineGenerator } from "./pages/tools/ai/outline_generator";
+import { AITranslator } from "./pages/tools/ai/ai_translator";
 
 export const routesConfig: RouteObject[] = [
   { path: "/", element: <HomePage /> },
@@ -44,6 +45,7 @@ export const routesConfig: RouteObject[] = [
           { path: "ai_writer", element: <AiWriter /> },
           { path: "ai_rewriter", element: <AIRewriter /> },
           { path: "outline_generator", element: <OutlineGenerator /> },
+          { path: "translate", element: <AITranslator /> },
         ],
       },
       {

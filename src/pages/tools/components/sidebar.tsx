@@ -86,6 +86,10 @@ const toolsList = [
         name: "AI Outline Generator",
         src: "/tools/ai/outline_generator",
       },
+      {
+        name: "AI Translator",
+        src: "/tools/ai/translate",
+      },
     ],
   },
   {
