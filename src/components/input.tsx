@@ -56,7 +56,9 @@ export function Input({
         value={value}
         placeholder={placeholder}
         onChange={onChange}
-        onFocus={() => formikTouched(name, true)}
+        onBlur={() => {
+          formikTouched && formikTouched(name, true);
+        }}
         className={`bg-[#E6B0D92E]/20 rounded-lg text-black/70 w-full p-1 outline-[#E6B0D92E]/50 text-lg ${className} ${
           disabled && "cursor-not-allowed"
         }`}

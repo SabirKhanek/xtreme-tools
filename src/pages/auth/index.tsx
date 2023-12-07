@@ -1,11 +1,18 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import auth_1 from "./assets/auth_1.svg";
 import tr_circle from "./assets/tr_cirle.svg";
 import auth_2 from "./assets/auth_2.svg";
+import { useAuth } from "../../shared/contexts/auth";
+import { useEffect } from "react";
 export interface AuthProps {
   className?: string;
 }
 export function Auth({ className }: AuthProps) {
+  const auth = useAuth();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (auth.authDetails.isLoggedIn) navigate("/");
+  }, []);
   return (
     <div className={`relative bg-[#FCFCFC] grow ${className}`}>
       <img className="absolute top-0 right-0 " src={tr_circle} alt="" />

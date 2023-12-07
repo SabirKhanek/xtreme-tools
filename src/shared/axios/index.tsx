@@ -8,15 +8,9 @@ export const axios = new Axios({
   transformResponse: [(data) => JSON.parse(data)],
 });
 
-export interface StandardHttpSuccess {
-  success: true;
-  message: string;
-  data?: unknown;
-  statusCode: number;
-}
-
-export interface StandardHttpError {
+export interface StandardHttpResponse<T> {
   success: boolean;
   message: string;
+  data?: T;
   statusCode: number;
 }
