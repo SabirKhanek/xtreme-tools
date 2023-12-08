@@ -2,7 +2,7 @@ import { StandardHttpResponse, axios } from "../shared/axios";
 import { toast } from "react-toastify";
 import { updateAuthDetails } from "../shared/contexts/auth";
 export interface LoginParams {
-  username: string;
+  email: string;
   password: string;
 }
 interface UserAuthResponseData {
@@ -28,9 +28,11 @@ export async function login(loginCredentials: LoginParams) {
     } else {
       localStorage.setItem("jwt", response.data.data?.token || "");
       const user = isLoggedIn();
-      if (user?.first_name) toast(`Welcome back ${user.first_name}`);
-      updateAuthDetails();
-      return true;
+      if (user) {
+        if (user.first_name) toast(`Welcome back ${user.first_name}`);
+        updateAuthDetails();
+        return true;
+      } else return false;
     }
   } catch (error: any) {
     if (error.response && error.response.status === 401) {

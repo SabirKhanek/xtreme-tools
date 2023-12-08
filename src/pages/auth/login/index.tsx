@@ -1,12 +1,37 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../../components/button";
 import { Input } from "../../../components/input";
 import { toast } from "react-toastify";
+import { useFormik } from "formik";
+import { useState } from "react";
+import { login } from "../../../services/auth";
+import { signInSchema } from "../../../schemas/forms/login";
 
 export interface LoginPageProps {
   className?: string;
 }
 export function LoginPage({ className }: LoginPageProps) {
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+  const formik = useFormik({
+    initialValues: { email: "", password: "" },
+    onSubmit: async (v) => {
+      setIsLoading(true);
+      try {
+        const response = await login({
+          email: v.email,
+          password: v.password,
+        });
+        if (response) {
+          navigate("/");
+        }
+      } catch (err) {
+        toast.error("Something went wrong!");
+      }
+      setIsLoading(false);
+    },
+    validationSchema: signInSchema,
+  });
   return (
     <div className={`flex justify-center items-center flex-col ${className}`}>
       <div className="w-[472px] rounded-lg bg-white shadow p-8">
@@ -23,12 +48,27 @@ export function LoginPage({ className }: LoginPageProps) {
             </Link>
           </p>
         </div>
-        <form onSubmit={(e) => e.preventDefault()}>
-          <Input label="Email" name="email" containerClass="my-3" />
+        <form onSubmit={formik.handleSubmit}>
+          <Input
+            label="Email"
+            name="email"
+            onChange={formik.handleChange}
+            value={formik.values.email}
+            isTouched={formik.touched.email}
+            error={formik.errors.email}
+            formikTouched={formik.setFieldTouched}
+            containerClass="my-3"
+          />
           <Input
             label="Password"
             name="password"
             containerClass="my-3"
+            onChange={formik.handleChange}
+            value={formik.values.password}
+            isTouched={formik.touched.password}
+            error={formik.errors.password}
+            formikTouched={formik.setFieldTouched}
+            type="password"
             labelAction={
               <Link to="/forget">
                 <span className="text-primary cursor-pointer font-semibold text-sm">
@@ -38,10 +78,7 @@ export function LoginPage({ className }: LoginPageProps) {
             }
           />
           <div className="mt-10 flex justify-center">
-            <Button
-              onClick={() => toast("Functionality not implemented yet.")}
-              className="bg-primary"
-            >
+            <Button className="bg-primary" type="submit" isLoading={isLoading}>
               Sign In
             </Button>
           </div>
