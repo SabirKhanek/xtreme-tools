@@ -15,8 +15,17 @@ import { AiWriter } from "./pages/tools/ai/ai_writer";
 import { AIRewriter } from "./pages/tools/ai/ai_rewriter";
 import { OutlineGenerator } from "./pages/tools/ai/outline_generator";
 import { AITranslator } from "./pages/tools/ai/ai_translator";
+import { ToastRoute } from "./components/userVerified";
 
 export const routesConfig: RouteObject[] = [
+  {
+    path: "/user_verified",
+    element: <ToastRoute message="Verification was a succeess" />,
+  },
+  {
+    path: "/verification_failed",
+    element: <ToastRoute error message="Verification was not successful" />,
+  },
   { path: "/", element: <HomePage /> },
   {
     element: <Auth />,
