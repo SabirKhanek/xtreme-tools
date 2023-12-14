@@ -42,10 +42,24 @@ export const routesConfig: RouteObject[] = [
         path: "ai",
         element: <Outlet />,
         children: [
-          { path: "ai_writer", element: <AiWriter /> },
-          { path: "ai_rewriter", element: <AIRewriter /> },
-          { path: "outline_generator", element: <OutlineGenerator /> },
-          { path: "translate", element: <AITranslator /> },
+          {
+            path: "ai_writer",
+            element: <AiWriter requireLogin toolId="ai_writer" />,
+          },
+          {
+            path: "ai_rewriter",
+            element: <AIRewriter toolId="ai_rewriter" requireLogin />,
+          },
+          {
+            path: "outline_generator",
+            element: (
+              <OutlineGenerator toolId="outline_generator" requireLogin />
+            ),
+          },
+          {
+            path: "translate",
+            element: <AITranslator toolId="ai_translator" requireLogin />,
+          },
         ],
       },
       {

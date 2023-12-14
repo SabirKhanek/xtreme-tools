@@ -14,3 +14,12 @@ export interface StandardHttpResponse<T> {
   data?: T;
   statusCode: number;
 }
+axios.interceptors.request.use(
+  (config) => {
+    config.headers["Authorization"] = `${
+      localStorage.getItem("jwt") || ""
+    }`;
+    return config;
+  },
+  (err) => Promise.reject(err)
+);

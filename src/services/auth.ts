@@ -62,7 +62,9 @@ export async function signUp(userObj: {
       localStorage.setItem("jwt", response.data.data?.token || "");
       const user = isLoggedIn();
       if (user?.first_name)
-        toast(`Welcome to Xtreme Tools ${user.first_name}!`);
+        toast(
+          `Welcome to Xtreme Tools ${user.first_name}! Check your email to verify your account.`
+        );
       updateAuthDetails();
       return true;
     }
