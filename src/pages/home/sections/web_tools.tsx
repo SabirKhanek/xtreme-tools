@@ -2,8 +2,8 @@ import wt1 from "./assets/wt1.png";
 import wt2 from "./assets/wt2.png";
 import wt3 from "./assets/wt3.png";
 import wt4 from "./assets/wt4.png";
-import wt5 from "./assets/wt5.png";
-import wt6 from "./assets/wt6.png";
+// import wt5 from "./assets/wt5.png";
+// import wt6 from "./assets/wt6.png";
 import { ToolSection } from "../../../components/toolsSection";
 export interface ToolsSectionProps {
   className?: string;
@@ -25,7 +25,7 @@ const tools = [
     image: wt1,
     header: "Free Favicon Generator",
     body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
-    href: "/tools/web/favicon_generator"
+    href: "/tools/web/favicon_generator",
   },
   {
     image: wt2,
@@ -45,14 +45,14 @@ const tools = [
     body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
     href: "/tools/web/toc_generator",
   },
-  {
-    image: wt5,
-    header: "Responsive Checker",
-    body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
-  },
-  {
-    image: wt6,
-    header: "SSL Checker",
-    body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
-  },
+  // {
+  //   image: wt5,
+  //   header: "Responsive Checker",
+  //   body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
+  // },
+  // {
+  //   image: wt6,
+  //   header: "SSL Checker",
+  //   body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
+  // },
 ];

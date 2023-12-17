@@ -2,8 +2,8 @@ import ai1 from "./assets/ai1.png";
 import ai2 from "./assets/ai2.png";
 import ai3 from "./assets/ai3.png";
 import ai4 from "./assets/ai4.png";
-import ai5 from "./assets/ai5.png";
-import ai6 from "./assets/ai6.png";
+// import ai5 from "./assets/ai5.png";
+// import ai6 from "./assets/ai6.png";
 import { ToolSection } from "../../../components/toolsSection";
 export interface ToolsSectionProps {
   className?: string;
@@ -11,6 +11,7 @@ export interface ToolsSectionProps {
 export function AIToolsSection({ className }: ToolsSectionProps) {
   return (
     <ToolSection
+      id="ai_tools"
       className={className}
       tools={tools}
       header="Free AI"
@@ -46,14 +47,14 @@ const tools = [
     body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
     href: "/tools/ai/translator",
   },
-  {
-    image: ai5,
-    header: "AI Character Generator",
-    body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
-  },
-  {
-    image: ai6,
-    header: "AI Design Tools",
-    body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
-  },
+  // {
+  //   image: ai5,
+  //   header: "AI Character Generator",
+  //   body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
+  // },
+  // {
+  //   image: ai6,
+  //   header: "AI Design Tools",
+  //   body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
+  // },
 ];

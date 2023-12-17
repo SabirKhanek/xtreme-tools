@@ -106,15 +106,11 @@ const toolsList = [
       },
       {
         name: "Free Email Checker",
-        src: "/tools/email_marketing/email_extractor#",
+        src: "/tools/email_marketing/email_checker",
       },
       {
         name: "Bulk Email Verifier",
-        src: "/tools/email_marketing/email_extractor#",
-      },
-      {
-        name: "Subject Line Tester",
-        src: "/tools/email_marketing/email_extractor#",
+        src: "/tools/email_marketing/bulk_email_checker",
       },
     ],
   },
@@ -145,12 +141,24 @@ const toolsList = [
     icon: LuBarChart2,
     sublinks: [
       {
-        name: "Backlink Checker",
-        src: "/tools/email_marketing/email_extractor#",
+        name: "Keywords Research",
+        src: "/tools/seo/keyword_research",
       },
       {
-        name: "DA & PA Check",
-        src: "/tools/email_marketing/email_extractor#",
+        name: "Questions People ask",
+        src: "/tools/seo/people_also_ask",
+      },
+      {
+        name: "Backlinks Checker",
+        src: "/tools/seo/backlinks_checker",
+      },
+      {
+        name: "Competitors Keyword Research",
+        src: "/tools/seo/competitors_keyword_research",
+      },
+      {
+        name: "Domain Authority Checker",
+        src: "/tools/seo/domain_authority_checker",
       },
     ],
   },

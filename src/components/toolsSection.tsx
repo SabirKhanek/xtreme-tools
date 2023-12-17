@@ -11,6 +11,7 @@ export interface ToolsSection {
   className?: string;
   header: string;
   subtext: string;
+  id?: string;
   tools: ToolCardProps[];
   bgGradient?: boolean;
 }
@@ -21,9 +22,11 @@ export function ToolSection({
   header,
   subtext,
   tools,
+  id,
 }: ToolsSection) {
   return (
     <section
+      id={id || ""}
       className={`py-24 relative ${
         bgGradient
           ? "bg-[linear-gradient(289deg,#58126A_-40.56%,#F6B2E1_119.32%)]"
@@ -70,6 +73,7 @@ export function ToolSection({
                 header={tool.header}
                 bgTransparent={bgGradient}
                 href={tool.href}
+                onClick={tool.onClick}
               />
             );
           })}

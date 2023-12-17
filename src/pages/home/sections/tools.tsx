@@ -17,20 +17,37 @@ export function ToolsSection({ className }: ToolsSectionProps) {
   );
 }
 
+const scrollToId = (id: string) => {
+  // element which needs to be scrolled to
+  const element = document.querySelector(`#${id}`);
+
+  // scroll to element
+  element?.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
 const tools = [
   {
     image: ai,
     header: "AI Content",
     body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
+    onClick: () => {
+      scrollToId("ai_tools");
+    },
   },
   {
     image: email,
     header: "Email Marketing",
     body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
+    onClick: () => {
+      scrollToId("email_marketing_tools");
+    },
   },
   {
     image: seo,
     header: "SEO & Traffic",
     body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
+    onClick: () => {
+      scrollToId("seo_tools");
+    },
   },
 ];

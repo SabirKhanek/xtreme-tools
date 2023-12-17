@@ -16,6 +16,12 @@ import { AIRewriter } from "./pages/tools/ai/ai_rewriter";
 import { OutlineGenerator } from "./pages/tools/ai/outline_generator";
 import { AITranslator } from "./pages/tools/ai/ai_translator";
 import { ToastRoute } from "./components/userVerified";
+import { EmailChecker } from "./pages/tools/email_marketing/email_checker";
+import { KeywordsResearch } from "./pages/tools/seo/keywords_research";
+import { PeopleAlsoAsk } from "./pages/tools/seo/people_ask";
+import { BacklinksChecker } from "./pages/tools/seo/backlinks_checker";
+import { CompetitorsKeywordResearch } from "./pages/tools/seo/competitors_keywords_research";
+import { DAPACheck } from "./pages/tools/seo/da_pa_check";
 
 export const routesConfig: RouteObject[] = [
   {
@@ -45,6 +51,28 @@ export const routesConfig: RouteObject[] = [
         children: [
           { path: "email_extractor", element: <EmailExtractor /> },
           { path: "smtp_tester", element: <SMTPTester /> },
+          {
+            path: "email_checker",
+            element: <EmailChecker singleMode />,
+          },
+          { path: "bulk_email_checker", element: <EmailChecker /> },
+        ],
+      },
+      {
+        path: "seo",
+        element: <Outlet />,
+        children: [
+          { path: "keyword_research", element: <KeywordsResearch /> },
+          { path: "people_also_ask", element: <PeopleAlsoAsk /> },
+          {
+            path: "backlinks_checker",
+            element: <BacklinksChecker />,
+          },
+          {
+            path: "competitors_keyword_research",
+            element: <CompetitorsKeywordResearch />,
+          },
+          { path: "domain_authority_checker", element: <DAPACheck /> },
         ],
       },
       {

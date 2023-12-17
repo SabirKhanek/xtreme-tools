@@ -7,6 +7,7 @@ export interface ToolCardProps {
   className?: string;
   bgTransparent?: boolean;
   href?: string;
+  onClick?: () => void;
 }
 
 export function ToolCard({
@@ -16,6 +17,7 @@ export function ToolCard({
   bgTransparent,
   className,
   href,
+  onClick,
 }: ToolCardProps) {
   const navigate = useNavigate();
   const getBgClass = () => {
@@ -38,6 +40,10 @@ export function ToolCard({
         bgTransparent ? "border-[0.5px] border-white" : "shadow-md"
       }`}
       onClick={() => {
+        if (onClick) {
+          onClick();
+          return;
+        }
         if (!href) toast("Tool not implemented yet!");
         else navigate(href);
       }}
