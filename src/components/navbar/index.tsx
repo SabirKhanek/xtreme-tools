@@ -110,23 +110,19 @@ export const navLinks = [
     route: "/",
   },
   {
-    name: "Discover",
-    route: "/blog",
-  },
-  {
     name: "AI",
-    route: "/contact",
+    route: "home#ai_tools",
   },
   {
     name: "SEO",
-    route: "/about_us",
+    route: "home#ai_tools",
   },
   {
     name: "Email",
-    route: "/about_us",
+    route: "home#email_marketing_tools",
   },
   {
     name: "Web",
-    route: "/about_us",
+    route: "home#web_tools",
   },
 ];

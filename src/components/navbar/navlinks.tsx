@@ -24,6 +24,15 @@ export default function NavLinks({ links, className }: NavLinksProps) {
                     : "text-white/60 hover:text-black"
                 } hover:text-white/70`
               }
+              onClick={(e) => {
+                if (link.route.startsWith("home#")) {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  const sectionId = link.route.split("#")[1];
+                  const section = document.getElementById(sectionId);
+                  if (section) section.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
             >
               {link.name}
             </NavLink>

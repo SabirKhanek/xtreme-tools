@@ -33,11 +33,23 @@ export function CollapsibleNavLink({
                   }`
                 }
                 to={link.route}
+                onClick={(e) => {
+                  if (link.route.startsWith("home#")) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    const sectionId = link.route.split("#")[1];
+                    const section = document.getElementById(sectionId);
+                    if (section) section.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
                 {link.name}
               </NavLink>
               {index !== links.length - 1 && (
-                <hr className={`w-3/4 bg-light-grey mx-auto my-0`} />
+                <hr
+                  key={index}
+                  className={`w-3/4 bg-light-grey mx-auto my-0`}
+                />
               )}
             </li>
           </>
