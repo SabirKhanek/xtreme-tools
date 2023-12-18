@@ -145,3 +145,18 @@ export async function keywordsByWebURL(url: string) {
   });
   return response.data;
 }
+
+export interface PeopleAskResponse {
+  questions: { question: string; questionType: string }[];
+  prepositions: { preposition: string; prepositionType: string }[];
+}
+export async function peopleAlsoAsk(keyword: string) {
+  const response = await axios.post<
+    StandardHttpResponse<{
+      result: PeopleAskResponse;
+    }>
+  >("/seo/what-people-ask", {
+    keyword,
+  });
+  return response.data;
+}

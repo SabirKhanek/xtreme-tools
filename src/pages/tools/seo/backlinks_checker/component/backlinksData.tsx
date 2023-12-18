@@ -17,7 +17,7 @@ export function BacklinksData({ className, backlinks }: BacklinksDataProps) {
                 <div className="p-2 border-b border-[#DADADA]">
                   <div className="flex justify-between">
                     <h3 className="text-black/70 font-semibold">To</h3>
-                    <span className="hover:underline basis-1/2 grow-0 break-words">
+                    <span className="hover:underline basis-1/2 text-right grow-0 break-words">
                       <a href={backlink.url_to}>{backlink.url_to}</a>
                     </span>
                   </div>
