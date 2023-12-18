@@ -103,3 +103,21 @@ export async function backlinksChecker(url: string) {
   });
   return response.data;
 }
+
+export interface KeywordCheckerResponseData {
+  text: string;
+  cpc: string;
+  vol: number;
+  v: number;
+  competition: "low" | "medium" | "high";
+  score: number;
+}
+export async function keywordChecker(keyword: string, country: string) {
+  const response = await axios.post<
+    StandardHttpResponse<KeywordCheckerResponseData[]>
+  >("/seo/keywords", {
+    keyword,
+    country: country === "global" ? undefined : country,
+  });
+  return response.data;
+}
