@@ -11,6 +11,7 @@ import { Input } from "../../../../components/input";
 import { Button } from "../../../../components/button";
 import { FaCheck, FaSearch } from "react-icons/fa";
 import { ToolBody } from "../../../../components/toolBody";
+import { BacklinksData } from "./component/backlinksData";
 
 export interface BacklinksCheckerProps {
   className?: string;
@@ -180,6 +181,7 @@ export function BacklinksChecker({ className }: BacklinksCheckerProps) {
                 Backlinks Data
               </h3>
             </div>
+            <BacklinksData backlinks={result.backlinks}></BacklinksData>
           </div>
         </>
       )}
