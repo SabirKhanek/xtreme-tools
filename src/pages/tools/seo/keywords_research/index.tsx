@@ -25,10 +25,9 @@ export function KeywordsResearch({ className }: KeywordsResearchProps) {
       sortBy: undefined as unknown as string | undefined,
     },
     onSubmit: (v) => {
-      console.log("Hey");
       const getKeywords = async () => {
         setIsLoading(true);
-        setResult([])
+        setResult([]);
         try {
           const resp = await keywordChecker(v.keyword, v.country);
           if (resp.success) {
@@ -71,7 +70,6 @@ export function KeywordsResearch({ className }: KeywordsResearchProps) {
       ToolDescription={KeywordsResearchDecscription}
       className={`${className} flex flex-col gap-2`}
     >
-      {JSON.stringify(formik.errors)}
       <form onSubmit={formik.handleSubmit}>
         <div className="flex justify-between gap-2">
           <Input
