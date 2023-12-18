@@ -121,3 +121,27 @@ export async function keywordChecker(keyword: string, country: string) {
   });
   return response.data;
 }
+
+export interface KeywordByWebURLResponseData {
+  keyword: string;
+  topRankedUrl: string;
+  rank: number;
+  rankChange: number | null;
+  searchVolume: number;
+  rankingHomepages: number;
+  paidCompetitors: number;
+}
+export async function keywordsByWebURL(url: string) {
+  const response = await axios.post<
+    StandardHttpResponse<{
+      result: {
+        keywords: KeywordByWebURLResponseData[];
+        keywordsCount: number;
+        message: string;
+      };
+    }>
+  >("/seo/keywords_by_website", {
+    url,
+  });
+  return response.data;
+}
