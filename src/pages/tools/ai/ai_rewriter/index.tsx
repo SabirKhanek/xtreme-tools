@@ -79,12 +79,14 @@ export function AIRewriter({
                     className="bg-[#F0ABDCB2] !rounded-3xl flex items-center gap-1"
                     onClick={handleRequest}
                   >
-                    <span className="text-primary">Paraphrase</span>
-                    {isLoading && (
-                      <span className="animate-spin text-primary">
-                        <FaSpinner />
-                      </span>
-                    )}
+                    <span className="flex items-center gap-1">
+                      <span className="text-primary">Paraphrase</span>
+                      {isLoading && (
+                        <span className="animate-spin text-primary">
+                          <FaSpinner />
+                        </span>
+                      )}
+                    </span>
                   </Button>
                 </div>
                 <textarea
