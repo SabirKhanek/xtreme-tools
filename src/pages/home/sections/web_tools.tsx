@@ -13,6 +13,7 @@ export function WebToolsSection({ className }: ToolsSectionProps) {
     <ToolSection
       className={className}
       tools={tools}
+      id="web_tools"
       header="Free Web"
       subtext="To harness the power of this data, businesses need a comprehensive
             data management platform"

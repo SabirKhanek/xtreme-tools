@@ -53,9 +53,12 @@ export const routesConfig: RouteObject[] = [
           { path: "smtp_tester", element: <SMTPTester /> },
           {
             path: "email_checker",
-            element: <EmailChecker singleMode />,
+            element: <EmailChecker singleMode toolId="email_checker" />,
           },
-          { path: "bulk_email_checker", element: <EmailChecker /> },
+          {
+            path: "bulk_email_checker",
+            element: <EmailChecker requireLogin toolId="bulk_email_checker" />,
+          },
         ],
       },
       {

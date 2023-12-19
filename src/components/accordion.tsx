@@ -3,9 +3,15 @@ import { useState } from "react";
 export interface AccordionProps {
   className?: string;
   title: string;
+  titleStatus?: React.ReactNode;
   children: React.ReactNode;
 }
-export function Accordion({ className, title, children }: AccordionProps) {
+export function Accordion({
+  className,
+  title,
+  children,
+  titleStatus,
+}: AccordionProps) {
   const [collapsed, setCollapsed] = useState(false);
   return (
     <div className={`w-full border-b border-[#DADADA] my-5 ${className}`}>
@@ -24,13 +30,16 @@ export function Accordion({ className, title, children }: AccordionProps) {
             {!collapsed ? <FaPlus /> : <FaMinus />}
           </div>
         </div>
-        <h2
-          className={`text-ll font-bold ${
-            collapsed ? "text-white" : "text-black/70"
-          }`}
-        >
-          {title}
-        </h2>
+        <div className="flex items-center gap-2">
+          <h2
+            className={`text-lg font-bold ${
+              collapsed ? "text-white" : "text-black/70"
+            }`}
+          >
+            {title}
+          </h2>
+          {titleStatus}
+        </div>
       </div>
       <div
         className={`max-h-[1000px]  transition-all duration-200 ease-in-out overflow-hidden h-fit ${

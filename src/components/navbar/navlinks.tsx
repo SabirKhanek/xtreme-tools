@@ -25,11 +25,12 @@ export default function NavLinks({ links, className }: NavLinksProps) {
                 } hover:text-white/70`
               }
               onClick={(e) => {
-                if (link.route.startsWith("home#")) {
+                if (link.route.startsWith("#")) {
                   e.stopPropagation();
                   e.preventDefault();
                   const sectionId = link.route.split("#")[1];
-                  const section = document.getElementById(sectionId);
+                  const section = document.getElementById(`${sectionId}`);
+                  console.log(sectionId);
                   if (section) section.scrollIntoView({ behavior: "smooth" });
                 }
               }}

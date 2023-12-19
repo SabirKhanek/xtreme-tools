@@ -5,6 +5,7 @@ import h_l_b_r from "./assets/h_l_b_r.svg";
 import h_r_l from "./assets/h_r_l.png";
 import hero_ssg1 from "./assets/hero_ssg1.svg";
 import hero_ssg2 from "./assets/hero_ssg2.svg";
+import { Link } from "react-router-dom";
 export interface HeroSectionProps {
   className?: string;
 }
@@ -98,9 +99,11 @@ export function HeroSection({ className }: HeroSectionProps) {
               potential.
             </p>
             <div className="flex items-center justify-center gap-5">
-              <Button className="bg-primary border-transparent border">
-                Get Started
-              </Button>
+              <Link to="/signup">
+                <Button className="bg-primary border-transparent border">
+                  Get Started
+                </Button>
+              </Link>
               <Button className="border">Pricing plans</Button>
             </div>
           </div>
