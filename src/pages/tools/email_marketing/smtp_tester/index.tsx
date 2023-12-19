@@ -171,7 +171,7 @@ export function SMTPTester({ className }: SMTPTesterProps) {
             required={formik.values.auth}
             disabled={!formik.values.auth}
           />
-          <Button className="bg-primary w-full my-3">
+          <Button className="bg-primary w-full my-3" type="submit">
             <span className="flex justify-center items-center gap-1">
               {isLoading && (
                 <span className="animate-spin">
