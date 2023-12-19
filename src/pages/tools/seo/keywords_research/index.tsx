@@ -65,8 +65,8 @@ export function KeywordsResearch({ className }: KeywordsResearchProps) {
   };
   return (
     <ToolBody
-      heading="Backlinks Checker"
-      subheading="Check and get detailed backlinks in second for free"
+      heading="Keywords Research"
+      subheading="perform keyword research in seconds"
       ToolDescription={KeywordsResearchDecscription}
       className={`${className} flex flex-col gap-2`}
     >
