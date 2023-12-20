@@ -65,17 +65,39 @@ export const routesConfig: RouteObject[] = [
         path: "seo",
         element: <Outlet />,
         children: [
-          { path: "keyword_research", element: <KeywordsResearch /> },
-          { path: "people_also_ask", element: <PeopleAlsoAsk /> },
+          {
+            path: "keyword_research",
+            element: (
+              <KeywordsResearch requireLogin toolId="keywords_research" />
+            ),
+          },
+          {
+            path: "people_also_ask",
+            element: (
+              <PeopleAlsoAsk requireLogin toolId="people_also_ask_tool" />
+            ),
+          },
           {
             path: "backlinks_checker",
-            element: <BacklinksChecker />,
+            element: (
+              <BacklinksChecker requireLogin toolId="backlinks_checker" />
+            ),
           },
           {
             path: "competitors_keyword_research",
-            element: <CompetitorsKeywordResearch />,
+            element: (
+              <CompetitorsKeywordResearch
+                requireLogin
+                toolId="competitors_keyword_checker"
+              />
+            ),
           },
-          { path: "domain_authority_checker", element: <DAPACheck /> },
+          {
+            path: "domain_authority_checker",
+            element: (
+              <DAPACheck requireLogin toolId="domain_authority_checker" />
+            ),
+          },
         ],
       },
       {

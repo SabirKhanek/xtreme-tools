@@ -11,10 +11,18 @@ import {
 } from "../../../../services/seo";
 import { FaCheck } from "react-icons/fa";
 import { toast } from "react-toastify";
-export interface KeywordsResearchProps {
+import { Tool } from "../../types/tool";
+import { ToolUsage } from "../../components/toolUsage";
+export interface KeywordsResearchProps extends Tool {
   className?: string;
 }
-export function KeywordsResearch({ className }: KeywordsResearchProps) {
+export function KeywordsResearch({
+  className,
+  toolId,
+  requireLogin,
+}: KeywordsResearchProps) {
+  const [usage, setUsage] = useState({ used: 0, quota: 10 });
+
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState<KeywordCheckerResponseData[]>([]);
   const [filter, setFilter] = useState("");
@@ -26,11 +34,18 @@ export function KeywordsResearch({ className }: KeywordsResearchProps) {
     },
     onSubmit: (v) => {
       const getKeywords = async () => {
+        if (usage.quota <= usage.used) {
+          toast.info("Limit reached");
+          return;
+        }
         setIsLoading(true);
         setResult([]);
         try {
           const resp = await keywordChecker(v.keyword, v.country);
+
           if (resp.success) {
+            setUsage({ used: usage.used + 1, quota: usage.quota });
+
             if (resp.data) setResult(resp.data);
             if (v.sortBy!) {
               const sortedData = resp.data?.sort(
@@ -69,6 +84,7 @@ export function KeywordsResearch({ className }: KeywordsResearchProps) {
       subheading="perform keyword research in seconds"
       ToolDescription={KeywordsResearchDecscription}
       className={`${className} flex flex-col gap-2`}
+      requireLogin={requireLogin}
     >
       <form onSubmit={formik.handleSubmit}>
         <div className="flex justify-between gap-2">
@@ -200,6 +216,12 @@ export function KeywordsResearch({ className }: KeywordsResearchProps) {
           </div>
         </div>
       )}
+      <ToolUsage
+        className="p-2 my-3"
+        toolId={toolId}
+        usage={usage}
+        setUsage={(v) => setUsage(v)}
+      />
     </ToolBody>
   );
 }

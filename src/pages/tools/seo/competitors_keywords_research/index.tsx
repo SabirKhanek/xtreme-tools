@@ -11,12 +11,18 @@ import {
   keywordsByWebURL,
 } from "../../../../services/seo";
 import { CompetitorsKeywordResearchDecscription } from "./details";
-export interface CompetitorsKeywordResearchProps {
+import { Tool } from "../../types/tool";
+import { ToolUsage } from "../../components/toolUsage";
+export interface CompetitorsKeywordResearchProps extends Tool {
   className?: string;
 }
 export function CompetitorsKeywordResearch({
   className,
+  toolId,
+  requireLogin
 }: CompetitorsKeywordResearchProps) {
+  const [usage, setUsage] = useState({ used: 0, quota: 10 });
+
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState<KeywordByWebURLResponseData[]>([]);
   const [filter, setFilter] = useState("");
@@ -26,12 +32,19 @@ export function CompetitorsKeywordResearch({
     },
     onSubmit: (v) => {
       const getKeywords = async () => {
+        if (usage.quota <= usage.used) {
+          toast.info("Limit reached");
+          return;
+        }
         setIsLoading(true);
         setResult([]);
         try {
           const resp = await keywordsByWebURL(v.url);
           if (resp.success) {
-            if (resp.data) setResult(resp.data.result.keywords);
+            if (resp.data) {
+              setResult(resp.data.result.keywords);
+              setUsage({ used: usage.used + 1, quota: usage.quota });
+            }
           } else {
             toast.error(`${resp.statusCode}: ${resp.message}`);
           }
@@ -60,6 +73,7 @@ export function CompetitorsKeywordResearch({
       subheading="Extract keywords based on competitors website content"
       ToolDescription={CompetitorsKeywordResearchDecscription}
       className={`${className} flex flex-col gap-2`}
+      requireLogin={requireLogin}
     >
       <form onSubmit={formik.handleSubmit}>
         <div className="flex justify-between gap-2">
@@ -168,6 +182,12 @@ export function CompetitorsKeywordResearch({
           </div>
         </div>
       )}
+      <ToolUsage
+        className="p-2 my-3"
+        toolId={toolId}
+        usage={usage}
+        setUsage={(v) => setUsage(v)}
+      />
     </ToolBody>
   );
 }

@@ -8,20 +8,34 @@ import { useState } from "react";
 import { PeopleAskResponse, peopleAlsoAsk } from "../../../../services/seo";
 import { FaCheck } from "react-icons/fa";
 import { toast } from "react-toastify";
-export interface PeopleAlsoAskProps {
+import { Tool } from "../../types/tool";
+import { ToolUsage } from "../../components/toolUsage";
+export interface PeopleAlsoAskProps extends Tool {
   className?: string;
 }
-export function PeopleAlsoAsk({ className }: PeopleAlsoAskProps) {
+export function PeopleAlsoAsk({
+  className,
+  toolId,
+  requireLogin,
+}: PeopleAlsoAskProps) {
+  const [usage, setUsage] = useState({ used: 0, quota: 10 });
+
   const formik = useFormik({
     initialValues: { keyword: "" },
     onSubmit: (v) => {
       const getQuestions = async () => {
+        if (usage.quota <= usage.used) {
+          toast.info("Limit reached");
+          return;
+        }
         setIsLoading(true);
         setResult([]);
         try {
           const resp = await peopleAlsoAsk(v.keyword);
+
           if (resp.success) {
             if (resp.data) setResult(resp.data.result.questions);
+            setUsage({ used: usage.used + 1, quota: usage.quota });
           } else {
             toast.error(`${resp.statusCode}: ${resp.message}`);
           }
@@ -42,6 +56,7 @@ export function PeopleAlsoAsk({ className }: PeopleAlsoAskProps) {
       subheading="Questions asked by people"
       ToolDescription={PeopleAlsoAskDetails}
       className={`${className} flex flex-col gap-2`}
+      requireLogin={requireLogin}
     >
       <form onSubmit={formik.handleSubmit}>
         <div className="flex justify-between gap-2">
@@ -105,6 +120,12 @@ export function PeopleAlsoAsk({ className }: PeopleAlsoAskProps) {
           </div>
         </div>
       )}
+      <ToolUsage
+        className="p-2 my-3"
+        toolId={toolId}
+        usage={usage}
+        setUsage={(v) => setUsage(v)}
+      />
     </ToolBody>
   );
 }

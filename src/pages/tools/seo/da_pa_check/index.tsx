@@ -11,10 +11,13 @@ import {
   domainAuthorityCheckerResponseData,
 } from "../../../../services/seo";
 import { toast } from "react-toastify";
-export interface DAPACheckProps {
+import { Tool } from "../../types/tool";
+import { ToolUsage } from "../../components/toolUsage";
+export interface DAPACheckProps extends Tool {
   className?: string;
 }
-export function DAPACheck({ className }: DAPACheckProps) {
+export function DAPACheck({ className, toolId, requireLogin }: DAPACheckProps) {
+  const [usage, setUsage] = useState({ used: 0, quota: 10 });
   const [result, setResult] =
     useState<domainAuthorityCheckerResponseData | null>();
   const [isLoading, setIsLoading] = useState(false);
@@ -22,6 +25,10 @@ export function DAPACheck({ className }: DAPACheckProps) {
     initialValues: { url: "" },
     onSubmit: (v) => {
       const getDRPR = async () => {
+        if (usage.quota <= usage.used) {
+          toast.info("Limit reached");
+          return;
+        }
         setResult({
           target: v.url,
           spam_score: 0,
@@ -32,8 +39,11 @@ export function DAPACheck({ className }: DAPACheckProps) {
         setIsLoading(true);
         try {
           const resp = await domainAuthorityChecker(v.url);
-          if (resp.success) setResult(resp.data);
-          else {
+
+          if (resp.success) {
+            setResult(resp.data);
+            setUsage({ used: usage.used + 1, quota: usage.quota });
+          } else {
             toast.error(`${resp.statusCode}: ${resp.message}`);
           }
         } catch (err) {
@@ -55,6 +65,7 @@ export function DAPACheck({ className }: DAPACheckProps) {
       subheading="Get DA/PA score for any domain"
       ToolDescription={DAPAToolDecscription}
       className={`${className} flex flex-col gap-2`}
+      requireLogin={requireLogin}
     >
       <form onSubmit={formik.handleSubmit}>
         <Input
@@ -127,6 +138,12 @@ export function DAPACheck({ className }: DAPACheckProps) {
           </table>
         </div>
       )}
+      <ToolUsage
+        className="p-2 my-3"
+        toolId={toolId}
+        usage={usage}
+        setUsage={(v) => setUsage(v)}
+      />
     </ToolBody>
   );
 }

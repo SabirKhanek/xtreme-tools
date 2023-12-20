@@ -12,8 +12,10 @@ import { Button } from "../../../../components/button";
 import { FaCheck, FaSearch } from "react-icons/fa";
 import { ToolBody } from "../../../../components/toolBody";
 import { BacklinksData } from "./component/backlinksData";
+import { Tool } from "../../types/tool";
+import { ToolUsage } from "../../components/toolUsage";
 
-export interface BacklinksCheckerProps {
+export interface BacklinksCheckerProps extends Tool {
   className?: string;
 }
 function countDoFollowAndNoFollowBacklinks(
@@ -38,7 +40,13 @@ function countDoFollowAndNoFollowBacklinks(
     noFollow: noFollowBacklinks,
   };
 }
-export function BacklinksChecker({ className }: BacklinksCheckerProps) {
+export function BacklinksChecker({
+  className,
+  toolId,
+  requireLogin,
+}: BacklinksCheckerProps) {
+  const [usage, setUsage] = useState({ used: 0, quota: 10 });
+
   const [result, setResult] = useState<BacklinkCheckerResponseData | null>();
   const [resultDomain, setResultDomain] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -46,12 +54,17 @@ export function BacklinksChecker({ className }: BacklinksCheckerProps) {
     initialValues: { url: "" },
     onSubmit: (v) => {
       const getBacklinks = async () => {
+        if (usage.quota <= usage.used) {
+          toast.info("Limit reached");
+          return;
+        }
         setIsLoading(true);
         try {
           const resp = await backlinksChecker(v.url);
           if (resp.success) {
             setResult(resp.data);
             setResultDomain(v.url);
+            setUsage({ used: usage.used + 1, quota: usage.quota });
           } else {
             toast.error(`${resp.statusCode}: ${resp.message}`);
           }
@@ -74,6 +87,7 @@ export function BacklinksChecker({ className }: BacklinksCheckerProps) {
       subheading="Check and get detailed backlinks in second for free"
       ToolDescription={BacklinksCheckerDecscription}
       className={`${className} flex flex-col gap-2`}
+      requireLogin={requireLogin}
     >
       <form onSubmit={formik.handleSubmit}>
         <Input
@@ -185,6 +199,12 @@ export function BacklinksChecker({ className }: BacklinksCheckerProps) {
           </div>
         </>
       )}
+      <ToolUsage
+        className="p-2 my-3"
+        toolId={toolId}
+        usage={usage}
+        setUsage={(v) => setUsage(v)}
+      />
     </ToolBody>
   );
 }

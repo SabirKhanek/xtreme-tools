@@ -43,7 +43,7 @@ export function Footer({ className }: FooterProps) {
             <ul className="flex flex-col gap-1 ml-1">
               {[
                 { name: "Privacy Policy", route: "#" },
-                { name: "Terms and Condition", route: "#" },
+                { name: "Terms and Conditions", route: "#" },
                 { name: "Contact Us", route: "#" },
                 { name: "Blogs", route: "#" },
               ].map((val, index) => {
@@ -104,7 +104,7 @@ function getIntro() {
     <div className="basis-80">
       <img className="mb-1" src="/logo.svg" alt="" />
       <div className="text-label text-sm break-words my-4 text-white/75">
-        At Xtreme Tool, we are a dedicated team of passionate individuals who
+        At Xtreme Tools, we are a dedicated team of passionate individuals who
         believe in the power of innovation and the limitless potential within
         each person.
       </div>
