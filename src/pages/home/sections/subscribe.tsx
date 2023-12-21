@@ -47,6 +47,7 @@ export function SubscribeSection({ className }: SubscribeSectionProps) {
             isLoading={isLoading}
             className="text-black bg-white shrink-0 !rounded-md"
             onClick={handleSubmit}
+            loadingClass="text-black"
           >
             <span className="text-black text-sm font-semibold !rounded">
               Subscribe

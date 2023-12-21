@@ -8,12 +8,14 @@ export interface ButtonProps {
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
   disabled?: boolean;
+  loadingClass: string;
 }
 export function Button({
   className,
   children,
   onClick,
   type,
+  loadingClass,
   isLoading,
   disabled,
 }: ButtonProps) {
@@ -28,7 +30,7 @@ export function Button({
     >
       <span className="inline-flex justify-center items-center gap-1">
         <div>{children}</div>
-        {isLoading && <FaSpinner className="animate-spin" />}
+        {isLoading && <FaSpinner className={`animate-spin ${loadingClass}`} />}
       </span>
     </button>
   );
