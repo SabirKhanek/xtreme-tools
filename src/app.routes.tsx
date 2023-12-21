@@ -22,6 +22,7 @@ import { PeopleAlsoAsk } from "./pages/tools/seo/people_ask";
 import { BacklinksChecker } from "./pages/tools/seo/backlinks_checker";
 import { CompetitorsKeywordResearch } from "./pages/tools/seo/competitors_keywords_research";
 import { DAPACheck } from "./pages/tools/seo/da_pa_check";
+import { NotFound } from "./pages/404";
 
 export const routesConfig: RouteObject[] = [
   {
@@ -148,4 +149,5 @@ export const routesConfig: RouteObject[] = [
       },
     ],
   },
+  { path: "*", element: <NotFound /> },
 ];

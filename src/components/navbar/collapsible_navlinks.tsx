@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { NavHashLink } from "react-router-hash-link";
 
 export interface CollapsibleNavLinksProps {
   links: {
@@ -16,7 +17,7 @@ export function CollapsibleNavLink({
 }: CollapsibleNavLinksProps) {
   return (
     <ul
-      className={` sm:hidden   transition-all ease-in-out duration-200 overflow-hidden h-fit max-h-[1000px] ${
+      className={` md:hidden   transition-all ease-in-out duration-200 overflow-hidden h-fit max-h-[1000px] ${
         className || ""
       } ${!isCollapsed ? "!max-h-0" : "border border-t-white sm:border-[0px]"}`}
     >
@@ -24,27 +25,35 @@ export function CollapsibleNavLink({
         return (
           <>
             <li key={index}>
-              <NavLink
-                className={({ isActive }) =>
-                  `text-center block py-2 hover:bg-white/20 transition-all ease-in-out duration-150 ${
-                    isActive
-                      ? "text-black font-medium"
-                      : "text-white/60 hover:text-black"
-                  }`
-                }
-                to={link.route}
-                onClick={(e) => {
-                  if (link.route.startsWith("home#")) {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    const sectionId = link.route.split("#")[1];
-                    const section = document.getElementById(sectionId);
-                    if (section) section.scrollIntoView({ behavior: "smooth" });
+              {!link.route.includes("#") && (
+                <NavLink
+                  className={({ isActive }) =>
+                    `text-center block py-2 hover:bg-white/20 transition-all ease-in-out duration-150 ${
+                      isActive
+                        ? "text-black font-medium"
+                        : "text-white/60 hover:text-black"
+                    }`
                   }
-                }}
-              >
-                {link.name}
-              </NavLink>
+                  to={link.route}
+                >
+                  {link.name}
+                </NavLink>
+              )}
+              {link.route.includes("#") && (
+                <NavHashLink
+                  to={link.route}
+                  smooth
+                  className={({ isActive }) =>
+                    `text-center block py-2 hover:bg-white/20 transition-all ease-in-out duration-150 ${
+                      isActive
+                        ? "text-black font-medium"
+                        : "text-white/60 hover:text-black"
+                    }`
+                  }
+                >
+                  {link.name}
+                </NavHashLink>
+              )}
               {index !== links.length - 1 && (
                 <hr
                   key={index}

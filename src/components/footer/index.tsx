@@ -4,6 +4,7 @@ import { getResponsiveClasses } from "../../shared/constants/getResponsiveClasse
 
 import { navLinks } from "../navbar";
 import { Link } from "react-router-dom";
+import { NavHashLink } from "react-router-hash-link";
 
 export interface FooterProps {
   className?: string;
@@ -26,13 +27,13 @@ export function Footer({ className }: FooterProps) {
             <ul className="flex flex-col gap-1 ml-2">
               {navLinks.map((val, index) => {
                 return (
-                  <Link
+                  <NavHashLink
                     key={index}
                     className="hover:underline text-sm"
                     to={val.route}
                   >
                     {val.name}
-                  </Link>
+                  </NavHashLink>
                 );
               })}
             </ul>

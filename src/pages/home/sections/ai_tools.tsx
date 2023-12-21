@@ -45,7 +45,7 @@ const tools = [
     image: ai4,
     header: "AI Paragraph Translator",
     body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
-    href: "/tools/ai/translator",
+    href: "/tools/ai/translate",
   },
   // {
   //   image: ai5,

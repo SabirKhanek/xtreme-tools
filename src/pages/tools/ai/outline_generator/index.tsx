@@ -54,10 +54,10 @@ export function OutlineGenerator({
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  className="grow rounded-tl-md rounded-bl-md rounded-tr-none rounded-br-none p-2 border border-black/40 outline-none"
+                  className="grow w-full rounded-tl-md rounded-bl-md rounded-tr-md rounded-br-md  xs:rounded-tr-none xs:rounded-br-none p-2 border border-black/40 outline-none"
                 />
                 <Button
-                  className="rounded-tl-none rounded-bl-none bg-primary shrink-0 grow-0"
+                  className="rounded-tl-none hidden xs:block rounded-bl-none bg-primary shrink-0 grow-0"
                   onClick={handleSubmit}
                 >
                   <span className="flex justify-center items-center text-white gap-1">
@@ -71,6 +71,20 @@ export function OutlineGenerator({
                   </span>
                 </Button>
               </div>
+              <Button
+                className="rounded w-full my-3 xs:hidden  bg-primary shrink-0 grow-0"
+                onClick={handleSubmit}
+              >
+                <span className="flex justify-center items-center text-white gap-1">
+                  <FaRobot />
+                  <span>Generate</span>
+                  {isLoading && (
+                    <span className="animate-spin">
+                      <FaSpinner />
+                    </span>
+                  )}
+                </span>
+              </Button>
             </div>
             <div
               className={`flex justify-center items-center ${

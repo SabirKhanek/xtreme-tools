@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-
+import { NavHashLink } from "react-router-hash-link";
 export interface NavLinksProps {
   links: {
     route: string;
@@ -10,35 +10,39 @@ export interface NavLinksProps {
 
 export default function NavLinks({ links, className }: NavLinksProps) {
   return (
-    <ul className={`hidden md:flex gap-1 md:gap-3 items-center ${className}`}>
+    <ul className={`hidden md:flex gap-3 md:gap-6 items-center ${className}`}>
       {links.map((link, index) => {
         return (
           <>
-            <NavLink
-              key={index}
-              to={link.route}
-              className={({ isActive }) =>
-                ` ${
-                  isActive
-                    ? "text-black font-medium"
-                    : "text-white/60 hover:text-black"
-                } hover:text-white/70`
-              }
-              onClick={(e) => {
-                if (link.route.startsWith("#")) {
-                  e.stopPropagation();
-                  e.preventDefault();
-                  const sectionId = link.route.split("#")[1];
-                  const section = document.getElementById(`${sectionId}`);
-                  console.log(sectionId);
-                  if (section) section.scrollIntoView({ behavior: "smooth" });
+            {!link.route.includes("#") && (
+              <NavLink
+                key={index}
+                to={link.route}
+                className={({ isActive }) =>
+                  ` ${
+                    isActive
+                      ? "text-black font-medium"
+                      : "text-white/60 hover:text-black"
+                  } hover:text-white/70`
                 }
-              }}
-            >
-              {link.name}
-            </NavLink>
-            {index !== links.length - 1 && (
-              <div className="w-0.5 h-3 bg-light-grey"></div>
+              >
+                {link.name}
+              </NavLink>
+            )}
+            {link.route.includes("#") && (
+              <NavHashLink
+                to={link.route}
+                key={index}
+                className={({ isActive }) =>
+                  ` ${
+                    isActive
+                      ? "text-black font-medium"
+                      : "text-white/60 hover:text-black"
+                  } hover:text-white/70`
+                }
+              >
+                {link.name}
+              </NavHashLink>
             )}
           </>
         );

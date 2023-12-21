@@ -55,8 +55,8 @@ export function AITranslator({
       {(requireLogin ? auth.authDetails.isLoggedIn : true) && (
         <div className="w-full border border-black rounded-xl justify-between min-h-[75vh] p-6 flex flex-col gap-2">
           <div className="grid grid-cols-1 grow">
-            <div className="grid grid-cols-2 gap-x-5 grow">
-              <div className="bg-white shadow-lg rounded-3xl h-full w-full p-3 flex flex-col gap-1">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 grow">
+              <div className="bg-white shadow-lg rounded-3xl h-full w-full p-3 flex flex-col gap-1 min-h-[350px] md:min-h-full ">
                 <div className="border-b border-black/20 py-3 flex justify-between">
                   <h2 className="text-xl text-black font-medium">
                     Original Text
@@ -77,13 +77,13 @@ export function AITranslator({
                   </div>
                 </div>
                 <textarea
-                  className=" p-1 outline-none text-black/70 font-medium no-scrollbar resize-none grow"
+                  className="p-1 outline-none text-black/70 font-medium no-scrollbar resize-none grow"
                   placeholder="With the AI Paragraph Translator, you can accurately translate even the most complex sentences, making it the perfect solution for all your translation needs. Try it out today and see just how easy communication can be!"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                 ></textarea>
               </div>
-              <div className="bg-[#9758DA0A] rounded-3xl shadow-md h-full w-full flex flex-col gap-1 p-3">
+              <div className="bg-[#9758DA0A] rounded-3xl shadow-md h-full w-full flex flex-col gap-1 p-3 min-h-[350px] md:min-h-full">
                 <div className="border-b border-black/20 py-3 flex flex-row-reverse justify-between">
                   <h2 className="text-xl text-black font-medium">
                     Translated Text

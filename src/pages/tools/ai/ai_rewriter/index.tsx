@@ -54,12 +54,12 @@ export function AIRewriter({
               className="p-2 border-b border-black/20 flex items-center gap-3"
             >
               <label>Styles: </label>
-              <div className="flex items-center gap-2">
+              <div className="md:flex items-center gap-2 flex-wrap hidden">
                 {styleOptions.map((opt) => {
                   return (
                     <div
                       key={opt}
-                      className={`grow text-black/70 font-medium cursor-pointer ${
+                      className={`text-black/70 font-medium cursor-pointer ${
                         style === opt
                           ? "text-primary border-b border-black"
                           : ""
@@ -71,15 +71,34 @@ export function AIRewriter({
                   );
                 })}
               </div>
+              <select
+                onChange={(e) => setStyle(e.target.value)}
+                className="md:hidden"
+              >
+                {styleOptions.map((opt) => {
+                  return (
+                    <option
+                      selected={opt === style}
+                      value={style}
+                      id={style}
+                      key={opt}
+                    >
+                      {opt}
+                    </option>
+                  );
+                })}
+              </select>
             </div>
-            <div className="grid grid-cols-2 grow">
-              <div className="border-r border-black/20 h-full w-full p-3 flex flex-col gap-1">
+            <div className="grid grid-cols-1 md:grid-cols-2 grow">
+              <div
+                className={`md:border-r border-b md:border-b-0 border-black/20 h-full w-full p-3 flex flex-col min-h-[350px] md:min-h-fit gap-1`}
+              >
                 <div>
                   <Button
-                    className="bg-[#F0ABDCB2] !rounded-3xl flex items-center gap-1"
+                    className="bg-[#F0ABDCB2] !rounded-3xl flex justify-center items-center gap-1 w-full md:w-fit"
                     onClick={handleRequest}
                   >
-                    <span className="flex items-center gap-1">
+                    <span className="flex items-center justify-center gap-1">
                       <span className="text-primary">Paraphrase</span>
                       {isLoading && (
                         <span className="animate-spin text-primary">
@@ -96,7 +115,9 @@ export function AIRewriter({
                   onChange={(e) => setInput(e.target.value)}
                 ></textarea>
               </div>
-              <div className="border-l border-black/20 h-full w-full flex flex-col gap-1 p-3">
+              <div
+                className={`md:border-l border-t md:border-t-0 border-black/20 h-full w-full flex flex-col min-h-[350px] md:min-h-fit gap-1 p-3`}
+              >
                 {result.length <= 0 && (
                   <div className="grow flex flex-col justify-center items-center gap-2">
                     <img src={paraicon} alt="" />

@@ -14,7 +14,7 @@ export function Tools({ className }: ToolsProps) {
       <Navbar bgClassApplied={true} />
       <div className={`${getResponsiveClasses()} mt-4`}>
         <div className="flex justify-between  gap-7">
-          <div className="basis-[280px] shrink-0">
+          <div className="basis-[280px] hidden lg:block lg:shrink-0 grow-0">
             <ToolsSidebar />
           </div>
           <div className="grow">
