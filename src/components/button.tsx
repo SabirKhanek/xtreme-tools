@@ -8,7 +8,7 @@ export interface ButtonProps {
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
   disabled?: boolean;
-  loadingClass: string;
+  loadingClass?: string;
 }
 export function Button({
   className,
