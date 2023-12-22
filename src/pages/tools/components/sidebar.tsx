@@ -1,15 +1,16 @@
 import { FaMicrochip } from "react-icons/fa6";
 import { BsGlobe2 } from "react-icons/bs";
 import { LuBarChart2 } from "react-icons/lu";
-import { MdOutlineEmail } from "react-icons/md";
+import { MdOutlineCancel, MdOutlineEmail } from "react-icons/md";
 import { FaArrowRightLong } from "react-icons/fa6";
 
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 export interface ToolsSidebarProps {
   className?: string;
+  handleClose?: () => void;
 }
-export function ToolsSidebar({ className }: ToolsSidebarProps) {
+export function ToolsSidebar({ className, handleClose }: ToolsSidebarProps) {
   const pathname = useLocation().pathname;
   const [expanded, setExpanded] = useState<number | null>(null);
   useEffect(() => {
@@ -23,7 +24,14 @@ export function ToolsSidebar({ className }: ToolsSidebarProps) {
   }, []);
   return (
     <div className={`${className} p-5 py-10 shadow rounded-2xl min-h-[80vh]`}>
-      <h2 className="text-primary font-semibold text-xl">Tools Collection</h2>
+      <div className="flex justify-between items-center">
+        <h2 className="text-primary font-semibold text-xl">Tools Collection</h2>
+        {handleClose && (
+          <span onClick={() => handleClose()}>
+            <MdOutlineCancel className="text-primary text-lg" />
+          </span>
+        )}
+      </div>
       {toolsList.map((val, index) => {
         const isExpanded = expanded === index;
         return (

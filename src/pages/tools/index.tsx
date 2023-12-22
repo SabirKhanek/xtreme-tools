@@ -56,10 +56,14 @@ export function Tools({ className }: ToolsProps) {
         } bg-white`}
         style={{
           top: navRef.current?.clientHeight || 79.8,
-          height: `calc(100vh - ${navRef.current?.clientHeight || 79.8}px)`,
+          height: `calc(100% - ${navRef.current?.clientHeight || 79.8}px)`,
         }}
       >
-        <ToolsSidebar />
+        <ToolsSidebar
+          handleClose={() => {
+            setSidebarOpen(false);
+          }}
+        />
       </div>
       <div className={`${getResponsiveClasses()} mt-4`}>
         <div className="flex justify-between  gap-7 relative">
