@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Build and Deploy on backend's render branch
 
 on:
   push:

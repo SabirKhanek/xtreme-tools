@@ -13,6 +13,7 @@ export function FaviconGenerator({ className }: FaviconGeneratorProps) {
   const [is16x16, setIs16x16] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const updateFile = (p: File | null) => {
+    console.log("Hi", p);
     setFile(p);
   };
   const handleRequest = async () => {
@@ -40,7 +41,7 @@ export function FaviconGenerator({ className }: FaviconGeneratorProps) {
         </p>
       </div>
       <div className="w-full border border-black rounded-xl justify-between min-h-[69.5vh] p-6 flex flex-col">
-        <ImageUpload handleChange={updateFile} />
+        <ImageUpload file={file} handleChange={updateFile} />
         <div className="flex justify-between">
           <div className="flex gap-1 items-center">
             <Button

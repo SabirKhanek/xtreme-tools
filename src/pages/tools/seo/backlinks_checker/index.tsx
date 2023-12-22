@@ -14,7 +14,18 @@ import { ToolBody } from "../../../../components/toolBody";
 import { BacklinksData } from "./component/backlinksData";
 import { Tool } from "../../types/tool";
 import { ToolUsage } from "../../components/toolUsage";
+const generateCSV = (
+  backlinks: BacklinkCheckerResponseData["backlinks"]
+): string => {
+  const header = Object.keys(backlinks[0]).join(",");
+  const rows = backlinks.map((backlink) =>
+    Object.values(backlink)
+      .map((value) => (typeof value === "string" ? `"${value}"` : value))
+      .join(",")
+  );
 
+  return [header, ...rows].join("\n");
+};
 export interface BacklinksCheckerProps extends Tool {
   className?: string;
 }
@@ -81,6 +92,21 @@ export function BacklinksChecker({
         .required(),
     }),
   });
+  const downloadCSV = (
+    _backlinks: BacklinkCheckerResponseData["backlinks"]
+  ) => {
+    const csvContent = generateCSV(_backlinks);
+    const blob = new Blob([csvContent], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "backlinks.csv";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
   return (
     <ToolBody
       heading="Backlinks Checker"
@@ -129,7 +155,7 @@ export function BacklinksChecker({
             <div className="justify-center flex text-black/70 mb-5 font-semibold">
               {resultDomain}
             </div>
-            <div className="grid grid-cols-4 gap-y-5 justify-center content-center">
+            <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-y-5 justify-center content-center">
               <div className="flex flex-col gap-2 items-center">
                 <span className="px-4 py-1 rounded-3xl text-primary bg-[#58126A33] font-bold">
                   {result.counts.backlinks.total}
@@ -195,6 +221,12 @@ export function BacklinksChecker({
                 Backlinks Data
               </h3>
             </div>
+            <Button
+              onClick={() => downloadCSV(result.backlinks)}
+              className="bg-primary my-3"
+            >
+              Export CSV
+            </Button>
             <BacklinksData backlinks={result.backlinks}></BacklinksData>
           </div>
         </>

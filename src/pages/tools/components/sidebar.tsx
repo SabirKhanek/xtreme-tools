@@ -23,7 +23,11 @@ export function ToolsSidebar({ className, handleClose }: ToolsSidebarProps) {
     if (expanded !== expandedId) setExpanded(expandedId);
   }, []);
   return (
-    <div className={`${className} p-5 py-10 shadow rounded-2xl min-h-[80vh]`}>
+    <div
+      className={`${className} p-5 py-10 ${
+        !handleClose && "shadow"
+      } rounded-2xl min-h-[80vh]`}
+    >
       <div className="flex justify-between items-center">
         <h2 className="text-primary font-semibold text-xl">Tools Collection</h2>
         {handleClose && (

@@ -2,11 +2,14 @@ import { FaLink } from "react-icons/fa";
 import { Accordion } from "../../../../../components/accordion";
 import { BacklinkCheckerResponseData } from "../../../../../services/seo";
 
+
+
 export interface BacklinksDataProps {
   className?: string;
   backlinks: BacklinkCheckerResponseData["backlinks"];
 }
 export function BacklinksData({ className, backlinks }: BacklinksDataProps) {
+  
   return (
     <div>
       <div className={`overflow-y-auto max-h-96 ${className}`}>

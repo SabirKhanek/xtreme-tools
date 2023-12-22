@@ -1,19 +1,36 @@
-import { useState, ChangeEvent, DragEvent } from "react";
+import { useState, ChangeEvent, DragEvent, useEffect } from "react";
 import { IoCloudUploadOutline } from "react-icons/io5";
 export interface ImageUploadProps {
   className?: string;
   handleChange?: (file: File | null) => void;
+  file?: File | null;
 }
 export function ImageUpload({
   className,
+  file: fileObj = null,
   handleChange: _handleChange,
 }: ImageUploadProps) {
   const [isDragging, setIsDragging] = useState(false);
   const [file, setFile] = useState<string | null>(null);
-  const [fileObj, setFileObj] = useState<File | null>(null);
 
-  const handleChange = () => {
-    _handleChange && _handleChange(fileObj);
+  useEffect(() => {
+    const initializeFileState = async () => {
+      if (fileObj) {
+        const reader = new FileReader();
+        reader.readAsDataURL(fileObj);
+        reader.onload = () => {
+          if (reader.readyState === 2) {
+            setFile(reader.result as string);
+          }
+        };
+      }
+    };
+
+    initializeFileState();
+  }, [fileObj]);
+
+  const handleChange = (obj: File) => {
+    _handleChange && _handleChange(obj);
   };
 
   const handleDragEnter = (e: DragEvent) => {
@@ -33,34 +50,15 @@ export function ImageUpload({
     e.preventDefault();
     setIsDragging(false);
 
-    const fileReader = new FileReader();
-    fileReader.onload = () => {
-      if (fileReader.readyState === 2) {
-        setFile(fileReader.result as string);
-      }
-    };
-
     if (e.dataTransfer.files.length > 0) {
-      fileReader.readAsDataURL(e.dataTransfer.files[0]);
-      setFileObj(e.dataTransfer.files[0]);
-      handleChange();
+      handleChange(e.dataTransfer.files[0]);
     }
   };
 
   const handleFileInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const fileReader = new FileReader();
-    fileReader.onload = () => {
-      if (fileReader.readyState === 2) {
-        setFile(fileReader.result as string);
-      }
-    };
-
-    const selectedFile = e.target.files?.item(0);
-
+    const selectedFile = e.target.files ? e.target.files[0] : null;
     if (selectedFile) {
-      fileReader.readAsDataURL(selectedFile);
-      setFileObj(selectedFile);
-      handleChange();
+      handleChange(selectedFile);
     }
   };
 
