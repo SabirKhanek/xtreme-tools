@@ -51,7 +51,7 @@ export function Tools({ className }: ToolsProps) {
     >
       <Navbar ref={navRef} bgClassApplied={true} />
       <div
-        className={`absolute top-0 left-0 transition-all duration-150 z-10 ${
+        className={`absolute top-0 transition-all duration-150 z-10 ${
           isSidebarOpen ? "left-0" : "-left-full"
         } bg-white`}
         style={{
