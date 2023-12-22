@@ -69,7 +69,7 @@ export function ToolsSidebar({ className }: ToolsSidebarProps) {
   );
 }
 
-const toolsList = [
+export const toolsList = [
   {
     name: "AI Tools",
     icon: FaMicrochip,

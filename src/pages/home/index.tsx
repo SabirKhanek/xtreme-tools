@@ -23,7 +23,7 @@ export function HomePage({ className }: HomePageProps) {
       <EmailMarketingToolsSection />
       <AIToolsSection />
       <WebToolsSection />
-      <SubscribeSection/>
+      <SubscribeSection />
       <Footer />
     </div>
   );

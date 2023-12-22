@@ -5,6 +5,7 @@
 @tailwind utilities;
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 @layer utilities {
   @variants responsive {

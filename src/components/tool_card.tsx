@@ -51,7 +51,7 @@ export function ToolCard({
       <div className="min-h-[60px]">
         <img src={image} width={60} alt="" />
       </div>
-      <div className="mt-2">
+      <div className="mt-2 overflow-y-hidden">
         <h2 className={`font-semibold text-lg  ${getTextClasses()}`}>
           {header}
         </h2>

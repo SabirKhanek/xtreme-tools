@@ -63,7 +63,7 @@ export function ToolSection({
             <img src={bot_ssg1} className="absolute -right-28 -top-4" alt="" />
           )}
         </div>
-        <div className=" relative grid xs:grid-cols-[repeat(2,minmax(200px,350px))] sm:justify-normal lg:grid-cols-[repeat(3,minmax(200px,350px))] xl:grid-cols-[repeat(3,minmax(200px,420px))] grid-cols-1 justify-center  gap-4 my-4">
+        <div className=" relative grid lm:grid-cols-[repeat(2,minmax(250px,350px))] sm:justify-normal md:grid-cols-[repeat(3,minmax(200px,350px))] xl:grid-cols-[repeat(3,minmax(200px,420px))] grid-cols-1 justify-center  gap-4 my-4">
           {tools.map((tool) => {
             return (
               <ToolCard

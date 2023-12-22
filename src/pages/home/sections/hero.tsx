@@ -59,7 +59,7 @@ export function HeroSection({ className }: HeroSectionProps) {
 
       <Navbar className="z-10" />
       <div className={`${getResponsiveClasses()} z-10 py-[195px]`}>
-        <div className="flex justify-between items-center gap-20 text-center relative">
+        <div className="flex justify-center lg:justify-between items-center gap-20 text-center relative">
           <div className="w-[200px] hidden h-[150px] lg:flex p-8 shrink-0 justify-center items-center relative bg-white/50 rounded-md">
             <svg
               className="absolute -top-10 -left-10"
@@ -86,7 +86,7 @@ export function HeroSection({ className }: HeroSectionProps) {
               Choose your best tools
             </span>
           </div>
-          <div className="flex flex-col items-center max-w-[570px] gap-3">
+          <div className="flex flex-col items-center  max-w-[570px] gap-3">
             <h1 className="uppercase text-primary font-semibold">
               Empowering Innovation
             </h1>

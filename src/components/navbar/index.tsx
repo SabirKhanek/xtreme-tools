@@ -15,9 +15,10 @@ import { logout } from "../../services/auth";
 export interface NavBarProps {
   className?: string;
   bgClassApplied?: boolean;
+  ref?: any;
 }
 
-export function Navbar({ className, bgClassApplied }: NavBarProps) {
+export function Navbar({ className, bgClassApplied, ref }: NavBarProps) {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   const auth = useAuth();
   const responsiveClasses = getResponsiveClasses();
@@ -29,6 +30,7 @@ export function Navbar({ className, bgClassApplied }: NavBarProps) {
           ? "bg-[linear-gradient(289deg,#58126A_-40.56%,#F6B2E1_119.32%)]"
           : " dsf"
       }`}
+      ref={ref}
     >
       <div
         className={`${responsiveClasses} flex justify-between py-3 items-center gap-10`}
