@@ -104,7 +104,7 @@ export function HeroSection({ className }: HeroSectionProps) {
                   Get Started
                 </Button>
               </Link>
-              <Button className="border">Pricing plans</Button>
+              {/* <Button className="border">Pricing plans</Button> */}
             </div>
           </div>
           <div className="w-[200px] h-[150px] shrink-0  relative bg-white/50 rounded-md  hidden lg:flex justify-center items-center p-9 text-white">

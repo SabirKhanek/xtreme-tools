@@ -23,6 +23,9 @@ import { BacklinksChecker } from "./pages/tools/seo/backlinks_checker";
 import { CompetitorsKeywordResearch } from "./pages/tools/seo/competitors_keywords_research";
 import { DAPACheck } from "./pages/tools/seo/da_pa_check";
 import { NotFound } from "./pages/404";
+import { ContactUs } from "./pages/contact_us";
+import { TOC } from "./pages/toc";
+import { PrivacyPolicy } from "./pages/privacy_policy";
 
 export const routesConfig: RouteObject[] = [
   {
@@ -33,6 +36,10 @@ export const routesConfig: RouteObject[] = [
     path: "/verification_failed",
     element: <ToastRoute error message="Verification was not successful" />,
   },
+  { path: "/contact_us", element: <ContactUs /> },
+  { path: "/privacy_policy", element: <PrivacyPolicy /> },
+  { path: "/about_us" },
+  { path: "/terms", element: <TOC /> },
   { path: "/", element: <HomePage /> },
   {
     element: <Auth />,

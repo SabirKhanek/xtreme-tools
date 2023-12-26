@@ -72,12 +72,16 @@ export function Footer({ className }: FooterProps) {
 
 const socialLinks = [
   {
-    name: "United States, CA Los Angeles, 91344",
+    name: "1311 W Sprint St, Suite B, Monroe GA 30655",
     Icon: FaMapMarkedAlt,
     link: "#",
   },
-  { name: "info@xtreme.tools", Icon: HiOutlineMail, link: "#" },
-  { name: "+1 234 5135", Icon: FaPhoneAlt, link: "#" },
+  {
+    name: "support@xtreme.tools",
+    Icon: HiOutlineMail,
+    link: "mailto:support@xtreme.tools",
+  },
+  { name: "+1 770-346-8500", Icon: FaPhoneAlt, link: "tel:0017703468500" },
 ];
 
 function getSocialLinks() {
@@ -103,7 +107,9 @@ function getSocialLinks() {
 function getIntro() {
   return (
     <div className="basis-80">
-      <img className="mb-1" src="/logo.svg" alt="" />
+      <Link to={"/"}>
+        <img className="mb-1" src="/logo.svg" alt="" />
+      </Link>
       <div className="text-label text-sm break-words my-4 text-white/75">
         At Xtreme Tools, we are a dedicated team of passionate individuals who
         believe in the power of innovation and the limitless potential within

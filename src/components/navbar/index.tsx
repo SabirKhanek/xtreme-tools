@@ -43,11 +43,13 @@ export function Navbar({ className, bgClassApplied, ref }: NavBarProps) {
             >
               <FaBars className="text-4xl border border-black rounded-md text-black p-1 border-grey" />
             </button>
-            <img
-              src="/logo.svg"
-              className="h-[55px] w-auto"
-              alt="001 Cars Logo"
-            />
+            <Link to={"/"}>
+              <img
+                src="/x_logo.svg"
+                className="h-[55px] w-auto"
+                alt="Xtreme tools Logo"
+              />
+            </Link>
           </div>
           <NavLinks links={navLinks}></NavLinks>
         </div>

@@ -197,7 +197,7 @@ export function EmailChecker({
           <div className="flex justify-center">
             <h3 className="font-semibold text-lg text-black/70">Results</h3>
           </div>
-          <div className={`overflow-y-auto max-h-96`}>
+          <div className={`overflow-y-auto max-h-[600px]`}>
             {requests.map((req) => {
               return (
                 <Accordion
