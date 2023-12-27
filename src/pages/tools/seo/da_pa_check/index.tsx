@@ -4,7 +4,7 @@ import { ToolBody } from "../../../../components/toolBody";
 import { DAPAToolDecscription } from "./details";
 import * as Yup from "yup";
 import { Button } from "../../../../components/button";
-import { FaCheck, FaRegCheckCircle, FaSpinner } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
 import { useState } from "react";
 import {
   domainAuthorityChecker,
@@ -79,63 +79,50 @@ export function DAPACheck({ className, toolId, requireLogin }: DAPACheckProps) {
           onChange={formik.handleChange}
           label="Please Enter website URL"
         />
-        <Button type="submit" className="bg-primary my-4 w-full !rounded-md">
+        <Button
+          isLoading={isLoading}
+          type="submit"
+          className="bg-primary my-4 w-full !rounded-md"
+        >
           <span className="inline-flex gap-1 text-white items-center">
             <FaCheck />
             <span>Check</span>
           </span>
         </Button>
       </form>
+
       {result && (
-        <div className="bg-[#58126A1A] rounded-lg w-full p-4 overflow-x-auto">
-          <table className="table-auto text-left border-spacing-1 w-full">
-            {/* head */}
-            <thead>
-              <tr>
-                <th></th>
-                <th className="text-black/70 font-semibold w-[40%]">URL</th>
-                <th className="text-black/70 font-semibold text-center">DR</th>
-                <th className="text-black/70 font-semibold text-center">PR</th>
-                <th className="text-black/70 font-semibold text-center">
-                  Spam Score
-                </th>
-                <th className="text-black/70  font-semibold text-center">
-                  Total Backlinks
-                </th>
-              </tr>
-            </thead>
-            <tbody className="border-t border-b border-[#90909080]">
-              {/* row 1 */}
-              <tr className="">
-                <td className="p-2 leading-7">
-                  {isLoading ? (
-                    <span>
-                      <FaSpinner className="animate-spin text-primary" />
-                    </span>
-                  ) : (
-                    <span className="text-primary">
-                      <FaRegCheckCircle />
-                    </span>
-                  )}
-                </td>
-                <td className="text-black/80 leading-[50px] font-bold break-keep">
-                  {result.target}
-                </td>
-                <td className="text-black/80 text-center font-medium">
-                  {result.da_score}
-                </td>
-                <td className="text-black/80 text-center font-medium">
-                  {result.pa_score}
-                </td>
-                <td className="text-black/80 text-center font-medium">
-                  {result.spam_score}
-                </td>
-                <td className="text-black/80 text-center font-medium">
-                  {result.total_backlinks}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="bg-[#58126A1A] w-full p-4">
+          <div className="justify-center flex text-black/70 mb-5 font-semibold">
+            {result.target}
+          </div>
+          <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-y-5 justify-center content-center">
+            <div className="flex flex-col gap-2 items-center">
+              <span className="px-4 py-1 rounded-3xl text-primary bg-[#58126A33] font-bold">
+                {result.da_score}
+              </span>
+              <span>DA Score</span>
+            </div>
+
+            <div className="flex flex-col gap-2 items-center">
+              <span className="px-4 py-1 rounded-3xl text-primary bg-[#58126A33] font-bold">
+                {result.pa_score}
+              </span>
+              <span>PA Score</span>
+            </div>
+            <div className="flex flex-col gap-2 items-center">
+              <span className="px-4 py-1 rounded-3xl text-primary bg-[#58126A33] font-bold">
+                {result.spam_score}
+              </span>
+              <span>Spam Score</span>
+            </div>
+            <div className="flex flex-col gap-2 items-center">
+              <span className="px-4 py-1 rounded-3xl text-primary bg-[#58126A33] font-bold">
+                {result.total_backlinks}
+              </span>
+              <span>Total Backlinks</span>
+            </div>
+          </div>
         </div>
       )}
       <ToolUsage

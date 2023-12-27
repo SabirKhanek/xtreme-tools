@@ -12,139 +12,100 @@ export function PrivacyPolicy({ className }: PrivacyPolicyProps) {
       <Navbar bgClassApplied />
       <div className={`grow my-16 ${getResponsiveClasses()} ${className}`}>
         <h1 className="text-primary font-bold text-3xl">Privacy Policy</h1>
+        <p className="my-3 text-black/70">Last Updated: 27-December-2023</p>
         <p className="text-black/90">
-          Welcome to our website. This site is maintained as a service to our
-          customers. If you continue to browse and use this website, you are
-          agreeing to comply with and be bound by the following terms and
-          conditions of use, which together with our privacy policy govern
-          xtreme tools relationship with you in relation to this website. Please
-          review these terms and conditions carefully. If you do not agree to
-          these terms and conditions, you should not use this site.
-        </p>
-        <h2 className="text-lg font-semibold text-primary">1. Agreement</h2>
-        <p>
-          This Agreement (the “Agreement’”) specifies the Terms and Conditions
-          for access to and use of LearnWithHasan.com (the “Site”) and describes
-          the terms and conditions applicable to your access to and use of the
-          Site. This Agreement may be modified at any time by xtreme tools upon
-          posting of the modified agreement. Any such modifications shall be
-          effective immediately. You can view the most recent version of these
-          terms at any time at https://xtreme.tools/terms TERMS PAGE. Each use
-          by you shall constitute and be deemed your unconditional acceptance of
-          this Agreement.
+          Welcome to Xtreme Tools! This Privacy Policy is designed to inform you
+          about the types of information we collect, how we use it, and the
+          choices you have regarding your information. Please read this policy
+          carefully. At Xtreme Tools, we're passionate about harnessing the
+          power of artificial intelligence to transform the way you work and
+          innovate. Our platform offers a suite of cutting-edge AI tools
+          designed to empower businesses and individuals alike. <br />
+          Whether you're seeking to streamline processes, enhance productivity,
+          or unlock new possibilities, Xtreme Tools is your go-to destination
+          for state-of-the-art AI solutions. Explore a world where technology
+          meets creativity, and where innovation knows no bounds.
+          <br /> Embark on a journey of discovery with Xtreme Tools, where the
+          future of AI is at your fingertips. We're committed to delivering
+          excellence, pushing boundaries, and helping you unlock the full
+          potential of artificial intelligence.
         </p>
         <h2 className="text-lg font-semibold text-primary">
-          2. Intellectual Property Ownership
+          Automatic Collection of Information
         </h2>
         <p>
-          <strong>(a)</strong> Our Content. All content included on this site is
-          and shall continue to be the property of xtreme tools or its content
-          suppliers and is protected under applicable copyright, patent,
-          trademark, and other proprietary rights. Any copying, redistribution,
-          use, or publication by you of any such content or any part of the Site
-          is prohibited without express written permission by xtreme tools.
-          Under no circumstances will you acquire any ownership rights or other
-          interest in any content by or through your use of this site.
-          [Trademark] is the trademark or registered trademark of xtreme tools.
-          Other product and company names mentioned on this Site may be
-          trademarks of their respective owners. <br />
-          <strong>(b)</strong> User Supplied Content. By accessing our forum,
-          bulletin board, chat room, or any other user interactive area of our
-          site, and placing any information in any of those areas, you hereby
-          grant us a perpetual, irrevocable, royalty free license in and to such
-          materials, including but not limited to the right to post, publish,
-          transmit, distribute, create derivative works based upon, create
-          translations of, modify, amend, enhance, change, display, and publicly
-          perform such materials in any form or media, whether now known or
-          later discovered. You also grant to others who access the forum,
-          bulletin board, chat room or any other user interactive area of our
-          site a perpetual, non-revocable, royalty free license to view,
-          download, store and reproduce your postings but such license is
-          limited to the personal use and enjoyment of such other party. <br />
-          <strong>(c)</strong> Personal Use. xtreme tools grants you a limited,
-          revocable, nonexclusive license to use this site and our proprietary
-          content solely for your own personal use and not for republication,
-          distribution, assignment, sublicense, sale, preparation of derivative
-          works, or other use. You agree not to copy materials on the site,
-          reverse engineer or break into the site, or use materials, products,
-          or services in violation of any law. The use of this website is at the
-          discretion of xtreme tools and xtreme tools may terminate your use of
-          this website at any time. <br />
-          <strong>(d)</strong> Other Uses. All other use of Content from the
-          Site, including, but not limited to uploading, downloading,
-          modification, publication, transmission, participation in the transfer
-          or sale of, copying, reproduction, republishing, creation of
-          derivative works from, distribution, performance, display,
-          incorporation into another web site, reproducing the Site (whether by
-          linking, framing or any other method), or in any other way exploiting
-          any of the Content, in whole or in part, is strictly prohibited
-          without xtreme tools prior express written consent.
+          Xtreme tools records data about the individuals and the traffic to
+          this website. xtreme tools is this website’s limited agent (and data
+          controller in the EU context) for the purpose of providing Internet
+          data and optimization services. Xtreme tools may use this data to
+          improve its service or enable other services (e.g., using visitor
+          traffic logs or data posted through the service to improve the
+          optimization of other websites).
+        </p>
+        <h2 className="text-lg font-semibold text-primary">
+          Personal Information
+        </h2>
+        <p>
+          xtreme tools may collect personal information as defined in GDPR (such
+          as IP address and a unique id in a cookie) about visitors to your
+          website for the purposes of statistics, analytics, and
+          personalization. In addition, xtreme tools works with numerous third
+          parties for the collection and storage of data and the provision of
+          analytics and advertising services.
         </p>
 
-        <h2 className="text-lg font-semibold text-primary">3. Disclaimers</h2>
-        <p>
-          <strong>(a)</strong> DISCLAIMER OF WARRANTIES. THE INFORMATION ON THIS
-          SITE IS PROVIDED ON AN ”AS IS,” “AS AVAILABLE” BASIS. YOU AGREE THAT
-          USE OF THIS SITE IS AT YOUR SOLE RISK. Xtreme tools DISCLAIMS ALL
-          WARRANTIES OF ANY KIND, INCLUDING BUT NOT LIMITED TO ANY EXPRESS
-          WARRANTIES, STATUTORY WARRANTIES, AND ANY IMPLIED WARRANTIES OF
-          MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
-          NON-INFRINGEMENT. YOUR SOLE AND EXCLUSIVE REMEDY RELATING TO YOUR USE
-          OF THE SITE SHALL BE TO DISCONTINUE USING THE SITE. FURTHERMORE,
-          Xtreme tools DOES NOT WARRANT THAT USE OF THE SITE WILL BE
-          UNINTERRUPTED, AVAILABLE AT ANY TIME OR FROM ANY LOCATION, SECURE OR
-          ERROR-FREE, THAT DEFECTS WILL BE CORRECTED, OR THAT THE SERVICE IS
-          FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS. Xtreme tools, ITS
-          SUBSIDIARIES, VENDORS, AND AFFILIATES DISCLAIM ANY RESPONSIBILITY FOR
-          THE DELETION, FAILURE TO STORE, OR UNTIMELY DELIVERY OF ANY
-          INFORMATION OR MATERIALS, AND ANY MATERIAL DOWNLOADED OR OTHERWISE
-          OBTAINED THROUGH THE SITE. USE OF THE SITE’S SERVICES IS DONE AT YOUR
-          OWN DISCRETION AND RISK, AND YOU WILL BE SOLELY RESPONSIBLE FOR ANY
-          DAMAGES TO YOU COMPUTER SYSTEMS OR LOSS OF DATA THAT MAY RESULT FROM
-          THE DOWNLOAD OF SUCH INFORMATION OR MATERIAL. <br />
-          <strong>(b)</strong> LIMITATION OF LIABILITY. Xtreme tools SHALL NOT
-          BE RESPONSIBLE OR LIABLE TO PROVIDERS OR ANY THIRD PARTIES UNDER ANY
-          CIRCUMSTANCES FOR ANY INDIRECT, CONSEQUENTIAL, SPECIAL, PUNITIVE OR
-          EXEMPLARY DAMAGES OR LOSSES, INCLUDING BUT NOT LIMITED TO, DAMAGES FOR
-          LOSS OF PROFITS, GOODWILL, USE, DATA OR OTHER INTANGIBLE LOSSES WHICH
-          MAY BE INCURRED IN CONNECTION WITH Xtreme tools OR THE SITE, OR USE
-          THEREOF, OR ANY OF THE DATA OR OTHER MATERIALS TRANSMITTED THROUGH OR
-          RESIDING ON THE SITE OR ANY SERVICES, OR INFORMATION PURCHASED,
-          RECEIVED OR SOLD BY WAY OF THE SITE, REGARDLESS OF THE TYPE OF CLAIM
-          OR THE NATURE OF THE CAUSE OF ACTION, EVEN IF Xtreme tools HAS BEEN
-          ADVISED OF THE POSSIBILITY OF DAMAGE OR LOSS.
-        </p>
         <h2 className="text-lg font-semibold text-primary">
-          4. Terms Relating to User Supplied Site Content
+          Processing of Data & Consent
         </h2>
         <p>
-          <strong>(a)</strong> Participate at Your Own Risk. You enter and
-          participate in our forum, bulletin board, chat room, or any other user
-          interactive area of our site, and gain access to the materials
-          contained thereon at your own risk. <br />
-          <strong>(b)</strong> No Monitoring. We do not monitor or screen
-          communications on our forum, bulletin board, chat room, or any other
-          user interactive area of our site and we are not responsible for any
-          material that any of our forum, bulletin board, chat room, or any
-          other user interactive area of our site participant posts and we do
-          not assume the responsibility to do so. In the event that we are
-          notified by any party that any communications contained in our forum,
-          bulletin board, chat room, or any other user interactive area of our
-          site is contrary to these terms, we may, but are not obligated to,
-          investigate the situation and determine in our own discretion, whether
-          to remove such communication from our forum, bulletin board, chat
-          room, or any other user interactive area of our site. We have no
-          liability or responsibility to investigate or remove any content from
-          our forum, bulletin board, chat room, or any other user interactive
-          area of our site based upon a complaint or otherwise. <br />
-          <strong>(c)</strong> Your Reliance at Your Risk. We do not make any
-          representations or warranties as to the truth or accuracy of any
-          statement made or materials posted on or through our forum, bulletin
-          board, chat room, or any other user interactive area of our site. You
-          agree and acknowledge that you assume the risk of any actions you take
-          in reliance upon the information that may be contained in our forum,
-          bulletin board, chat room, or any other user interactive area of our
-          site.
+          We will process the data we collect about you to improve the operation
+          of this and other websites. This information helps us make decisions
+          about what content to show, how it should be formatted, the number,
+          size, and placement of advertisements, and how content should be
+          delivered to individuals. This information is also used for the
+          analysis of performance and reporting.
+        </p>
+        <h2 className="text-lg font-semibold text-primary">
+          Use of Application Logs
+        </h2>
+        <p>
+          Our servers automatically record information (“Application Log Data”)
+          created by your use of this website. Application Log Data may include
+          information such as your IP address, browser type, operating system,
+          the referring web page, pages visited, location, your mobile carrier,
+          device and application IDs, search terms, and cookie information. We
+          use this information to diagnose and improve our services.
+        </p>
+        <h2 className="text-lg font-semibold text-primary">Data Retention</h2>
+        <p>
+          The personal information we collect is retained for no longer than
+          necessary to fulfill the stated purposes in section “PROCESSING OF
+          DATA AND CONSENT” above or for a period specifically required by law
+          or regulation that xtreme tools is obligated to follow. Personal data
+          used to fulfill verification of certain types of services such as SSL
+          certificates, payments, and billing will be retained for a minimum of
+          5 years depending on the class of product or service and may be
+          retained in either a physical or electronic format. Even if you
+          request deletion or erasure of your data, we may retain your personal
+          data to the extent necessary and for so long as necessary for our
+          legitimate business interests or performance of contractual
+          obligations. After the retention period is over, xtreme tools securely
+          disposes or anonymizes your personal information in order to prevent
+          loss, theft, misuse, or unauthorized access.
+        </p>
+        <h2 className="text-lg font-semibold text-primary">
+          Confidentiality / Security
+        </h2>
+        <p>
+          We have implemented security policies, rules, and technical measures
+          to protect the personal data that we have under our control from
+          unauthorized access improper use or disclosure unauthorized
+          modification unlawful destruction or accidental loss. All our
+          employees and data processors, who have access to, and are associated
+          with the processing of personal data, are obliged to respect the
+          confidentiality of our visitors’ personal data. We ensure that your
+          personal data will not be disclosed to State institutions and
+          authorities except if required by law or other regulation
         </p>
       </div>
       <SubscribeSection />

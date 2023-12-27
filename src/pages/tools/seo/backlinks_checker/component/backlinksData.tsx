@@ -2,14 +2,11 @@ import { FaLink } from "react-icons/fa";
 import { Accordion } from "../../../../../components/accordion";
 import { BacklinkCheckerResponseData } from "../../../../../services/seo";
 
-
-
 export interface BacklinksDataProps {
   className?: string;
   backlinks: BacklinkCheckerResponseData["backlinks"];
 }
 export function BacklinksData({ className, backlinks }: BacklinksDataProps) {
-  
   return (
     <div>
       <div className={`overflow-y-auto max-h-96 ${className}`}>
@@ -20,7 +17,7 @@ export function BacklinksData({ className, backlinks }: BacklinksDataProps) {
                 <div className="p-2 border-b border-[#DADADA]">
                   <div className="flex justify-between">
                     <h3 className="text-black/70 font-semibold">To</h3>
-                    <span className="hover:underline basis-1/2 text-right grow-0 break-words">
+                    <span className="hover:underline basis-1/2 text-right grow-0 break-all">
                       <a href={backlink.url_to}>{backlink.url_to}</a>
                     </span>
                   </div>
@@ -44,7 +41,7 @@ export function BacklinksData({ className, backlinks }: BacklinksDataProps) {
                 <div className="p-2 border-b border-[#DADADA]">
                   <div className="flex justify-between items-center">
                     <h3 className="text-black/70 font-semibold">Anchor</h3>
-                    <span className="">{backlink.anchor}</span>
+                    <span className="break-all">{backlink.anchor}</span>
                   </div>
                 </div>
                 <div className="p-2 border-b border-[#DADADA]">

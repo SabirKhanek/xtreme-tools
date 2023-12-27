@@ -42,14 +42,14 @@ export function EmailExtractor({ className }: EmailExtractorProps) {
           Online Tool for Extracting Email Addresses From Any Text in Seconds
         </p>
       </div>
-      <div className="w-full border border-black rounded-xl grid grid-rows-1 grid-cols-[50%_50%] xl:grid-cols-[60%_40%] gap-x-3 h-[69.5vh] p-6">
+      <div className="w-full border border-black rounded-xl grid sm:grid-rows-1 sm:grid-cols-[50%_50%] xl:grid-cols-[60%_40%] gap-x-3 h-[69.5vh] p-6">
         <div className="p-3 flex flex-col">
           <div className="border-b border-[#CFCFCF] p-2 flex justify-between items-center">
             <h2 className="text-black font-semibold text-2xl">
               Text With Emails
             </h2>
           </div>
-          <div className="grid grid-cols-1 grow">
+          <div className="grid grid-cols-1 grow shrink-0">
             <textarea
               onChange={(e) => setEmails(extractEmails(e.target.value))}
               className=" p-1 outline-none text-black/70 font-medium no-scrollbar resize-none"
@@ -57,7 +57,7 @@ export function EmailExtractor({ className }: EmailExtractorProps) {
             ></textarea>
           </div>
         </div>
-        <div className="bg-[#9758DA0A] rounded-lg p-4 flex flex-col gap-1">
+        <div className="bg-[#9758DA0A] rounded-lg p-4 flex max-h-[350px] flex-col gap-1">
           <div className="grow overflow-y-auto no-scrollbar">
             {emails.length > 0 &&
               emails.map((email, index) => (

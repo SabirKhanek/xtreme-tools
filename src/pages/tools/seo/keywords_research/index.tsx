@@ -13,6 +13,7 @@ import { FaCheck } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { Tool } from "../../types/tool";
 import { ToolUsage } from "../../components/toolUsage";
+import { Accordion } from "../../../../components/accordion";
 export interface KeywordsResearchProps extends Tool {
   className?: string;
 }
@@ -30,7 +31,7 @@ export function KeywordsResearch({
     initialValues: {
       keyword: "",
       country: "global",
-      sortBy: undefined as unknown as string | undefined,
+      sortBy: "none" as unknown as string | undefined,
     },
     onSubmit: (v) => {
       const getKeywords = async () => {
@@ -46,8 +47,12 @@ export function KeywordsResearch({
           if (resp.success) {
             setUsage({ used: usage.used + 1, quota: usage.quota });
 
-            if (resp.data) setResult(resp.data);
-            if (v.sortBy!) {
+            if (resp.data) {
+              setResult(resp.data);
+              if (resp.data.length === 0)
+                toast("No result matching your criteria");
+            }
+            if (v.sortBy !== "none") {
               const sortedData = resp.data?.sort(
                 (a: any, b: any) => b[v.sortBy as any] - a[v.sortBy as any]
               );
@@ -70,7 +75,7 @@ export function KeywordsResearch({
         ["global", ...countries.map((country) => country.code)],
         "invalid country"
       ),
-      sortBy: Yup.string().oneOf(["cpc", "score", "vol"]).optional(),
+      sortBy: Yup.string().oneOf(["cpc", "score", "vol", "none"]).optional(),
     }),
   });
   const filterResult = () => {
@@ -87,7 +92,7 @@ export function KeywordsResearch({
       requireLogin={requireLogin}
     >
       <form onSubmit={formik.handleSubmit}>
-        <div className="flex justify-between gap-2">
+        <div className="flex flex-col 960:flex-row justify-between gap-2">
           <Input
             containerClass="basis-3/5"
             label="Keyword"
@@ -109,7 +114,7 @@ export function KeywordsResearch({
               value={formik.values.sortBy}
               onChange={formik.handleChange}
             >
-              <option value={undefined} selected>
+              <option value={"none"} selected>
                 None
               </option>
               <option value="cpc">CPC</option>
@@ -141,7 +146,11 @@ export function KeywordsResearch({
             </select>
           </div>
         </div>
-        <Button type="submit" className="w-full bg-primary rounded-sm my-4">
+        <Button
+          type="submit"
+          className="w-full bg-primary rounded-sm my-4"
+          onClick={() => console.log(formik.errors, formik.values)}
+        >
           Submit
         </Button>
       </form>
@@ -170,49 +179,46 @@ export function KeywordsResearch({
             placeholder="Search keywords"
           />
           <div className="overflow-x-auto p-2 border border-[#90909080] rounded-md max-h-96 overflow-y-auto">
-            <table className="table-auto text-left border-spacing-1 w-full  ">
-              {/* head */}
-              <thead>
-                <tr>
-                  <th className="text-black/70 font-semibold w-[40%]">
-                    Keyword
-                  </th>
-                  <th className="text-black/70 font-semibold text-center">
-                    CPC
-                  </th>
-                  <th className="text-black/70 font-semibold text-center">
-                    Volume
-                  </th>
-                  <th className="text-black/70 font-semibold text-center">
-                    Competition
-                  </th>
-                  <th className="text-black/70  font-semibold text-center">
-                    Score
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="border-t border-b border-[#90909080]">
-                {filterResult().map((r) => {
-                  return (
-                    <tr className="border-b border-[#90909080]">
-                      <td className="p-2 leading-7">{r.text}</td>
-                      <td className="text-black/80  text-center break-keep">
-                        {r.cpc}
-                      </td>
-                      <td className="text-black/80 text-center font-medium">
-                        {r.vol}
-                      </td>
-                      <td className="text-black/80 text-center font-medium">
-                        {r.competition}
-                      </td>
-                      <td className="text-black/80 text-center font-medium">
-                        {r.score}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+            {filterResult().map((req, index) => {
+              return (
+                <Accordion key={index} title={req.text}>
+                  <div className="max-w-md">
+                    <div className="p-2 border-b border-[#DADADA]">
+                      <div className="flex justify-between">
+                        <h3 className="text-black/70 font-semibold">CPC</h3>
+                        <span className="rounded-badge px-3 py-1 font-semibold text-primary bg-[#58126A33]">
+                          {`${req.cpc}`}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="p-2 border-b border-[#DADADA]">
+                      <div className="flex justify-between items-center">
+                        <h3 className="text-black/70 font-semibold">
+                          Competition
+                        </h3>
+                        <span className="rounded-badge px-3 py-1 font-semibold text-primary bg-[#58126A33]">
+                          {`${req.competition}`}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="p-2 border-b border-[#DADADA]">
+                      <div className="flex justify-between items-center">
+                        <h3 className="text-black/70 font-semibold">Volume</h3>
+                        <span className="rounded-badge px-3 py-1 font-semibold text-primary bg-[#58126A33]">
+                          {`${req.vol}`}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="p-2 border-b border-[#DADADA]">
+                      <div className="flex justify-between items-center">
+                        <h3 className="text-black/70 font-semibold">Score</h3>
+                        <span className="">{req.score}</span>
+                      </div>
+                    </div>
+                  </div>
+                </Accordion>
+              );
+            })}
           </div>
         </div>
       )}

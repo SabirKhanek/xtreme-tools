@@ -32,7 +32,7 @@ export function Accordion({
         </div>
         <div className="flex items-center gap-2">
           <h2
-            className={`text-lg break-words font-bold ${
+            className={`text-lg  break-all font-bold ${
               collapsed ? "text-white" : "text-black/70"
             }`}
           >

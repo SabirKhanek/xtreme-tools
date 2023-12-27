@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { ImageUpload } from "../../../../components/imageUpload";
 import { Button } from "../../../../components/button";
-import { Toggler } from "../../../../components/toggle";
 import { FaImages, FaSpinner } from "react-icons/fa";
 import { generateFavicon } from "../../../../services/web";
 import { toast } from "react-toastify";
@@ -42,7 +41,7 @@ export function FaviconGenerator({ className }: FaviconGeneratorProps) {
       </div>
       <div className="w-full border border-black rounded-xl justify-between min-h-[69.5vh] p-6 flex flex-col">
         <ImageUpload file={file} handleChange={updateFile} />
-        <div className="flex justify-between">
+        <div className="flex justify-between flex-col xs:flex-row gap-y-2">
           <div className="flex gap-1 items-center">
             <Button
               className={`border border-primary ${
@@ -51,11 +50,11 @@ export function FaviconGenerator({ className }: FaviconGeneratorProps) {
               onClick={() => setIs16x16(false)}
             >
               <span
-                className={`text-sm ${
+                className={`text-sm break-all ${
                   !is16x16 ? "text-white" : "text-primary"
                 } font-semibold`}
               >
-                Desktop, Web, Android, and iOS (iPhone and iPad)
+                All sizes
               </span>
             </Button>
             <Button
@@ -72,7 +71,7 @@ export function FaviconGenerator({ className }: FaviconGeneratorProps) {
                 Only 16x16
               </span>
             </Button>
-            <Toggler />
+            {/* <Toggler /> */}
           </div>
           <Button
             className="bg-transparent border border-primary"

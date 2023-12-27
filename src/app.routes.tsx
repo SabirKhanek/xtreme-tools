@@ -27,6 +27,7 @@ import { ContactUs } from "./pages/contact_us";
 import { TOC } from "./pages/toc";
 import { PrivacyPolicy } from "./pages/privacy_policy";
 import { ResetPassword } from "./pages/auth/reset-password";
+import { AboutUs } from "./pages/about_us";
 
 export const routesConfig: RouteObject[] = [
   {
@@ -38,8 +39,8 @@ export const routesConfig: RouteObject[] = [
     element: <ToastRoute error message="Verification was not successful" />,
   },
   { path: "/contact_us", element: <ContactUs /> },
-  { path: "/privacy_policy", element: <PrivacyPolicy /> },
-  { path: "/about_us" },
+  { path: "/privacy", element: <PrivacyPolicy /> },
+  { path: "/about_us", element: <AboutUs /> },
   { path: "/terms", element: <TOC /> },
   { path: "/", element: <HomePage /> },
   {

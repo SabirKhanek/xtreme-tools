@@ -198,9 +198,10 @@ export function EmailChecker({
             <h3 className="font-semibold text-lg text-black/70">Results</h3>
           </div>
           <div className={`overflow-y-auto max-h-[600px]`}>
-            {requests.map((req) => {
+            {requests.map((req, index) => {
               return (
                 <Accordion
+                  key={index}
                   title={req.email}
                   titleStatus={getStatusNode(req.status)}
                 >

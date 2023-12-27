@@ -43,13 +43,18 @@ export function Footer({ className }: FooterProps) {
             <h3 className="text-white font-semibold mb-3">Support</h3>
             <ul className="flex flex-col gap-1 ml-1">
               {[
-                { name: "Privacy Policy", route: "#" },
-                { name: "Terms and Conditions", route: "#" },
-                { name: "Contact Us", route: "#" },
+                { name: "Privacy Policy", route: "/privacy" },
+                { name: "Terms and Conditions", route: "/terms" },
+                { name: "Contact Us", route: "/contact_us" },
+                { name: "About Us", route: "/about_us" },
                 { name: "Blogs", route: "#" },
               ].map((val, index) => {
                 return (
-                  <Link key={index} className="hover:underline" to={val.route}>
+                  <Link
+                    key={index}
+                    className="hover:underline text-sm"
+                    to={val.route}
+                  >
                     {val.name}
                   </Link>
                 );

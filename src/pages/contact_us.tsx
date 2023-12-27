@@ -95,7 +95,7 @@ export function ContactUs({ className }: ContactUsProps) {
               value={formik.values.message}
               onChange={formik.handleChange}
               className="resize-none bg-[#E6B0D92E]/20 p-1 outline-[#E6B0D92E]/50 text-lg text-black rounded-lg"
-              rows={10}
+              rows={5}
             ></textarea>
           </div>
           <Button className="bg-primary" type="submit">
