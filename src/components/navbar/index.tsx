@@ -10,7 +10,7 @@ import { useAuth } from "../../shared/contexts/auth";
 import avatar from "./assets/avatar.svg";
 import { CiLogout } from "react-icons/ci";
 
-import { FaGear } from "react-icons/fa6";
+// import { FaGear } from "react-icons/fa6";
 import { logout } from "../../services/auth";
 export interface NavBarProps {
   className?: string;
@@ -83,12 +83,12 @@ export function Navbar({ className, bgClassApplied, ref }: NavBarProps) {
                 tabIndex={0}
                 className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-fit mt-4 text-black/70"
               >
-                <li>
+                {/* <li>
                   <div className="flex gap-2 items-center">
                     <FaGear />
                     <span>Settings</span>
                   </div>
-                </li>
+                </li> */}
                 <li>
                   <div
                     className="flex gap-2 items-center"

@@ -55,6 +55,7 @@ export function BacklinksData({ className, backlinks }: BacklinksDataProps) {
                     <h3 className="text-black/70 font-semibold">Link</h3>
                     <a
                       href={backlink.url_from}
+                      target="_blank"
                       className="flex items-center gap-2 px-2 py-1 rounded-badge border border-primary"
                     >
                       <FaLink className="text-primary" />
