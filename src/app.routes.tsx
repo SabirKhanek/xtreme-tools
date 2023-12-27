@@ -26,6 +26,7 @@ import { NotFound } from "./pages/404";
 import { ContactUs } from "./pages/contact_us";
 import { TOC } from "./pages/toc";
 import { PrivacyPolicy } from "./pages/privacy_policy";
+import { ResetPassword } from "./pages/auth/reset-password";
 
 export const routesConfig: RouteObject[] = [
   {
@@ -47,6 +48,7 @@ export const routesConfig: RouteObject[] = [
       { path: "login", element: <LoginPage /> },
       { path: "signup", element: <SignUp /> },
       { path: "forget", element: <ForgetPassword /> },
+      { path: "reset_password/:token", element: <ResetPassword /> },
     ],
   },
   {

@@ -105,3 +105,19 @@ export function isLoggedIn() {
 
   return undefined;
 }
+
+export async function sendResetPasswordRequest(email: string) {
+  const resp = await axios.post<StandardHttpResponse<string>>(
+    "/auth/reset_password",
+    { email }
+  );
+  return resp.data;
+}
+
+export async function resetPassword(token: string, newPassword: string) {
+  const resp = await axios.post<StandardHttpResponse<string>>(
+    "/auth/reset_new",
+    { token, newPassword }
+  );
+  return resp.data;
+}
