@@ -45,8 +45,10 @@ export function SignUp({ className }: signupProps) {
     validationSchema: signUpSchema,
   });
   return (
-    <div className={`flex justify-center items-center flex-col ${className}`}>
-      <div className="w-[472px] rounded-lg bg-white shadow p-8">
+    <div
+      className={`flex justify-center items-center flex-col w-full px-3 ${className}`}
+    >
+      <div className="max-w-[472px] w-full rounded-lg bg-white shadow p-8">
         <div className="text-center flex-col justify-center items-center mb-8">
           <h2 className=" font-semibold text-xl text-[#707070]">
             Sign <span className="text-primary">Up</span>
@@ -101,13 +103,6 @@ export function SignUp({ className }: signupProps) {
             isTouched={formik.touched.password}
             error={formik.errors.password}
             formikTouched={formik.setFieldTouched}
-            labelAction={
-              <Link to="/forget">
-                <span className="text-primary cursor-pointer font-semibold text-sm">
-                  Forgot Password?
-                </span>
-              </Link>
-            }
           />
           <div className="my-3">
             <PasswordStrength password={formik.values.password} />

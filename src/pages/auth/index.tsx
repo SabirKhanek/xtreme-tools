@@ -15,7 +15,6 @@ export function Auth({ className }: AuthProps) {
   }, []);
   return (
     <div className={`relative bg-[#FCFCFC] grow ${className}`}>
-      <img className="absolute top-0 right-0 " src={tr_circle} alt="" />
       <img
         className="absolute left-5 bottom-10 hidden sm:inline scale-[60%] md:scale-75 lg:scale-90"
         src={auth_1}
@@ -26,12 +25,17 @@ export function Auth({ className }: AuthProps) {
         src={auth_2}
         alt=""
       />
-      <div className="mx-auto my-0 flex flex-col gap-10 w-full min-h-screen justify-center items-center max-w-2xl">
+      <div className="mx-auto my-0 flex z-10 flex-col gap-10 w-full min-h-screen justify-center items-center max-w-2xl">
         <Link to="/">
           <img src="/logo.svg" alt="" />
         </Link>
         <Outlet />
       </div>
+      <img
+        className="absolute pointer-events-none z-0 top-0 right-0 "
+        src={tr_circle}
+        alt=""
+      />
     </div>
   );
 }

@@ -44,8 +44,10 @@ export function ResetPassword({ className }: ResetPasswordProps) {
     }),
   });
   return (
-    <div className={`flex justify-center items-center flex-col ${className}`}>
-      <div className="w-[472px] rounded-lg bg-white shadow p-8">
+    <div
+      className={`flex justify-center items-center flex-col w-full px-3 ${className}`}
+    >
+      <div className="max-w-[472px] w-full rounded-lg bg-white shadow p-8">
         <div className="text-center flex-col justify-center items-center mb-8">
           <h2 className=" font-semibold text-xl text-[#707070]">
             Reset <span className="text-primary">Password</span>
