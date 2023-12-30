@@ -35,7 +35,7 @@ export function ToolSection({
     >
       <img src={ts_ssg_1} className="absolute top-36 right-0" alt="" />
       <img src={mail_letter} className="absolute top-5 left-2" alt="" />
-      <div className={`${getResponsiveClasses()} relative`}>
+      <div className={`${getResponsiveClasses()} overflow-x-clip relative`}>
         {!bgGradient && (
           <div className="absolute right-0 top-0">
             <img src={decor_1} width={50} alt="" />

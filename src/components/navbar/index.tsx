@@ -12,6 +12,7 @@ import { CiLogout } from "react-icons/ci";
 
 // import { FaGear } from "react-icons/fa6";
 import { logout } from "../../services/auth";
+// import { useModal } from "../../shared/contexts/modals";
 export interface NavBarProps {
   className?: string;
   bgClassApplied?: boolean;
@@ -22,7 +23,7 @@ export function Navbar({ className, bgClassApplied, ref }: NavBarProps) {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   const auth = useAuth();
   const responsiveClasses = getResponsiveClasses();
-
+  // const modals = useModal();
   return (
     <nav
       className={`relative border-b bg-transparent border-b-white/20 ${className} ${
@@ -83,7 +84,11 @@ export function Navbar({ className, bgClassApplied, ref }: NavBarProps) {
                 tabIndex={0}
                 className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-fit mt-4 text-black/70"
               >
-                {/* <li>
+                {/* <li
+                  onClick={async () => {
+                    modals.openModal("update_profile");
+                  }}
+                >
                   <div className="flex gap-2 items-center">
                     <FaGear />
                     <span>Settings</span>
