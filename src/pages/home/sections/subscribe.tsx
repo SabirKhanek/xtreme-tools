@@ -16,6 +16,7 @@ export function SubscribeSection({ className }: SubscribeSectionProps) {
     try {
       const resp = await subscribeToNewsletter(input);
       if (resp.success) {
+        setInput("");
         toast.success("You are now subscribed to our newsletter.");
       } else {
         toast.error(resp.message);
