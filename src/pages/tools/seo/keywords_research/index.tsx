@@ -30,7 +30,7 @@ export function KeywordsResearch({
   const formik = useFormik({
     initialValues: {
       keyword: "",
-      country: "global",
+      country: "us",
       sortBy: "none" as unknown as string | undefined,
     },
     onSubmit: (v) => {

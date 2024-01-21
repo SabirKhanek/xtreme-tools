@@ -8,16 +8,43 @@ import { FaPhone } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 import { Button } from "../components/button";
 import { useFormik } from "formik";
-
+import * as Yup from "yup";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import { sendContactUsMessage } from "../services/contact_us";
 export interface ContactUsProps {
   className?: string;
 }
 export function ContactUs({ className }: ContactUsProps) {
+  const [isLoading, setIsLoading] = useState(false);
   const formik = useFormik({
     initialValues: { name: "", email: "", phone: "", message: "" },
-    onSubmit: (v) => {
-      v;
+    onSubmit: async (v) => {
+      setIsLoading(true);
+      try {
+        const resp = await sendContactUsMessage(v);
+        if (resp.success) {
+          formik.setTouched({
+            name: false,
+            email: false,
+            phone: false,
+            message: false,
+          });
+          formik.setValues({ name: "", email: "", phone: "", message: "" });
+          toast.success("Message sent successfully");
+        }
+      } catch (err) {
+        toast.error("something went wrong");
+      }
+
+      setIsLoading(false);
     },
+    validationSchema: Yup.object({
+      name: Yup.string().required().label("Name"),
+      email: Yup.string().email().required().label("Email"),
+      phone: Yup.string().required().label("Phone"),
+      message: Yup.string().required(),
+    }),
   });
   return (
     <div className="flex-grow w-full flex flex-col">
@@ -97,8 +124,11 @@ export function ContactUs({ className }: ContactUsProps) {
               className="resize-none bg-[#E6B0D92E]/20 p-1 outline-[#E6B0D92E]/50 text-lg text-black rounded-lg"
               rows={5}
             ></textarea>
+            {formik.errors.message && formik.touched.message && (
+              <p className="text-red-500">{formik.errors.message}</p>
+            )}
           </div>
-          <Button className="bg-primary" type="submit">
+          <Button isLoading={isLoading} className="bg-primary" type="submit">
             Submit
           </Button>
         </form>
