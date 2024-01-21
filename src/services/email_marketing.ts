@@ -15,17 +15,14 @@ export async function testSMTP(obj: TestSMTPRequest) {
 }
 
 export interface EmailCheckData {
-  valid: boolean;
-  block: boolean;
-  disposable: boolean;
-  domain: string;
-  text: string;
-  risk?: number;
+  email: string;
+  code: number;
+  role: boolean;
+  free_email: boolean;
+  result: string;
   reason: string;
-  mx_host: string;
-  possible_typo: string[];
-  mx_info: string;
-  mx_ip: string;
+  send_transactional: number;
+  did_you_mean: string;
 }
 export async function validateEmail(email: string) {
   const resp = await axios.post<StandardHttpResponse<EmailCheckData>>(

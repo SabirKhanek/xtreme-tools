@@ -38,6 +38,7 @@ export function AIRewriter({
     }
     setIsLoading(false);
   };
+
   return (
     <div className={`${className}`}>
       <div>

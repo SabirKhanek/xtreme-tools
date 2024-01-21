@@ -72,7 +72,7 @@ export function KeywordsResearch({
     validationSchema: Yup.object({
       keyword: Yup.string().min(3).required(),
       country: Yup.string().oneOf(
-        ["global", ...countries.map((country) => country.code)],
+        ["global", ...countries.map((country) => country.code.toLowerCase())],
         "invalid country"
       ),
       sortBy: Yup.string().oneOf(["cpc", "score", "vol", "none"]).optional(),

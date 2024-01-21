@@ -2,10 +2,10 @@ import ReactQuill from "react-quill";
 import { Button } from "../../../../components/button";
 import { Input } from "../../../../components/input";
 import { Toggler } from "../../../../components/toggle";
-import { useState } from "react";
+import  {  useState } from "react";
 import { generateContent } from "../../../../services/ai";
 import { toast } from "react-toastify";
-import { FaSpinner } from "react-icons/fa";
+import {  FaRegCopy, FaSpinner } from "react-icons/fa";
 import { Tool } from "../../types/tool";
 
 import { ToolUsage } from "../../components/toolUsage";
@@ -68,6 +68,29 @@ export function AiWriter({ requireLogin, toolId }: AiWriterProps) {
               <span>Append</span>
             </div>
           </div>
+          <Button
+            className="border-primary border "
+            onClick={() => {
+              // Assuming `content` is your HTML content
+              const temporaryElement = document.createElement("div");
+              temporaryElement.innerHTML = content || "";
+
+              // Extract text content from the temporary element
+              const plainText =
+                temporaryElement.textContent || temporaryElement.innerText;
+
+              navigator.clipboard
+                .writeText(plainText)
+                .then(() => {
+                  toast("Copied to Clipboard");
+                })
+                .catch((error) => {
+                  console.error("Error copying to clipboard:", error);
+                });
+            }}
+          >
+            <FaRegCopy className="text-primary" />
+          </Button>
           <Button
             className="bg-primary shrink-0 w-full md:w-fit"
             onClick={() => handleRequest()}

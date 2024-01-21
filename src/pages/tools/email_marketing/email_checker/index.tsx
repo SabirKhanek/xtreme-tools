@@ -209,46 +209,37 @@ export function EmailChecker({
                     <div className="max-w-md">
                       <div className="p-2 border-b border-[#DADADA]">
                         <div className="flex justify-between">
-                          <h3 className="text-black/70 font-semibold">Valid</h3>
+                          <h3 className="text-black/70 font-semibold">
+                            Result
+                          </h3>
                           <span className="rounded-badge px-3 py-1 font-semibold text-primary bg-[#58126A33]">
-                            {`${req.data?.valid}`}
+                            {`${req.data?.result}`}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="p-2 border-b border-[#DADADA]">
+                        <div className="flex justify-between items-center">
+                          <h3 className="text-black/70 font-semibold">Free</h3>
+                          <span className="rounded-badge px-3 py-1 font-semibold text-primary bg-[#58126A33]">
+                            {`${req.data?.free_email}`}
                           </span>
                         </div>
                       </div>
                       <div className="p-2 border-b border-[#DADADA]">
                         <div className="flex justify-between items-center">
                           <h3 className="text-black/70 font-semibold">
-                            Disposable
+                            Transactional
                           </h3>
                           <span className="rounded-badge px-3 py-1 font-semibold text-primary bg-[#58126A33]">
-                            {`${req.data?.disposable}`}
+                            {`${
+                              req.data?.send_transactional !== 0
+                                ? "true"
+                                : "false"
+                            }`}
                           </span>
                         </div>
                       </div>
-                      <div className="p-2 border-b border-[#DADADA]">
-                        <div className="flex justify-between items-center">
-                          <h3 className="text-black/70 font-semibold">Block</h3>
-                          <span className="rounded-badge px-3 py-1 font-semibold text-primary bg-[#58126A33]">
-                            {`${req.data?.block}`}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="p-2 border-b border-[#DADADA]">
-                        <div className="flex justify-between items-center">
-                          <h3 className="text-black/70 font-semibold">
-                            Domain
-                          </h3>
-                          <span className="">{req.data?.domain}</span>
-                        </div>
-                      </div>
-                      <div className="p-2 border-b border-[#DADADA]">
-                        <div className="flex justify-between items-center">
-                          <h3 className="text-black/70 font-semibold">Text</h3>
-                          <span className="basis-1/2 text-right">
-                            {req.data?.text}
-                          </span>
-                        </div>
-                      </div>
+
                       <div className="p-2 border-b border-[#DADADA]">
                         <div className="flex justify-between items-center">
                           <h3 className="text-black/70 font-semibold">
@@ -259,41 +250,13 @@ export function EmailChecker({
                           </span>
                         </div>
                       </div>
-                      {req.data?.risk && (
-                        <div className="p-2 border-b border-[#DADADA]">
-                          <div className="flex justify-between items-center">
-                            <h3 className="text-black/70 font-semibold">
-                              Risk
-                            </h3>
-                            <span className="rounded-badge px-3 py-1 font-semibold text-red-400 bg-red-200/60 ">
-                              {`${req.data?.risk}`}
-                            </span>
-                          </div>
-                        </div>
-                      )}
 
                       <div className="p-2 border-b border-[#DADADA]">
                         <div className="flex justify-between items-center">
                           <h3 className="text-black/70 font-semibold">
-                            MX Host
+                            Did you mean?
                           </h3>
-                          <span className="">{req.data?.mx_host}</span>
-                        </div>
-                      </div>
-                      <div className="p-2 border-b border-[#DADADA]">
-                        <div className="flex justify-between items-center">
-                          <h3 className="text-black/70 font-semibold">
-                            MX Info
-                          </h3>
-                          <span className="basis-1/2 text-right">
-                            {req.data?.mx_info}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="p-2 border-b border-[#DADADA]">
-                        <div className="flex justify-between items-center">
-                          <h3 className="text-black/70 font-semibold">MX IP</h3>
-                          <span className="">{req.data?.mx_ip}</span>
+                          <span className="">{req.data?.did_you_mean}</span>
                         </div>
                       </div>
                     </div>

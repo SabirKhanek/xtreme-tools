@@ -88,7 +88,7 @@ export function OutlineGenerator({
             </div>
             <div
               className={`flex justify-center items-center ${
-                result.length > 0 || isLoading ? "my-10" : ""
+                result?.length > 0 || isLoading ? "my-10" : ""
               }`}
             >
               {isLoading && <span className="loading loading-ring w-14"></span>}
@@ -114,17 +114,28 @@ export function OutlineGenerator({
               </div>
             )}
             {!isLoading && result.length > 0 && (
-              <div className="w-full rounded-xl shadow-lg bg-[#9758DA0A] p-5 flex flex-col">
-                {result.split("\n").map((step, index) => (
-                  <div
-                    key={index}
-                    style={{ paddingLeft: countIndentation(step) * 4 }}
-                    className="text-black/70 font-semibold py-2 border-b border-[#DADADA]"
-                  >
-                    {step.trim()}
-                  </div>
-                ))}
-              </div>
+              <>
+                <Button
+                  className="mb-3 bg-primary xs:!w-fit"
+                  onClick={() => {
+                    navigator.clipboard.writeText(result || "");
+                    toast("Copied to clipboard");
+                  }}
+                >
+                  Copy to Clipboard
+                </Button>
+                <div className="w-full rounded-xl shadow-lg bg-[#9758DA0A] p-5 flex flex-col">
+                  {result.split("\n").map((step, index) => (
+                    <div
+                      key={index}
+                      style={{ paddingLeft: countIndentation(step) * 4 }}
+                      className="text-black/70 font-semibold py-2 border-b border-[#DADADA]"
+                    >
+                      {step.trim()}
+                    </div>
+                  ))}
+                </div>
+              </>
             )}
             <ToolUsage
               className="my-3"
