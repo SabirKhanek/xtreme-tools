@@ -1,0 +1,60 @@
+// import ai1 from "@/app/assets/ai1.png";
+import ai2 from "@/app/assets/ai2.png";
+import ai3 from "@/app/assets/ai3.png";
+import ai4 from "@/app/assets/ai4.png";
+// import ai5 from "@/app/assets/ai5.png";
+import ai6 from "@/app/assets/ai6.png";
+import { ToolSection } from "./toolsSection";
+export interface ToolsSectionProps {
+  className?: string;
+}
+export function AIToolsSection({ className }: ToolsSectionProps) {
+  return (
+    <ToolSection
+      id="ai_tools"
+      className={className}
+      tools={tools}
+      header="Free AI"
+      subtext="To harness the power of this data, businesses need a comprehensive
+            data management platform"
+      bgGradient={true}
+    />
+  );
+}
+
+const tools = [
+  {
+    image: ai6,
+    header: "Free AI Writer",
+    body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
+    href: "/tools/ai/ai_writer",
+  },
+  {
+    image: ai2,
+    header: "Free Paragraph Rewriter",
+    body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
+    href: "/tools/ai/ai_rewriter",
+  },
+  {
+    image: ai3,
+    header: "Free Outline Generator",
+    body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
+    href: "/tools/ai/outline_generator",
+  },
+  {
+    image: ai4,
+    header: "AI Paragraph Translator",
+    body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
+    href: "/tools/ai/translate",
+  },
+  // {
+  //   image: ai5,
+  //   header: "AI Character Generator",
+  //   body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
+  // },
+  // {
+  //   image: ai6,
+  //   header: "AI Design Tools",
+  //   body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
+  // },
+];
