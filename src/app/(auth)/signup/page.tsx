@@ -1,13 +1,13 @@
 "use client";
-import { Button } from "@/app/components/button";
-import { Input } from "@/app/components/input";
-import { PasswordStrength } from "@/app/components/password_strength";
+import { Button } from "../../components/button";
+import { Input } from "../../components/input";
+import { PasswordStrength } from "../../components/password_strength";
 import { useFormik } from "formik";
-import { signUpSchema } from "@/app/schemas/forms/signup";
-import { signUp } from "@/app/services/auth";
+import { signUpSchema } from "../../schemas/forms/signup";
+import { signUp } from "../../services/auth";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { useAuth } from "@/app/shared/contexts/auth";
+import { useAuth } from "../../shared/contexts/auth";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 

@@ -1,11 +1,11 @@
 "use client"
 import { toast } from "react-toastify";
-import { Button } from "@/app/components/button";
-import { Input } from "@/app/components/input";
+import { Button } from "../../../components/button";
+import { Input } from "../../../components/input";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
-import { resetPassword } from "@/app/services/auth";
+import { resetPassword } from "../../../services/auth";
 import { useParams, useRouter } from "next/navigation";
 
 export default function ResetPassword() {

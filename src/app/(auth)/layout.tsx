@@ -1,5 +1,5 @@
 "use client";
-import { useAuth } from "@/app/shared/contexts/auth";
+import { useAuth } from "../shared/contexts/auth";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import auth_1 from "./assets/auth_1.svg";

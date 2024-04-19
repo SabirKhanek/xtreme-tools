@@ -1,21 +1,33 @@
-const { execSync } = require("child_process");
+const { createServer } = require("http");
+const { parse } = require("url");
+const next = require("next");
 const fs = require("fs");
-const util = require("util");
-const path = require("path");
-const logFile = fs.createWriteStream(path.join(__dirname, "app.logs"));
+const port = process.env.PORT || 3000;
 
-const logStdout = process.stdout;
-console.log = function (message) {
-  try {
-    const timestamp = new Date().toISOString();
-    logFile.write(`[${timestamp}] ${util.format(message)}` + "\n");
-    logStdout.write(util.format(message) + "\n");
-  } catch (error) {
-    console.error("Error writing to log file:", error.message);
-  }
-};
-const installResult = execSync("npm install", { stdio: "pipe" }).toString();
-console.log(installResult);
-const buildResult = execSync("npm run build", { stdio: "inherit" }).toString();
-console.log(buildResult);
-execSync("npm run start", { stdio: "inherit" });
+// Create the Express-Next App
+const app = next({
+  dev: false,
+});
+const handle = app.getRequestHandler();
+app
+  .prepare()
+  .then(() => {
+    createServer((req, res) => {
+      const parsedUrl = parse(req.url, true);
+      const { pathname, query } = parsedUrl;
+      handle(req, res, parsedUrl);
+      console.log("pathname", pathname);
+      fs.appendFileSync(
+        "app.logs",
+        `${new Date().toISOString()} ===> pathname ${pathname}\n`
+      );
+    }).listen(port, (err) => {
+      if (err) throw err;
+      console.log(`> Ready on http://localhost:${port}`);
+      fs.appendFileSync("app.logs", "server ready!\n");
+    });
+  })
+  .catch((ex) => {
+    console.error(ex.stack);
+    process.exit(1);
+  });

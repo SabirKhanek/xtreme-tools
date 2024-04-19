@@ -1,11 +1,11 @@
 "use client";
-import { Button } from "@/app/components/button";
-import { Input } from "@/app/components/input";
+import { Button } from "../../components/button";
+import { Input } from "../../components/input";
 import { toast } from "react-toastify";
 import { useFormik } from "formik";
 import { useState } from "react";
-import { login } from "@/app/services/auth";
-import { signInSchema } from "@/app/schemas/forms/login";
+import { login } from "../../services/auth";
+import { signInSchema } from "../../schemas/forms/login";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
