@@ -49,7 +49,7 @@ export default function ToolsPageLayout({
       onTouchMove={handleTouchMove}
       className={`relative  `}
     >
-      <Navbar ref={navRef} bgClassApplied={true} />
+      <Navbar _ref={navRef} bgClassApplied={true} />
       <div
         className={`absolute top-0 transition-all duration-150 z-10 ${
           isSidebarOpen ? "left-0" : "-left-full"

@@ -11,10 +11,10 @@ import Nossr from "../nossr";
 export interface NavBarProps {
   className?: string;
   bgClassApplied?: boolean;
-  ref?: any;
+  _ref?: any;
 }
 
-export function Navbar({ className, bgClassApplied, ref }: NavBarProps) {
+export function Navbar({ className, bgClassApplied, _ref }: NavBarProps) {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   // const modals = useModal();
   return (
@@ -24,7 +24,7 @@ export function Navbar({ className, bgClassApplied, ref }: NavBarProps) {
           ? "bg-[linear-gradient(289deg,#58126A_-40.56%,#F6B2E1_119.32%)]"
           : " dsf"
       }`}
-      ref={ref}
+      ref={_ref}
     >
       <div
         className={`responsive flex justify-between py-3 items-center gap-10`}

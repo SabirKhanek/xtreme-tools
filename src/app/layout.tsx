@@ -5,6 +5,7 @@ import { AuthProvider } from "./shared/contexts/auth";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ModalProvider } from "./shared/contexts/modals";
+import NextTopLoader from "nextjs-toploader";
 
 export const metadata: Metadata = {
   title: "Xtreme Tools",
@@ -24,6 +25,7 @@ export default function RootLayout({
         <title>xtreme-tools</title>
       </head>
       <body className={""}>
+        <NextTopLoader color="#58126A" />
         <ModalProvider>
           <AuthProvider>
             <div className="min-h-screen bg-white flex flex-col">

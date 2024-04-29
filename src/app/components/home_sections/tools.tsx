@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import ai from "@/app/assets/ai.svg";
 import { ToolSection as Tools } from "./toolsSection";
 import email from "@/app/assets/email.png";
@@ -31,24 +31,18 @@ const tools = [
     image: ai,
     header: "AI Content",
     body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
-    onClick: () => {
-      scrollToId("ai_tools");
-    },
+    href: "/#ai_tools",
   },
   {
     image: email,
     header: "Email Marketing",
     body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
-    onClick: () => {
-      scrollToId("email_marketing_tools");
-    },
+    href: "/#email_marketing_tools",
   },
   {
     image: seo,
     header: "SEO & Traffic",
     body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
-    onClick: () => {
-      scrollToId("seo_tools");
-    },
+    href: "/#seo_tools",
   },
 ];

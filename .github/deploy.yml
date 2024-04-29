@@ -1,0 +1,47 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - migrate/next
+
+env:
+  FRONTEND_REPO: SabirKhanek/xtreme-tools
+  FRONTEND_BRANCH: migrate/next
+  USERNAME: SabirKhanek
+  GH_ACCESS_TOKEN: ${{secrets.ACCESS_TOKEN}}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Frontend Code
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ env.FRONTEND_REPO }}
+          ref: ${{ env.FRONTEND_BRANCH }}
+
+      - name: Build Frontend
+        run: |
+          npm install
+          npx next build
+
+      - name: Zip the .next (built directory)
+        run: |
+          apt install zip
+          zip .next .next
+
+      - name: Copy to server
+        run: |
+          echo "${{ secrets.SSHKEY }}" > SSHKEY
+          scp -i SSHKEY -P ${{ secrets.PORT }} ./.next.zip ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/xtremetools_ssr
+
+      - name: Restart on Server
+        uses: appleboy/ssh-action@master
+
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSHKEY }}
+          script: "cd ~/xtremetools_ssr && ./restart.sh"

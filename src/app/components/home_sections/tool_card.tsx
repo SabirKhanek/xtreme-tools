@@ -38,19 +38,11 @@ export function ToolCard({
   };
   return (
     <a
+    
       className={`w-full group cursor-pointer ${getBgClass()} h-72 xl:h-[350px] p-7 flex flex-col rounded  transition-all duration-500 ease-in-out ${className} ${
         bgTransparent ? "border-[0.5px] border-white" : "shadow-md"
       }`}
       href={href}
-      onClick={(e) => {
-        if (onClick) {
-          onClick();
-          return;
-        }
-        e.preventDefault();
-        if (!href) toast("Tool not implemented yet!");
-        else router.push(href);
-      }}
     >
       <div className="min-h-[60px]">
         <Image src={image} width={60} height={60} alt="" />

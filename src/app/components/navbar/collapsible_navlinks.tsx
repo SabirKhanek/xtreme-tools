@@ -27,9 +27,9 @@ export function CollapsibleNavLink({
     >
       {links.map((link, index) => {
         return (
-          <>
-            <li key={index}>
-              {!link.route.includes("#") && (
+          <div key={index}>
+            <li className="scroll-smooth">
+              {
                 <Link
                   className={`text-center block py-2 hover:bg-white/20 transition-all ease-in-out duration-150 ${
                     pathname === link.route
@@ -40,7 +40,7 @@ export function CollapsibleNavLink({
                 >
                   {link.name}
                 </Link>
-              )}
+              }
 
               {index !== links.length - 1 && (
                 <hr
@@ -49,7 +49,7 @@ export function CollapsibleNavLink({
                 />
               )}
             </li>
-          </>
+          </div>
         );
       })}
     </ul>
