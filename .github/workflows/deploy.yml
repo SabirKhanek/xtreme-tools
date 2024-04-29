@@ -35,6 +35,7 @@ jobs:
         with:
           key: ${{ secrets.SSHKEY }}
           name: id_rsa # optional
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
 
       - name: Copy to server
         run: |
