@@ -30,15 +30,16 @@ jobs:
         run: |
           zip -r next ./.next
 
-      - name: copy file via ssh password
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSHKEY }}
-          port: ${{ secrets.PORT }}
-          source: "next"
-          target: ~/xtremetools_ss
+      # - name: Install SSH key
+      #   uses: shimataro/ssh-key-action@v2
+      #   with:
+      #     key: ${{ secrets.SSHKEY }}
+      #     name: id_rsa # optional
+
+      - name: Copy to server
+        run: |
+          echo "${{ secrets.SSHKEY }}" > SSHKEY
+          scp -i ./SSHKEY -P ${{ secrets.PORT }} ./.next.zip ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/xtremetools_ssr
 
       - name: Restart on Server
         uses: appleboy/ssh-action@master
