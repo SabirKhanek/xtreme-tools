@@ -28,7 +28,7 @@ jobs:
 
       - name: Zip the .next (built directory)
         run: |
-          apt install zip
+          sudo apt install zip
           zip .next .next
 
       - name: Copy to server
