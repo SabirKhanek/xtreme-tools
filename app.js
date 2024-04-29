@@ -3,7 +3,7 @@ const { parse } = require("url");
 const next = require("next");
 const fs = require("fs");
 const port = process.env.PORT || 3000;
-
+require("fs").createFileSync("PID", process.pid.toString());
 // Create the Express-Next App
 const app = next({
   dev: false,
