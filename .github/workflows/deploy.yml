@@ -39,8 +39,7 @@ jobs:
 
       - name: Copy to server
         run: |
-          echo "${{ secrets.SSHKEY }}" > SSHKEY
-          scp -i ~/.ssh/id_rsa -P ${{ secrets.PORT }} ./.next.zip ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/xtremetools_ssr
+          scp -i ~/.ssh/id_rsa -P ${{ secrets.PORT }} ./next.zip ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/xtremetools_ssr
 
       - name: Restart on Server
         uses: appleboy/ssh-action@master
