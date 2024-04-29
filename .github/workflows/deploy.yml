@@ -28,7 +28,7 @@ jobs:
 
       - name: Zip the .next (built directory)
         run: |
-          zip -r app.js next ./.next
+          zip -r next ./.next ./app.js
 
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
