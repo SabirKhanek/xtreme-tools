@@ -8,6 +8,7 @@
 
 .env
 PID
+app.logs
 app.log
 # testing
 /coverage
