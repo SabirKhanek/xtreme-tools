@@ -76,7 +76,7 @@ export default async function Blogs({
   );
 }
 
-export function HeadingPreDecor() {
+function HeadingPreDecor() {
   return (
     <svg
       width="62"
@@ -95,7 +95,7 @@ export function HeadingPreDecor() {
   );
 }
 
-export function BlogCardContainer({ blogs }: { blogs: blogs[] }) {
+function BlogCardContainer({ blogs }: { blogs: blogs[] }) {
   if (blogs.length > 0) {
     return (
       <div className="grid py-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-7">
@@ -109,7 +109,7 @@ export function BlogCardContainer({ blogs }: { blogs: blogs[] }) {
   } else return <div>No results</div>;
 }
 
-export function BlogCard({ blog }: { blog: blogs }) {
+function BlogCard({ blog }: { blog: blogs }) {
   const image =
     blog.img && `https://admin.xtreme.tools/images/blog/${blog.thumbnail}`;
   return (
