@@ -2,6 +2,7 @@ import { blogs } from "@prisma/client";
 import prisma from "../shared/prisma";
 import Link from "next/link";
 import { Button } from "../components/button";
+import Image from "next/image";
 
 export default async function Blogs({
   searchParams,
@@ -117,10 +118,13 @@ function BlogCard({ blog }: { blog: blogs }) {
   return (
     <div className="bg-primary/5 h-full p-5 ">
       <div className="border border-black/70 rounded-lg w-full  overflow-hidden aspect-[310/179]">
-        <img
+        <Image
+          width={310}
+          height={179}
+          alt={"blog thumbnail"}
           className="object-center object-cover"
           src={image || "/assests/noimage.png"}
-        ></img>
+        ></Image>
       </div>
       <div className="my-3">
         <Link href={`/blogs/${blog.slug}`} className="hover:underline">

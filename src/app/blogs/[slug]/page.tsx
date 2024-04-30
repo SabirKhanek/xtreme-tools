@@ -1,6 +1,16 @@
 import prisma from "@/app/shared/prisma";
 import { notFound, useParams } from "next/navigation";
-import { BlogStyles } from "./styles";
+import "./styles.css";
+import { AppendView } from "./appendView";
+async function increment(id: bigint) {
+  "use server";
+  try {
+    const res = await prisma.blogs.update({
+      where: { id: id },
+      data: { views: { increment: 1 } },
+    });
+  } catch (err) {}
+}
 export default async function BlogPage({
   params,
 }: {
@@ -11,13 +21,15 @@ export default async function BlogPage({
     where: { slug: { equals: slug } },
   });
   if (!blog) return notFound();
-  else
+  else {
+    const image =
+      blog.img && `https://admin.xtreme.tools/images/blog/${blog.img}`;
     return (
       <div className="py-5 !max-w-[960px] responsive">
-        <BlogStyles></BlogStyles>
+        <AppendView id={blog.id} increment={increment} />
         <div className="aspect-[940/460] relative rounded-lg overflow-hidden">
           <img
-            src="https://picsum.photos/960/460"
+            src={image || "https://picsum.photos/960/460"}
             className="object-cover w-full h-full object-center hover:scale-110 transition-all duration-150 cursor-pointer"
             alt=""
           />
@@ -31,6 +43,7 @@ export default async function BlogPage({
           </div>
         </div>
         <div
+          id="blog_content"
           className="pt-12"
           dangerouslySetInnerHTML={{
             __html: blog.description || "<div>No Content</div>",
@@ -38,6 +51,7 @@ export default async function BlogPage({
         ></div>
       </div>
     );
+  }
 }
 
 function getMonthName(monthNumber?: number) {
