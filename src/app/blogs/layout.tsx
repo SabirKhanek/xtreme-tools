@@ -23,7 +23,7 @@ export default function ToolsPageLayout({
                 </li>
                 <span> &gt; </span>
                 <li className="hover:text-primary hover:underline hover:font-semibold">
-                  <Link href={"blogs"}>Blogs</Link>
+                  <Link href={"/blogs"}>Blogs</Link>
                 </li>
               </ul>
               {children}
