@@ -24,11 +24,12 @@ jobs:
       - name: Build Frontend
         run: |
           npm install
+          echo ${{ secrets.DOTENV }} > .env 
           npx next build
 
       - name: Zip the .next (built directory)
         run: |
-          zip -r next ./.next ./app.js
+          zip -r next ./.next ./.env ./schema.prisma ./app.js
 
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
@@ -40,6 +41,16 @@ jobs:
       - name: Copy to server
         run: |
           scp -i ~/.ssh/id_rsa -P ${{ secrets.PORT }} ./next.zip ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/xtremetools_ssr
+
+      # - name: Push new DB schema if changed
+      #   if: ${{ github.event_name == 'push' && contains(github.event.head_commit.modified, 'schema.prisma') }}
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username: ${{ secrets.USERNAME }}
+      #     port: ${{ secrets.PORT }}
+      #     key: ${{ secrets.SSHKEY }}
+      #     script: "source ~/nodevenv/20/bin/activate && cd ~/xtremetools_ssr && npx prisma db push"
 
       - name: Restart on Server
         uses: appleboy/ssh-action@master

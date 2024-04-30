@@ -1,0 +1,231 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model admin_tools {
+  id          BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  title       String?   @db.MediumText
+  img         String?
+  url         String?
+  description String?   @db.LongText
+  created_by  Int?
+  created_at  DateTime? @db.Timestamp(0)
+  updated_at  DateTime? @db.Timestamp(0)
+}
+
+model blogs {
+  id          BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  title       String?   @db.MediumText
+  img         String?   //  940x460
+  short_description   String?  @db.MediumText
+  thumbnail   String?   //  310x180
+  description String?   @db.LongText
+  tags        String?   @db.LongText
+  categories  String?   @db.LongText
+  views       Int?      @default(0)
+  slug        String?   @db.LongText
+  created_by  Int?
+  created_at  DateTime? @db.Timestamp(0)
+  updated_at  DateTime? @db.Timestamp(0)
+}
+
+model categories {
+  id         BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  name       String?   @db.MediumText
+  created_by Int?
+  status     Int       @default(1) @db.TinyInt
+  created_at DateTime? @db.Timestamp(0)
+  updated_at DateTime? @db.Timestamp(0)
+}
+
+model model_has_permissions {
+  permission_id BigInt      @db.UnsignedBigInt
+  model_type    String
+  model_id      BigInt      @db.UnsignedBigInt
+  permissions   permissions @relation(fields: [permission_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "model_has_permissions_permission_id_foreign")
+
+  @@id([permission_id, model_id, model_type])
+  @@index([model_id, model_type], map: "model_has_permissions_model_id_model_type_index")
+}
+
+model model_has_roles {
+  role_id    BigInt @db.UnsignedBigInt
+  model_type String
+  model_id   BigInt @db.UnsignedBigInt
+  roles      roles  @relation(fields: [role_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "model_has_roles_role_id_foreign")
+
+  @@id([role_id, model_id, model_type])
+  @@index([model_id, model_type], map: "model_has_roles_model_id_model_type_index")
+}
+
+model newsletter_subscribers {
+  email      String   @id @db.VarChar(255)
+  subscribed Boolean? @default(true)
+  createdAt  DateTime @db.DateTime(0)
+  updatedAt  DateTime @db.DateTime(0)
+}
+
+model notifications {
+  id              String    @id @db.Char(36)
+  type            String
+  notifiable_type String
+  notifiable_id   BigInt    @db.UnsignedBigInt
+  data            String    @db.Text
+  read_at         DateTime? @db.Timestamp(0)
+  created_at      DateTime? @db.Timestamp(0)
+  updated_at      DateTime? @db.Timestamp(0)
+
+  @@index([notifiable_type, notifiable_id], map: "notifications_notifiable_type_notifiable_id_index")
+}
+
+model otp_token {
+  token     String   @id @db.VarChar(255)
+  createdAt DateTime @db.DateTime(0)
+  updatedAt DateTime @db.DateTime(0)
+  uid       Int?
+  reason    String?  @default("verfication") @db.VarChar(255)
+  user      user?    @relation(fields: [uid], references: [uid], map: "otp_token_ibfk_1")
+
+  @@index([uid], map: "uid")
+}
+
+model permissions {
+  id                    BigInt                  @id @default(autoincrement()) @db.UnsignedBigInt
+  name                  String
+  guard_name            String
+  created_at            DateTime?               @db.Timestamp(0)
+  updated_at            DateTime?               @db.Timestamp(0)
+  model_has_permissions model_has_permissions[]
+  role_has_permissions  role_has_permissions[]
+
+  @@unique([name, guard_name], map: "permissions_name_guard_name_unique")
+}
+
+model role_has_permissions {
+  permission_id BigInt      @db.UnsignedBigInt
+  role_id       BigInt      @db.UnsignedBigInt
+  permissions   permissions @relation(fields: [permission_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "role_has_permissions_permission_id_foreign")
+  roles         roles       @relation(fields: [role_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "role_has_permissions_role_id_foreign")
+
+  @@id([permission_id, role_id])
+  @@index([role_id], map: "role_has_permissions_role_id_foreign")
+}
+
+model roles {
+  id                   BigInt                 @id @default(autoincrement()) @db.UnsignedBigInt
+  name                 String
+  guard_name           String
+  created_at           DateTime?              @db.Timestamp(0)
+  updated_at           DateTime?              @db.Timestamp(0)
+  model_has_roles      model_has_roles[]
+  role_has_permissions role_has_permissions[]
+
+  @@unique([name, guard_name], map: "roles_name_guard_name_unique")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model subscription_plans {
+  id                    String                                    @id @db.VarChar(255)
+  name                  String?                                   @db.VarChar(255)
+  createdAt             DateTime                                  @db.DateTime(0)
+  updatedAt             DateTime                                  @db.DateTime(0)
+  original_price        Int                                       @default(0)
+  discounted_price      Int?
+  features              String?                                   @db.LongText
+  level                 Int                                       @default(0)
+  subscription_interval subscription_plans_subscription_interval? @default(monthly)
+  tool_quota            tool_quota[]
+  user                  user[]
+}
+
+model table {
+  id         String       @id @db.VarChar(255)
+  name       String?      @db.VarChar(255)
+  createdAt  DateTime     @db.DateTime(0)
+  updatedAt  DateTime     @db.DateTime(0)
+  tool_quota tool_quota[]
+  tool_usage tool_usage[]
+}
+
+model tags {
+  id         BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  name       String?   @db.MediumText
+  created_by Int?
+  status     Int       @default(1) @db.TinyInt
+  created_at DateTime? @db.Timestamp(0)
+  updated_at DateTime? @db.Timestamp(0)
+}
+
+model tool_quota {
+  tool_id            String             @db.VarChar(255)
+  plan               String             @db.VarChar(255)
+  quota              Int?
+  createdAt          DateTime           @db.DateTime(0)
+  updatedAt          DateTime           @db.DateTime(0)
+  table              table              @relation(fields: [tool_id], references: [id], onDelete: Cascade, map: "tool_quota_ibfk_1")
+  subscription_plans subscription_plans @relation(fields: [plan], references: [id], onDelete: Cascade, map: "tool_quota_ibfk_2")
+
+  @@id([tool_id, plan])
+  @@index([plan], map: "plan")
+}
+
+model tool_usage {
+  uid       Int
+  tool_id   String   @db.VarChar(255)
+  usage     Int?     @default(0)
+  date      Int      @db.TinyInt
+  month     Int      @db.TinyInt
+  year      Int
+  createdAt DateTime @db.DateTime(0)
+  updatedAt DateTime @db.DateTime(0)
+  user      user     @relation(fields: [uid], references: [uid], onDelete: Cascade, map: "tool_usage_ibfk_1")
+  table     table    @relation(fields: [tool_id], references: [id], onDelete: Cascade, map: "tool_usage_ibfk_2")
+
+  @@id([uid, tool_id, date, month, year])
+  @@index([tool_id], map: "tool_id")
+}
+
+model user {
+  uid                Int                 @id @default(autoincrement())
+  first_name         String?             @db.VarChar(255)
+  last_name          String?             @db.VarChar(255)
+  email              String              @unique(map: "email") @db.VarChar(255)
+  password           String              @db.VarChar(255)
+  verified           Boolean?            @default(false)
+  profile_photo_slug String?             @db.VarChar(255)
+  user_plan          String?             @default("basic") @db.VarChar(255)
+  createdAt          DateTime            @db.DateTime(0)
+  updatedAt          DateTime            @db.DateTime(0)
+  otp_token          otp_token[]
+  tool_usage         tool_usage[]
+  subscription_plans subscription_plans? @relation(fields: [user_plan], references: [id], onDelete: Cascade, map: "user_ibfk_1")
+
+  @@index([user_plan], map: "user_plan")
+}
+
+model users {
+  id                 BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  name               String
+  email              String    @unique(map: "users_email_unique")
+  password           String
+  avatar             String?
+  address            String?   @db.MediumText
+  description        String?   @db.MediumText
+  phone_no           BigInt?
+  app_user           Int?      @default(0) @db.TinyInt
+  created_at         DateTime? @db.Timestamp(0)
+  updated_at         DateTime? @db.Timestamp(0)
+  last_login_at      DateTime? @db.DateTime(0)
+  last_login_ip      String?
+  profile_photo_path String?   @db.VarChar(255)
+}
+
+enum subscription_plans_subscription_interval {
+  yearly
+  monthly
+}
