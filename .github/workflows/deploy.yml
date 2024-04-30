@@ -25,6 +25,7 @@ jobs:
         run: |
           npm install
           echo '${{ secrets.DOTENV }}' > .env 
+          npx prisma generate
           npx next build
 
       - name: Zip the .next (built directory)

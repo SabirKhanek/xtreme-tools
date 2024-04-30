@@ -111,7 +111,9 @@ function BlogCardContainer({ blogs }: { blogs: blogs[] }) {
 
 function BlogCard({ blog }: { blog: blogs }) {
   const image =
-    blog.img && `https://admin.xtreme.tools/images/blog/${blog.thumbnail}`;
+    blog.thumbnail &&
+    `https://admin.xtreme.tools/images/blog/${blog.thumbnail}`;
+
   return (
     <div className="bg-primary/5 h-full p-5 ">
       <div className="border border-black/70 rounded-lg w-full  overflow-hidden aspect-[310/179]">

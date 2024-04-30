@@ -7,7 +7,8 @@
 .yarn/install-state.gz
 
 .env
-
+PID
+app.log
 # testing
 /coverage
 
