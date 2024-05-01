@@ -10,8 +10,9 @@ import { LuBarChart2 } from "react-icons/lu";
 import { MdOutlineEmail } from "react-icons/md";
 import { FaMicrochip } from "react-icons/fa";
 import { Sidebar } from "../components/sidebar";
+import { CiSettings } from "react-icons/ci";
 
-export default function ToolsPageLayout({
+export default function SettingsPageLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -68,13 +69,13 @@ export default function ToolsPageLayout({
             setSidebarOpen(false);
           }}
           title="Tools Collection"
-          sidebarLinks={toolsList}
+          sidebarLinks={settingsList}
         />
       </div>
       <div className={`${getResponsiveClasses()} mt-4`}>
         <div className="flex justify-between  gap-7 relative">
           <div className="basis-[280px] hidden md:block lg:shrink-0 grow-0">
-            <Sidebar title="Tools Collection" sidebarLinks={toolsList} />
+            <Sidebar title="Settings" sidebarLinks={settingsList} />
           </div>
           <div className="grow">{children}</div>
         </div>
@@ -85,31 +86,23 @@ export default function ToolsPageLayout({
   );
 }
 
-export const toolsList = [
+export const settingsList = [
   {
-    name: "AI Tools",
-    icon: FaMicrochip,
+    name: "Account Settings",
+    icon: CiSettings,
     sublinks: [
       {
-        name: "AI Writer",
-        src: "/tools/ai/ai_writer",
+        name: "General Settings",
+        src: "/settings",
       },
       {
-        name: "AI Rewriter",
-        src: "/tools/ai/ai_rewriter",
-      },
-      {
-        name: "AI Outline Generator",
-        src: "/tools/ai/outline_generator",
-      },
-      {
-        name: "AI Translator",
-        src: "/tools/ai/translate",
+        name: "Security Settings",
+        src: "/settings/security",
       },
     ],
   },
   {
-    name: "Email Tools",
+    name: "Subscription Settings",
     icon: MdOutlineEmail,
     sublinks: [
       {

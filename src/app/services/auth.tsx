@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { StandardHttpResponse, axios } from "../shared/axios";
 import { toast } from "react-toastify";
 import { updateAuthDetails } from "../shared/contexts/auth";
@@ -24,7 +24,7 @@ export async function login(loginCredentials: LoginParams) {
   try {
     const response = await axios.post<
       StandardHttpResponse<UserAuthResponseData>
-    >("/auth", loginCredentials);
+    >("/auth", loginCredentials, { withCredentials: true });
     if (response && response.status === 401) {
       console.error("Unauthorized: Invalid credentials");
       toast.error(response.data.message || "Invalid credentials");
@@ -60,7 +60,7 @@ export async function signUp(userObj: {
   try {
     const response = await axios.post<
       StandardHttpResponse<UserAuthResponseData>
-    >("/auth/signup", userObj);
+    >("/auth/signup", userObj, { withCredentials: true });
     if (!response.data.success) {
       toast.error(`${response.data.statusCode}: ${response.data.message}`);
       return false;
