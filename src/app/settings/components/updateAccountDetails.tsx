@@ -1,5 +1,5 @@
 "use client";
-import profile_avatar from "@/app/assets/profile_avatar.svg";
+import profile_avatar from "./avatar.svg";
 
 import { AuthTokenPayload } from "@/app/shared/utils/jwt";
 import { UserUpdateType } from "./userUpdate.type";
@@ -61,7 +61,7 @@ export function UpdateAccountDetailsPage({
       website: Yup.string().label("Website"),
     }),
   });
-
+  console.log(profile_avatar);
   return (
     <div className="py-6">
       <h2 className="text-black/70 text-3xl font-bold">
@@ -73,7 +73,7 @@ export function UpdateAccountDetailsPage({
             <div className="rounded-full flex justify-center items-center">
               <img
                 className="object-cover rounded-full w-20 h-20"
-                src={profile_avatar}
+                src={profile_avatar.src}
                 alt=""
               />
             </div>
@@ -107,7 +107,7 @@ export function UpdateAccountDetailsPage({
           onSubmit={formik.handleSubmit}
         >
           <div className="w-full p-3 bg-[#E6B0D92E] mb-8 flex rounded-lg gap-2">
-            <img src={profile_avatar} className="w-7 h-7" alt="" />
+            <img src={profile_avatar.src} className="w-7 h-7" alt="" />
             <h3 className="uppercase font-semibold text-lg text-black/70">
               Personal <span className="text-primary">Info</span>
             </h3>
