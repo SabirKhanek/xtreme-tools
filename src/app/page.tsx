@@ -15,14 +15,14 @@ export default async function Home() {
   let tools: ToolCardProps[] = [];
   try {
     fetch("https://api.xtreme.tools", { cache: "no-cache" });
+    const toolsDb = await prisma.admin_tools.findMany();
+    tools = toolsDb.map((t) => ({
+      image: `https://admin.xtreme.tools/images/tool/${t.img}`,
+      header: t.title!,
+      body: t.description!,
+      href: t.url!,
+    }));
   } catch (err) {}
-  const toolsDb = await prisma.admin_tools.findMany();
-  tools = toolsDb.map((t) => ({
-    image: `https://admin.xtreme.tools/images/tool/${t.img}`,
-    header: t.title!,
-    body: t.description!,
-    href: t.url!,
-  }));
 
   return (
     <div className={`flex-grow w-full`}>
