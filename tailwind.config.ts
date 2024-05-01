@@ -23,6 +23,7 @@ export default {
         xs: "475px",
         960: "960px",
         "3xl": "1920px",
+        900: "900px",
         lm: "525px",
         "4xl": "2560px",
       },

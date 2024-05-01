@@ -13,7 +13,7 @@ export default function SubscriptionPageLayout({
     <div className={`relative  `}>
       <Navbar bgClassApplied={true} />
 
-      <div className={`${getResponsiveClasses()} mt-4`}>
+      <div className={`${"responsive"} mt-4`}>
         <div className="flex justify-between  gap-7 relative">
           <div className="grow py-3">
             <>{children}</>

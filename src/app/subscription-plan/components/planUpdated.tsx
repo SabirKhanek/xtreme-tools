@@ -8,7 +8,7 @@ export function PlanUpdated({ currentPlanName }: { currentPlanName: string }) {
   const searchParams = useSearchParams();
   useEffect(() => {
     if (searchParams.get("planUpdatedStatus") === "success")
-      toast.success(`Enjoy our ${currentPlanName} plan!`);
+      toast.success(`Enjoy our ${currentPlanName}🎉!`);
     else if (searchParams.get("planUpdatedStatus") === "failure") {
       toast.error("There was an unknown error while updating your plan!");
     }

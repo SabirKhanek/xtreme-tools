@@ -7,6 +7,7 @@ import { AIToolsSection } from "./components/home_sections/ai_tools";
 import { WebToolsSection } from "./components/home_sections/web_tools";
 import { SubscribeSection } from "./components/home_sections/subscribe";
 import { Footer } from "./components/footer";
+import { MoreToolsSection } from "./components/home_sections/moreTools";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <EmailMarketingToolsSection />
       <AIToolsSection />
       <WebToolsSection />
+      <MoreToolsSection />
       <SubscribeSection />
       <Footer />
     </div>

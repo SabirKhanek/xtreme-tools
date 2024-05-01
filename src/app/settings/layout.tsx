@@ -72,7 +72,7 @@ export default function SettingsPageLayout({
           sidebarLinks={settingsList}
         />
       </div>
-      <div className={`${getResponsiveClasses()} py-4`}>
+      <div className={`${"responsive"} py-4`}>
         <div className="flex justify-between  gap-7 relative">
           <div className="basis-[280px] hidden md:block lg:shrink-0 grow-0">
             <Sidebar title="Settings" sidebarLinks={settingsList} />
