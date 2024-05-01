@@ -3,7 +3,6 @@ import { getAuthUser } from "../shared/getAuthUser";
 import prisma from "../shared/prisma";
 import { UpdateAccountDetailsPage } from "./components/updateAccountDetails";
 import { UserUpdateType } from "./components/userUpdate.type";
-
 export default async function SettingsPage() {
   const payload = getAuthUser();
   async function updateUser(obj: UserUpdateType, uid: any, email: string) {
