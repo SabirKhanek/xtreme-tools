@@ -8,8 +8,21 @@ import { WebToolsSection } from "./components/home_sections/web_tools";
 import { SubscribeSection } from "./components/home_sections/subscribe";
 import { Footer } from "./components/footer";
 import { MoreToolsSection } from "./components/home_sections/moreTools";
+import prisma from "./shared/prisma";
+import { ToolCardProps } from "./components/home_sections/tool_card";
 
-export default function Home() {
+export default async function Home() {
+  let tools: ToolCardProps[] = [];
+  try {
+    const toolsDb = await prisma.admin_tools.findMany();
+    tools = toolsDb.map((t) => ({
+      image: `https://admin.xtreme.tools/images/blog/${t.img}`,
+      header: t.title!,
+      body: t.description!,
+      href: t.url!,
+    }));
+  } catch (err: any) {}
+
   return (
     <div className={`flex-grow w-full`}>
       <HeroSection />
@@ -18,7 +31,7 @@ export default function Home() {
       <EmailMarketingToolsSection />
       <AIToolsSection />
       <WebToolsSection />
-      <MoreToolsSection />
+      {tools.length > 0 && <MoreToolsSection tools={tools} />}
       <SubscribeSection />
       <Footer />
     </div>
