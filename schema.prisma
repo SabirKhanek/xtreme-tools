@@ -202,6 +202,9 @@ model user {
   user_plan          String?             @default("basic") @db.VarChar(255)
   createdAt          DateTime            @db.DateTime(0)
   updatedAt          DateTime            @db.DateTime(0)
+  countryCode        String?              @db.Char(2)
+  phoneNo            String?              @db.TinyText()
+  website            String?              @db.MediumText()
   otp_token          otp_token[]
   tool_usage         tool_usage[]
   subscription_plans subscription_plans? @relation(fields: [user_plan], references: [id], onDelete: Cascade, map: "user_ibfk_1")

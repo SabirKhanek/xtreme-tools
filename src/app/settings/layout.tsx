@@ -72,7 +72,7 @@ export default function SettingsPageLayout({
           sidebarLinks={settingsList}
         />
       </div>
-      <div className={`${getResponsiveClasses()} mt-4`}>
+      <div className={`${getResponsiveClasses()} py-4`}>
         <div className="flex justify-between  gap-7 relative">
           <div className="basis-[280px] hidden md:block lg:shrink-0 grow-0">
             <Sidebar title="Settings" sidebarLinks={settingsList} />
@@ -104,71 +104,6 @@ const settingsList = [
   {
     name: "Subscription Settings",
     icon: MdOutlineEmail,
-    sublinks: [
-      {
-        name: "Email Text Extraction",
-        src: "/tools/email_marketing/email_extractor",
-      },
-      {
-        name: "SMTP Tester",
-        src: "/tools/email_marketing/smtp_tester",
-      },
-      {
-        name: "Free Email Checker",
-        src: "/tools/email_marketing/email_checker",
-      },
-      {
-        name: "Bulk Email Verifier",
-        src: "/tools/email_marketing/bulk_email_checker",
-      },
-    ],
-  },
-  {
-    name: "Web Tools",
-    icon: BsGlobe2,
-    sublinks: [
-      {
-        name: "Favicon Generator",
-        src: "/tools/web/favicon_generator",
-      },
-      {
-        name: "TOC Generator",
-        src: "/tools/web/toc_generator",
-      },
-      {
-        name: "Secure Password Generator",
-        src: "/tools/web/secure_password_generator",
-      },
-      {
-        name: "Privacy Policy Generator",
-        src: "/tools/web/privacy_policy_generator",
-      },
-    ],
-  },
-  {
-    name: "SEO Tools",
-    icon: LuBarChart2,
-    sublinks: [
-      {
-        name: "Keywords Research",
-        src: "/tools/seo/keyword_research",
-      },
-      {
-        name: "Questions People ask",
-        src: "/tools/seo/people_also_ask",
-      },
-      {
-        name: "Backlinks Checker",
-        src: "/tools/seo/backlinks_checker",
-      },
-      {
-        name: "Competitors Keyword Research",
-        src: "/tools/seo/competitors_keyword_research",
-      },
-      {
-        name: "Domain Authority Checker",
-        src: "/tools/seo/domain_authority_checker",
-      },
-    ],
+    sublinks: [{ name: "Your Plan", src: "/subscription-plan" }],
   },
 ];

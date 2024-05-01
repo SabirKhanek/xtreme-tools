@@ -85,7 +85,7 @@ export async function signUp(userObj: {
 export async function logout() {
   if (typeof window !== "undefined") {
     localStorage.removeItem("jwt");
-    window.location.reload();
+    window.location.replace("/logout");
     return true;
   }
   return false;
