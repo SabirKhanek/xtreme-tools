@@ -86,7 +86,7 @@ export default function SettingsPageLayout({
   );
 }
 
-export const settingsList = [
+const settingsList = [
   {
     name: "Account Settings",
     icon: CiSettings,

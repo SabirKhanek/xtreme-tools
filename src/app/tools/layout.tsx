@@ -85,7 +85,7 @@ export default function ToolsPageLayout({
   );
 }
 
-export const toolsList = [
+const toolsList = [
   {
     name: "AI Tools",
     icon: FaMicrochip,
