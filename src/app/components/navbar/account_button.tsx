@@ -71,23 +71,23 @@ export function ProfileButton() {
                   <path
                     d="M11.1335 12.6533H4.8668C4.5868 12.6533 4.27347 12.4333 4.18013 12.1666L1.42013 4.44664C1.0268 3.33997 1.4868 2.99997 2.43347 3.67997L5.03347 5.53997C5.4668 5.83997 5.96013 5.68664 6.1468 5.19997L7.32013 2.0733C7.69347 1.0733 8.31347 1.0733 8.6868 2.0733L9.86013 5.19997C10.0468 5.68664 10.5401 5.83997 10.9668 5.53997L13.4068 3.79997C14.4468 3.0533 14.9468 3.4333 14.5201 4.63997L11.8268 12.18C11.7268 12.4333 11.4135 12.6533 11.1335 12.6533Z"
                     stroke="#4D4D4D"
-                    stroke-width="1.3"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="1.3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M4.33398 14.6667H11.6673"
                     stroke="#4D4D4D"
-                    stroke-width="1.3"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="1.3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M6.33398 9.33331H9.66732"
                     stroke="#4D4D4D"
-                    stroke-width="1.3"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="1.3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
 

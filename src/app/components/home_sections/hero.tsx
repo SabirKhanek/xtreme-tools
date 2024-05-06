@@ -31,8 +31,8 @@ export function HeroSection({ className }: HeroSectionProps) {
           cy="56"
           r="228"
           stroke="#E6B0D9"
-          stroke-opacity="0.1"
-          stroke-width="37"
+          strokeOpacity="0.1"
+          strokeWidth="37"
         />
       </svg>
       <svg
@@ -46,9 +46,9 @@ export function HeroSection({ className }: HeroSectionProps) {
         <path
           d="M-64.9998 116C-64.9998 102.674 -65.7262 91.8912 -58.7775 79.8889C-44.0597 54.4672 -26.6358 35.1258 -1.11087 20.1112C30.7216 1.38619 78.6417 -5.79309 113.445 8.4445C139.139 18.9559 160.608 31.9851 181 50.1112C191.29 59.258 196.042 69.563 203 80.0001"
           stroke="white"
-          stroke-opacity="0.64"
-          stroke-linecap="round"
-          stroke-dasharray="8 8"
+          strokeOpacity="0.64"
+          strokeLinecap="round"
+          strokeDasharray="8 8"
         />
       </svg>
       <Image
