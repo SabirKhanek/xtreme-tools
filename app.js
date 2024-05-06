@@ -7,6 +7,19 @@ require("fs").writeFileSync("PID", process.pid.toString());
 // Create the Express-Next App
 const app = next({
   dev: false,
+  conf: {
+    images: {
+      remotePatterns: [
+        {
+          protocol: "https",
+
+          hostname: "*",
+          port: "",
+          pathname: "/*",
+        },
+      ],
+    },
+  },
 });
 const handle = app.getRequestHandler();
 app
