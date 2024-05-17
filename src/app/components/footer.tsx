@@ -45,7 +45,7 @@ export function Footer({ className }: FooterProps) {
                 { name: "Terms and Conditions", route: "/terms" },
                 { name: "Contact Us", route: "/contact_us" },
                 { name: "About Us", route: "/about_us" },
-                { name: "Blogs", route: "#" },
+                { name: "Blogs", route: "/blogs" },
               ].map((val, index) => {
                 return (
                   <Link

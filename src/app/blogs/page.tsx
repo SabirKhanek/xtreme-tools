@@ -116,11 +116,13 @@ function BlogCard({ blog }: { blog: blogs }) {
   return (
     <div className="bg-primary/5 h-full p-5 ">
       <div className="border border-black/70 rounded-lg w-full  overflow-hidden aspect-[310/179]">
-        <img
+        <Image
+          width={310}
+          height={180}
           alt={"blog thumbnail"}
-          className="w-full h-full object-center object-cover"
+          className="!w-full !h-full object-center object-cover"
           src={image || "/assests/noimage.png"}
-        ></img>
+        ></Image>
       </div>
       <div className="my-3">
         <Link href={`/blogs/${blog.slug}`} className="hover:underline">

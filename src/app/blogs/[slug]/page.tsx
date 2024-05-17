@@ -2,6 +2,7 @@ import prisma from "@/app/shared/prisma";
 import { notFound, useParams } from "next/navigation";
 import "./styles.css";
 import { AppendView } from "./appendView";
+import Image from "next/image";
 async function increment(id: bigint) {
   "use server";
   try {
@@ -22,14 +23,16 @@ export default async function BlogPage({
   });
   if (!blog) return notFound();
   else {
-    const image = blog.img && `${blog.img}`;
+    const image = blog.img && `${blog.thumbnail}`;
     return (
-      <div className="py-5 !max-w-[960px] responsive">
+      <div className="py-5 [&>img]:mx-auto !max-w-[960px] responsive">
         <AppendView id={blog.id} increment={increment} />
         <div className="aspect-[940/460] relative rounded-lg overflow-hidden">
-          <img
+          <Image
+            width={960}
+            height={460}
             src={image || "/assests/noimage.png"}
-            className="object-cover w-full h-full object-center hover:scale-110 transition-all duration-150 cursor-pointer"
+            className="object-cover !w-full !h-full object-center hover:scale-110 transition-all duration-150 cursor-pointer"
             alt=""
           />
           <div className="px-4 py-3 backdrop-blur-sm absolute w-full bottom-0 text-white/60">
