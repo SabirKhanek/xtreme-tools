@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from "react";
 import { Button } from "@/app/components/button";
 import paraicon from "./assets/paraicon.svg";
@@ -9,11 +9,13 @@ import { Tool } from "../../types/tool";
 import { useAuth } from "@/app/shared/contexts/auth";
 import { LoginRequiredAlert } from "../../components/loginRequiredAlert";
 import { ToolUsage } from "../../components/toolUsage";
+import { useCookies } from "next-client-cookies";
 
-const toolId = "ai_rewriter"
+const toolId = "ai_rewriter";
 const requireLogin = true;
 export default function AIRewriter() {
   const auth = useAuth();
+  const isLoggedIn = useCookies().get("x_auth") ? true : false;
   const [usage, setUsage] = useState({ used: 0, quota: 20 });
 
   const [style, setStyle] = useState(styleOptions[0]);
@@ -44,7 +46,7 @@ export default function AIRewriter() {
           Online Tool for rewriting and paraphrasing using AI
         </p>
       </div>
-      {(requireLogin ? auth.authDetails.isLoggedIn : true) && (
+      {(requireLogin ? isLoggedIn || auth.authDetails.isLoggedIn : true) && (
         <div className="w-full border border-black rounded-xl justify-between min-h-[69.5vh] p-6 grid grid-cols-1">
           <div className="rounded-3xl shadow-lg bg-white grow flex flex-col gap-1">
             <div
@@ -159,7 +161,7 @@ export default function AIRewriter() {
           </div>
         </div>
       )}
-      {!(requireLogin ? auth.authDetails.isLoggedIn : true) && (
+      {!(requireLogin ? isLoggedIn || auth.authDetails.isLoggedIn : true) && (
         <LoginRequiredAlert />
       )}
       <div className="w-full border border-black rounded-xl p-6 my-5">

@@ -8,11 +8,13 @@ import { useAuth } from "@/app/shared/contexts/auth";
 import { LoginRequiredAlert } from "../../components/loginRequiredAlert";
 import { toast } from "react-toastify";
 import { ToolUsage } from "../../components/toolUsage";
+import { useCookies } from "next-client-cookies";
 
 const toolId = "outline_generator";
 const requireLogin = true;
 export default function OutlineGenerator() {
   const [usage, setUsage] = useState({ used: 0, quota: 20 });
+  const isLoggedIn = useCookies().get("x_auth") ? true : false;
 
   const auth = useAuth();
   const [isLoading, setIsLoading] = useState(false);
@@ -42,7 +44,7 @@ export default function OutlineGenerator() {
             Online Tool for generating outline for a given topic
           </p>
         </div>
-        {(requireLogin ? auth.authDetails.isLoggedIn : true) && (
+        {(requireLogin ? isLoggedIn || auth.authDetails.isLoggedIn : true) && (
           <div className="w-full border border-black rounded-xl justify-between p-6 flex flex-col">
             <div id="userInput" className="">
               <label className="mb-5">Your Topic</label>
@@ -142,7 +144,7 @@ export default function OutlineGenerator() {
             />
           </div>
         )}
-        {!(requireLogin ? auth.authDetails.isLoggedIn : true) && (
+        {!(requireLogin ? isLoggedIn || auth.authDetails.isLoggedIn : true) && (
           <LoginRequiredAlert />
         )}
       </div>

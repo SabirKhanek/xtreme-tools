@@ -9,7 +9,7 @@ const ReactQuill = dynamic(
 import { Button } from "@/app/components/button";
 import { Input } from "@/app/components/input";
 import { Toggler } from "@/app/components/toggle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { generateContent } from "@/app/services/ai";
 import { toast } from "react-toastify";
 import { FaRegCopy, FaSpinner } from "react-icons/fa";
@@ -20,6 +20,7 @@ import { ToolBody } from "@/app/components/toolBody";
 import { AIWriterDetails } from "./details";
 import Nossr from "@/app/components/nossr";
 import dynamic from "next/dynamic";
+import { useCookies } from "next-client-cookies";
 
 const toolId = "ai_writer";
 const requireLogin = true;
@@ -29,7 +30,7 @@ export default function AiWriter() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [appendSwitch, setAppendSwitch] = useState(false);
-
+  const cookie = useCookies();
   const handleRequest = async () => {
     if (usage.quota <= usage.used) {
       toast.info("Limit reached");
@@ -81,7 +82,7 @@ export default function AiWriter() {
             className="border-primary border "
             onClick={() => {
               // Assuming `content` is your HTML content
-              if(typeof document === undefined) return
+              if (typeof document === undefined) return;
               const temporaryElement = document.createElement("div");
               temporaryElement.innerHTML = content || "";
 
@@ -117,21 +118,25 @@ export default function AiWriter() {
         </div>
       </div>
       <div className="grow grid grid-rows-1 mt-3 ">
-        <Nossr>
-          <ReactQuill
-            theme="snow"
-            value={content}
-            className="my-2 h-[340px]"
-            onChange={(e) => setContent(e)}
-          />
-        </Nossr>
+        {content !== "" && (
+          <Nossr>
+            <ReactQuill
+              theme="snow"
+              value={content}
+              className="my-2 h-[340px]"
+              onChange={(e) => setContent(e)}
+            />
+          </Nossr>
+        )}
       </div>
-      <ToolUsage
-        className=" md:mt-10 mt-16"
-        toolId={toolId}
-        usage={usage}
-        setUsage={(v) => setUsage(v)}
-      />
+      <Nossr>
+        <ToolUsage
+          className=" md:mt-10 mt-16"
+          toolId={toolId}
+          usage={usage}
+          setUsage={(v) => setUsage(v)}
+        />
+      </Nossr>
     </ToolBody>
   );
 }

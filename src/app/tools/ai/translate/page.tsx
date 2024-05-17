@@ -9,6 +9,7 @@ import { Tool } from "../../types/tool";
 import { useAuth } from "@/app/shared/contexts/auth";
 import { LoginRequiredAlert } from "../../components/loginRequiredAlert";
 import { ToolUsage } from "../../components/toolUsage";
+import { useCookies } from "next-client-cookies";
 
 const toolId = "ai_translator";
 const requireLogin = true;
@@ -41,6 +42,8 @@ export default function AITranslator() {
     }
     setIsLoading(false);
   };
+  const isLoggedIn = useCookies().get("x_auth") ? true : false;
+
   return (
     <div>
       <div>
@@ -49,7 +52,7 @@ export default function AITranslator() {
           Online Tool for translating paragraphs using AI
         </p>
       </div>
-      {(requireLogin ? auth.authDetails.isLoggedIn : true) && (
+      {(requireLogin ? isLoggedIn || auth.authDetails.isLoggedIn : true) && (
         <div className="w-full border border-black rounded-xl justify-between min-h-[75vh] p-6 flex flex-col gap-2">
           <div className="grid grid-cols-1 grow">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 grow">
@@ -169,7 +172,7 @@ export default function AITranslator() {
           />
         </div>
       )}
-      {!(requireLogin ? auth.authDetails.isLoggedIn : true) && (
+      {!(requireLogin ? isLoggedIn || auth.authDetails.isLoggedIn : true) && (
         <LoginRequiredAlert />
       )}
       <div className="w-full border border-black rounded-xl p-6 my-5">

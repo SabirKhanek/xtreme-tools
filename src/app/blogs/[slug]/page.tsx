@@ -25,7 +25,7 @@ export default async function BlogPage({
   else {
     const image = blog.img && `${blog.img}`;
     return (
-      <div className="py-5 [&>img]:mx-auto !max-w-[960px] responsive">
+      <div className="py-5 [&_img]:mx-auto !max-w-[960px] responsive">
         <AppendView id={blog.id} increment={increment} />
         <div className="aspect-[940/460] relative rounded-lg overflow-hidden">
           <Image
