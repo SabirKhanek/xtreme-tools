@@ -22,14 +22,13 @@ export default async function BlogPage({
   });
   if (!blog) return notFound();
   else {
-    const image =
-      blog.img && `https://admin.xtreme.tools/images/blog/${blog.img}`;
+    const image = blog.img && `${blog.img}`;
     return (
       <div className="py-5 !max-w-[960px] responsive">
         <AppendView id={blog.id} increment={increment} />
         <div className="aspect-[940/460] relative rounded-lg overflow-hidden">
           <img
-            src={image || "https://picsum.photos/960/460"}
+            src={image || "/assests/noimage.png"}
             className="object-cover w-full h-full object-center hover:scale-110 transition-all duration-150 cursor-pointer"
             alt=""
           />

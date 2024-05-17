@@ -111,9 +111,7 @@ function BlogCardContainer({ blogs }: { blogs: blogs[] }) {
 }
 
 function BlogCard({ blog }: { blog: blogs }) {
-  const image =
-    blog.thumbnail &&
-    `https://admin.xtreme.tools/images/blog/${blog.thumbnail}`;
+  const image = blog.thumbnail && `${blog.thumbnail}`;
 
   return (
     <div className="bg-primary/5 h-full p-5 ">
