@@ -23,7 +23,7 @@ export default async function BlogPage({
   });
   if (!blog) return notFound();
   else {
-    const image = blog.img && `${blog.thumbnail}`;
+    const image = blog.img && `${blog.img}`;
     return (
       <div className="py-5 [&>img]:mx-auto !max-w-[960px] responsive">
         <AppendView id={blog.id} increment={increment} />
@@ -35,7 +35,13 @@ export default async function BlogPage({
             className="object-cover !w-full !h-full object-center hover:scale-110 transition-all duration-150 cursor-pointer"
             alt=""
           />
-          <div className="px-4 py-3 backdrop-blur-sm absolute w-full bottom-0 text-white/60">
+          <div
+            style={{
+              background:
+                "linear-gradient(90deg, rgba(0, 0, 0, 0.6), transparent)",
+            }}
+            className="px-4 py-3 backdrop-blur-sm absolute w-full bottom-0 text-white/60"
+          >
             <div className=" text-sm">
               {blog.created_at?.getDate()}{" "}
               {getMonthName(blog.created_at?.getMonth())}
