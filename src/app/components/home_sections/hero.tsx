@@ -99,7 +99,7 @@ export function HeroSection({ className }: HeroSectionProps) {
               Powerful Solutions For The Enterprise
             </h2>
             <p className="text-black/70 break-words">
-              Are you yeady to take your projects to new heights? At Xtreme
+              Are you ready to take your projects to new heights? At Xtreme
               Tool, we're dedicated to empowering innovation and unleashing your
               potential.
             </p>
