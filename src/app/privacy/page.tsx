@@ -7,7 +7,7 @@ export default function PrivacyPolicy() {
   return (
     <div className="flex-grow w-full flex flex-col">
       <Navbar bgClassApplied />
-      <div className={`grow my-16 ${"responsive"}`}>
+      <div className={`grow py-16 ${"responsive"}`}>
         <h1 className="text-primary font-bold text-3xl">Privacy Policy</h1>
         <p className="my-3 text-black/70">Last Updated: 27-December-2023</p>
         <p className="text-black/90">

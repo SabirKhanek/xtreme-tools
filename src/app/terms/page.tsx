@@ -8,7 +8,7 @@ export default function TOC() {
   return (
     <div className="flex-grow w-full flex flex-col">
       <Navbar bgClassApplied />
-      <div className={`grow my-16 ${"responsive"}`}>
+      <div className={`grow py-16 ${"responsive"}`}>
         <h1 className="text-primary font-bold text-3xl">Terms & Conditions</h1>
         <p className="text-black/90">
           Welcome to our website. This site is maintained as a service to our

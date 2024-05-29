@@ -5,6 +5,7 @@ const ReactQuill = dynamic(
   },
   { ssr: false }
 );
+import "react-quill/dist/quill.snow.css";
 
 import { Button } from "@/app/components/button";
 import { Input } from "@/app/components/input";
@@ -118,7 +119,7 @@ export default function AiWriter() {
         </div>
       </div>
       <div className="grow grid grid-rows-1 mt-3 ">
-        {content !== "" && (
+        {
           <Nossr>
             <ReactQuill
               theme="snow"
@@ -127,7 +128,7 @@ export default function AiWriter() {
               onChange={(e) => setContent(e)}
             />
           </Nossr>
-        )}
+        }
       </div>
       <Nossr>
         <ToolUsage

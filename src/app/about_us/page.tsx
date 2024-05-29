@@ -10,7 +10,7 @@ export default function AboutUs() {
     <div className="flex-grow w-full flex flex-col">
       <Navbar bgClassApplied />
       <div
-        className={`grid grid-cols-1 sm:grid-cols-2 gap-x-9 gap-y-9 grow my-16 ${"responsive"}`}
+        className={`grid grid-cols-1 sm:grid-cols-2 gap-x-9 gap-y-9 grow py-16 ${"responsive"}`}
       >
         <div className="">
           <h1 className="text-primary text-3xl font-bold">About us</h1>

@@ -95,10 +95,10 @@ const settingsList = [
         name: "General Settings",
         src: "/settings",
       },
-      {
-        name: "Security Settings",
-        src: "/settings/security",
-      },
+      // {
+      //   name: "Security Settings",
+      //   src: "/settings/security",
+      // },
     ],
   },
   {
