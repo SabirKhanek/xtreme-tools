@@ -1,11 +1,11 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.0.x"]
+}
+
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
-}
-
-generator client {
-  provider = "prisma-client-js"
-  binaryTargets = ["native", "debian-openssl-1.0.x"]
 }
 
 model admin_tools {
@@ -20,19 +20,19 @@ model admin_tools {
 }
 
 model blogs {
-  id          BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
-  title       String?   @db.MediumText
-  img         String?   //  940x460
-  short_description   String?  @db.MediumText
-  thumbnail   String?   //  310x180
-  description String?   @db.LongText
-  tags        String?   @db.LongText
-  categories  String?   @db.LongText
-  views       Int?      @default(0)
-  slug        String?   @db.LongText
-  created_by  Int?
-  created_at  DateTime? @db.Timestamp(0)
-  updated_at  DateTime? @db.Timestamp(0)
+  id                BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  title             String?   @db.MediumText
+  img               String?   @db.LongText
+  description       String?   @db.LongText
+  tags              String?   @db.LongText
+  categories        String?   @db.LongText
+  slug              String?   @db.LongText
+  created_by        Int?
+  created_at        DateTime? @db.Timestamp(0)
+  updated_at        DateTime? @db.Timestamp(0)
+  short_description String?   @db.MediumText
+  thumbnail         String?
+  views             Int?      @default(0)
 }
 
 model categories {
@@ -42,6 +42,16 @@ model categories {
   status     Int       @default(1) @db.TinyInt
   created_at DateTime? @db.Timestamp(0)
   updated_at DateTime? @db.Timestamp(0)
+}
+
+model media {
+  id         BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  img        String?
+  url        String?
+  created_by Int?
+  created_at DateTime? @db.Timestamp(0)
+  updated_at DateTime? @db.Timestamp(0)
+  deleted_at DateTime? @db.Timestamp(0)
 }
 
 model model_has_permissions {
@@ -130,15 +140,25 @@ model roles {
 }
 
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+
+enum SubscriptionPlanStatus {
+  active
+  archived
+}
+
 model subscription_plans {
-  id                    String                                    @id @db.VarChar(255)
-  name                  String?                                   @db.VarChar(255)
-  createdAt             DateTime                                  @db.DateTime(0)
-  updatedAt             DateTime                                  @db.DateTime(0)
-  original_price        Int                                       @default(0)
-  discounted_price      Int?
-  features              String?                                   @db.LongText
-  level                 Int                                       @default(0)
+  id                String                 @id @db.VarChar(255)
+  name              String?                @db.VarChar(255)
+  createdAt         DateTime               @db.DateTime(0)
+  updatedAt         DateTime               @db.DateTime(0)
+  original_price    Int                    @default(0)
+  discounted_price  Int? // delete this field from admin panel
+  features          String?                @db.LongText
+  level             Int                    @default(0)
+  additional_meta   Json?
+  stripe_product_id String?                @db.VarChar(255)
+  status            SubscriptionPlanStatus @default(active)
+
   subscription_interval subscription_plans_subscription_interval? @default(monthly)
   tool_quota            tool_quota[]
   user                  user[]
@@ -200,14 +220,18 @@ model user {
   verified           Boolean?            @default(false)
   profile_photo_slug String?             @db.VarChar(255)
   user_plan          String?             @default("basic") @db.VarChar(255)
+  user_plan_expiry   DateTime?           @db.Date
+  stripe_subscription_id String?        @db.MediumText  
+  stripe_customer_id  String?             @db.MediumText
   createdAt          DateTime            @db.DateTime(0)
   updatedAt          DateTime            @db.DateTime(0)
-  countryCode        String?              @db.Char(2)
-  phoneNo            String?              @db.TinyText()
-  website            String?              @db.MediumText()
+  countryCode        String?             @db.Char(2)
+  phoneNo            String?             @db.TinyText
+  website            String?             @db.MediumText
   otp_token          otp_token[]
   tool_usage         tool_usage[]
   subscription_plans subscription_plans? @relation(fields: [user_plan], references: [id], onDelete: Cascade, map: "user_ibfk_1")
+  additional_meta    Json?
 
   @@index([user_plan], map: "user_plan")
 }

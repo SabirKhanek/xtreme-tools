@@ -1,41 +1,25 @@
-import { RedirectType, redirect } from "next/navigation";
 import { getAuthUser } from "../shared/getAuthUser";
 import prisma from "../shared/prisma";
 import { UpdatePlanButton } from "./components/updatePlanButton";
 import { PlanUpdated } from "./components/planUpdated";
 
 export default async function SubscriptionPlanPage() {
-  const payload = getAuthUser();
-  const userPlanPromise = prisma.user.findFirst({
-    where: { uid: payload.uid },
+  const payload = getAuthUser(true); // Allow for public access
+  const userPlanPromise = payload
+    ? prisma.user.findFirst({
+        where: { uid: payload.uid },
+      })
+    : Promise.resolve(null); // Return null if no user is authenticated
+  const plansPromise = prisma.subscription_plans.findMany({
+    orderBy: { level: "asc" },
+    where: { status: "active" },
   });
-  const plansPromise = prisma.subscription_plans.findMany();
   const [user, plans] = await Promise.all([userPlanPromise, plansPromise]);
-  const userPlan = user!.user_plan || "";
-
-  async function updateUserPlan(planId: string) {
-    "use server";
-    const user = payload.uid;
-    let fail = false;
-    try {
-      await prisma.user.update({
-        where: { uid: user },
-        data: { user_plan: planId },
-      });
-    } catch (err: any) {
-      console.log(err);
-      fail = true;
-    }
-    redirect(
-      `/subscription-plan?planUpdatedStatus=${!fail ? "success" : "failure"}`
-    );
-  }
+  const userPlan = user ? user.user_plan : ""; // Use an empty string if no user is authenticated
 
   return (
     <div className="py-10">
-      <PlanUpdated
-        currentPlanName={plans.filter((p) => p.id === userPlan)[0].name || ""}
-      />
+      {user && <PlanUpdated user_id={payload?.uid} />}
       <div className="flex flex-col gap-2 justify-center items-center">
         <h2 className="text-4xl text-primary font-bold">Subscription Plans</h2>
         <span className="text-sm font-light">
@@ -55,7 +39,7 @@ export default async function SubscriptionPlanPage() {
                 </div>
               </div>
             )}
-            <div className=" flex gap-5 justify-between flex-col px-5 py-5">
+            <div className="flex gap-5 justify-between flex-col px-5 py-5">
               <div className="grow">
                 <div className="flex justify-end">
                   <svg
@@ -66,8 +50,8 @@ export default async function SubscriptionPlanPage() {
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
+                      fillRule="evenodd"
+                      clipRule="evenodd"
                       d="M36.126 10.24L35.846 9.74C35.4848 9.13538 34.9754 8.63286 34.366 8.28L20.946 0.54C20.3384 0.1875 19.6486 0.00124 18.946 0H18.366C17.6634 0.00124 16.9736 0.1875 16.366 0.54L2.94601 8.3C2.33995 8.65052 1.83654 9.15394 1.48602 9.76L1.20602 10.26C0.853516 10.8677 0.667256 11.5575 0.666016 12.26V27.76C0.667256 28.4626 0.853516 29.1524 1.20602 29.76L1.48602 30.26C1.8456 30.859 2.34699 31.3604 2.94601 31.72L16.386 39.46C16.9906 39.8198 17.6824 40.0066 18.386 40H18.946C19.6486 39.9988 20.3384 39.8126 20.946 39.46L34.366 31.7C34.978 31.3574 35.4834 30.852 35.826 30.24L36.126 29.74C36.4742 29.1306 36.6602 28.442 36.666 27.74V12.24C36.6648 11.5375 36.4786 10.8477 36.126 10.24ZM18.366 4H18.946L30.666 10.76L18.666 17.68L6.66601 10.76L18.366 4ZM20.666 35L32.366 28.24L32.666 27.74V14.22L20.666 21.16V35Z"
                       fill="#58126A"
                     />
@@ -87,7 +71,7 @@ export default async function SubscriptionPlanPage() {
                   <hr className="w-full bg-black h-0.5 my-4" />
                   <div className="flex flex-col gap-2 ">
                     <span className="mb-2 text-black">Includes:</span>
-                    {JSON.parse(plan.features!).map(
+                    {JSON.parse(plan.features || "[]").map(
                       (feat: string, index: number) => (
                         <span key={index} className="flex gap-2 items-center">
                           <svg
@@ -109,8 +93,8 @@ export default async function SubscriptionPlanPage() {
                   </div>
                 </div>
               </div>
+
               <UpdatePlanButton
-                doUpdate={updateUserPlan}
                 current={plan.id === userPlan}
                 planId={plan.id}
               />

@@ -2,13 +2,15 @@ import { cookies } from "next/headers";
 import { AuthTokenPayload, validateToken } from "./utils/jwt";
 import { redirect } from "next/navigation";
 
-export function getAuthUser() {
+export function getAuthUser(allow_undefined = false) {
   const auth_token = cookies().get("x_auth")?.value;
-  let payload;
   try {
-    payload = validateToken<AuthTokenPayload>(auth_token as string);
+    return validateToken<AuthTokenPayload>(auth_token as string);
   } catch (err) {
-    redirect("/logout");
+    if (allow_undefined) {
+      return;
+    } else {
+      redirect("/login");
+    }
   }
-  return payload as AuthTokenPayload;
 }

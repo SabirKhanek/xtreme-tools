@@ -104,6 +104,6 @@ const settingsList = [
   {
     name: "Subscription Settings",
     icon: MdOutlineEmail,
-    sublinks: [{ name: "Your Plan", src: "/subscription-plan" }],
+    sublinks: [{ name: "Your Plan", src: "/subscription-plans" }],
   },
 ];
