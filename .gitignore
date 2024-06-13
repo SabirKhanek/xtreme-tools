@@ -7,6 +7,7 @@
 .yarn/install-state.gz
 
 .env
+.env.prod
 PID
 app.logs
 app.log
