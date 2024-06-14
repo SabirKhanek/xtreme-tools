@@ -212,28 +212,47 @@ model tool_usage {
 }
 
 model user {
-  uid                Int                 @id @default(autoincrement())
-  first_name         String?             @db.VarChar(255)
-  last_name          String?             @db.VarChar(255)
-  email              String              @unique(map: "email") @db.VarChar(255)
-  password           String              @db.VarChar(255)
-  verified           Boolean?            @default(false)
-  profile_photo_slug String?             @db.VarChar(255)
-  user_plan          String?             @default("basic") @db.VarChar(255)
-  user_plan_expiry   DateTime?           @db.Date
-  stripe_subscription_id String?        @db.MediumText  
-  stripe_customer_id  String?             @db.MediumText
-  createdAt          DateTime            @db.DateTime(0)
-  updatedAt          DateTime            @db.DateTime(0)
-  countryCode        String?             @db.Char(2)
-  phoneNo            String?             @db.TinyText
-  website            String?             @db.MediumText
-  otp_token          otp_token[]
-  tool_usage         tool_usage[]
-  subscription_plans subscription_plans? @relation(fields: [user_plan], references: [id], onDelete: Cascade, map: "user_ibfk_1")
-  additional_meta    Json?
+  uid                      Int                        @id @default(autoincrement())
+  first_name               String?                    @db.VarChar(255)
+  last_name                String?                    @db.VarChar(255)
+  email                    String                     @unique(map: "email") @db.VarChar(255)
+  password                 String                     @db.VarChar(255)
+  verified                 Boolean?                   @default(false)
+  profile_photo_slug       String?                    @db.VarChar(255)
+  user_plan                String?                    @default("basic") @db.VarChar(255)
+  user_plan_expiry         DateTime?                  @db.Date
+  stripe_subscription_id   String?                    @db.MediumText
+  stripe_customer_id       String?                    @db.MediumText
+  createdAt                DateTime                   @db.DateTime(0)
+  updatedAt                DateTime                   @db.DateTime(0)
+  countryCode              String?                    @db.Char(2)
+  phoneNo                  String?                    @db.TinyText
+  website                  String?                    @db.MediumText
+  otp_token                otp_token[]
+  tool_usage               tool_usage[]
+  subscription_plans       subscription_plans?        @relation(fields: [user_plan], references: [id], onDelete: Cascade, map: "user_ibfk_1")
+  user_integrated_api_keys user_integrated_api_keys[]
+  additional_meta          Json?
 
   @@index([user_plan], map: "user_plan")
+}
+
+enum INTEGRATED_API_KEY_TYPE {
+  openai
+  claude
+}
+
+model user_integrated_api_keys {
+  user_uid  Int
+  api_key   String                  @db.VarChar(255)
+  key_type  INTEGRATED_API_KEY_TYPE
+  name      String                  @db.VarChar(255)
+  createdAt DateTime                @db.DateTime(0)
+  updatedAt DateTime                @db.DateTime(0)
+  user      user?                   @relation(fields: [userUid], references: [uid])
+  userUid   Int?
+
+  @@id([user_uid, key_type])
 }
 
 model users {

@@ -11,6 +11,7 @@ import { MdOutlineEmail } from "react-icons/md";
 import { FaMicrochip } from "react-icons/fa";
 import { Sidebar } from "../components/sidebar";
 import { CiSettings } from "react-icons/ci";
+import { TbApi } from "react-icons/tb";
 
 export default function SettingsPageLayout({
   children,
@@ -105,5 +106,10 @@ const settingsList = [
     name: "Subscription Settings",
     icon: MdOutlineEmail,
     sublinks: [{ name: "Your Plan", src: "/subscription-plans" }],
+  },
+  {
+    name: "API Integrations",
+    icon: TbApi,
+    sublinks: [{ name: "API Keys", src: "/settings/api_keys" }],
   },
 ];

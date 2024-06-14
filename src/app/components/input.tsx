@@ -18,9 +18,11 @@ export interface InputProps {
   isTouched?: boolean;
   onBlur?: any;
   disabled?: boolean;
+  id?: string;
 }
 export function Input({
   className,
+  id,
   label,
   name,
   labelClass,
@@ -47,7 +49,7 @@ export function Input({
               labelClass || ""
             } text-black/70 font-semibold text-sm`}
           >
-            <label htmlFor={name}>{label}</label>
+            <label htmlFor={id || name}>{label}</label>
             {required && "*"}
           </span>
           {labelAction}
@@ -55,6 +57,7 @@ export function Input({
       )}
       <input
         type={type}
+        id={id}
         name={name}
         value={value}
         placeholder={placeholder}

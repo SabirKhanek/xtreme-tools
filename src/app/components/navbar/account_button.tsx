@@ -59,7 +59,7 @@ export function ProfileButton() {
             <li>
               <Link
                 className="flex gap-2 items-center"
-                href={"/subscription-plan"}
+                href={"/subscription-plans"}
               >
                 <svg
                   width="16"
