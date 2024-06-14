@@ -138,7 +138,7 @@ async function getPriceId(
 ): Promise<{ price_id: string }> {
   console.log("Getting price ID for subscription plan:", subscription_plan.id);
 
-  let prod_id = subscription_plan.stripe_product_id || subscription_plan.id;
+  let prod_id = subscription_plan.id;
   let prod_obj: Stripe.Product | undefined;
   let price_id;
   let isProdCreated = false;
@@ -177,6 +177,9 @@ async function getPriceId(
   if (!prod_obj) {
     console.log("Fetching product from Stripe with ID:", prod_id);
     prod_obj = (await stripe.products.list({ ids: [prod_id!] })).data.at(0);
+    if (prod_obj && !prod_obj.active) {
+      prod_obj = await stripe.products.update(prod_obj.id, { active: true });
+    }
     if (!prod_obj) {
       console.log(
         "No product found with ID:",
@@ -190,14 +193,25 @@ async function getPriceId(
   }
 
   price_id = prod_obj?.default_price;
+  let newPriceCreated = false;
+
+  if (!price_id) {
+    console.log("No default price data for the product creating default price");
+    const new_price = await stripe.prices.create({
+      ...priceData,
+      product: prod_id!,
+    });
+    await stripe.products.update(prod_id!, { default_price: new_price.id });
+    price_id = new_price.id;
+  }
 
   // ensuring price data synced with stripe
-  if (!isProdCreated) {
+  if (!isProdCreated && !newPriceCreated) {
     console.log(
       "Ensuring price data is synced with Stripe for price ID:",
       price_id
     );
-    let price = await stripe.prices.retrieve(price_id as string);
+    let price = await stripe.prices.retrieve((price_id as string) || "");
     if (price.unit_amount !== priceData.unit_amount) {
       console.log(
         "Price data mismatch, creating new price with data:",
