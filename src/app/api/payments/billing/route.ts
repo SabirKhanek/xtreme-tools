@@ -18,6 +18,6 @@ export async function GET() {
     return NextResponse.redirect(session.url);
   } catch (err: any) {
     console.log(err);
-    return { success: false };
+    return NextResponse.json({ success: false }, { status: 500 });
   }
 }
