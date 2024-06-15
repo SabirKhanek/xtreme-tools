@@ -7,7 +7,9 @@ import Stripe from "stripe";
 import { CancelPlanButton } from "./components/cancelPlanButton";
 // import { FaInfo } from "react-icons/fa6";
 import { IoMdInformationCircleOutline as FaInfo } from "react-icons/io";
-import { getStripeCustomerFromEmail } from "../api/payments/utils";
+import { Button } from "../components/button";
+import { FaOpenid } from "react-icons/fa";
+import { IoOpenOutline } from "react-icons/io5";
 
 export default async function SubscriptionPlanPage() {
   const payload = getAuthUser(true); // Allow for public access
@@ -176,6 +178,21 @@ export default async function SubscriptionPlanPage() {
                           )}
                         </li>
                       </ul>
+                      <form
+                        method="GET"
+                        action={"/api/payments/billing"}
+                        className="flex items-center gap-1"
+                      >
+                        <span className="text-sm w-fit">View at</span>
+                        <button
+                          type="submit"
+                          className="appearance-none gap-0.5 text-sm hover:underline flex w-fit items-center font-medium "
+                        >
+                          <span>billing portal</span>
+                          <IoOpenOutline></IoOpenOutline>
+                        </button>
+                      </form>
+
                       <CancelPlanButton
                         cancel_at={req_subscription_info.cancel_at || null}
                       ></CancelPlanButton>

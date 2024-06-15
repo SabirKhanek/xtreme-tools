@@ -4,6 +4,7 @@ import { getPriceId, getStripeCustomerFromEmail } from "../api/payments/utils";
 import { stripe } from "../api/payments/utils/stripe";
 import { AuthGuard } from "../api/shared";
 import prisma from "../shared/prisma";
+import { redirect } from "next/navigation";
 
 export async function updateUserPlan(planId: string, user_email: string) {
   try {
@@ -135,3 +136,5 @@ export async function SwitchPlan(plan_id: string) {
     };
   }
 }
+
+
