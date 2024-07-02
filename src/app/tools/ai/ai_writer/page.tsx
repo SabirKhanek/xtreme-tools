@@ -41,8 +41,10 @@ export default function AiWriter() {
     try {
       const resp = await generateContent(input);
       if (appendSwitch) setContent(content + " " + resp.data);
-      else setContent(resp.data);
-      setUsage({ used: usage.used + 1, quota: usage.quota });
+      else setContent(resp.data?.replace(/<head>[\s\S]*?<\/head>/g, ""));
+      if (!resp.skip_increment) {
+        setUsage({ used: usage.used + 1, quota: usage.quota });
+      }
     } catch (err) {
       toast("Something went wrong");
     }

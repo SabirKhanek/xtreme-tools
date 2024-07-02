@@ -66,6 +66,7 @@ export async function getPriceId(
     prod_id = new_prod.id;
     prod_obj = new_prod;
     isProdCreated = true;
+    // Storing the product it in db
     await prisma.subscription_plans.update({
       data: { stripe_product_id: new_prod.id },
       where: { id: subscription_plan.id },

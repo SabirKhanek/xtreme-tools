@@ -31,7 +31,9 @@ export default function AIRewriter() {
     try {
       const resp = await paraphraseText(input);
       setResult(resp.data);
-      setUsage({ used: usage.used + 1, quota: usage.quota });
+      if (!resp.skip_increment) {
+        setUsage({ used: usage.used + 1, quota: usage.quota });
+      }
     } catch (err) {
       toast.error("Something went wrong!");
     }

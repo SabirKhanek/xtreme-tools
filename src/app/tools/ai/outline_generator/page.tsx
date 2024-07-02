@@ -29,7 +29,10 @@ export default function OutlineGenerator() {
     try {
       const resp = await generateOutilne(input);
       setResult(resp.data);
-      setUsage({ used: usage.used + 1, quota: usage.quota });
+      if (!resp.skip_increment) {
+        setUsage({ used: usage.used + 1, quota: usage.quota });
+      }
+      
     } catch (err) {}
     setIsLoading(false);
   };

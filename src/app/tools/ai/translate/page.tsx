@@ -35,7 +35,9 @@ export default function AITranslator() {
       const resp = await translateText(input, from, to);
       if (resp.status === "success") {
         setResult(resp.data);
-        setUsage({ used: usage.used + 1, quota: usage.quota });
+        if (!resp.skip_increment) {
+          setUsage({ used: usage.used + 1, quota: usage.quota });
+        }
       }
     } catch (err) {
       toast.error("Something went wrong!");
