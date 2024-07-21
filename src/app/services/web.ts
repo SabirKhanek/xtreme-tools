@@ -38,3 +38,17 @@ export async function compressImage(
   );
   return response.data;
 }
+
+export async function convertPdf(file: File) {
+  const formData = new FormData();
+  formData.append("inputFile", file);
+  const axios = new Axios({
+    baseURL: process.env.NEXT_PUBLIC_API_BASE || "http://localhost:5000",
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `${localStorage.getItem("jwt") || ""}`,
+    },
+  });
+  const response = await axios.post(`/web/pdf-converter`, formData);
+  return response.data;
+}

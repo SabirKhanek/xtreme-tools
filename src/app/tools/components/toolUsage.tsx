@@ -37,22 +37,20 @@ export function ToolUsage({
   if (!auth.authDetails.isLoggedIn) return null;
 
   return (
-    <Nossr>
-      <div className={`${className} w-full flex flex-col gap-2`}>
-        <h3 className="text-primary text-xl font-medium">Tool Usage:</h3>
-        {!isLoading && (
-          <div className="h-4 rounded-3xl w-full bg-[#F2AEDE26] overflow-hidden">
-            <div
-              style={{ width: `${(usage.used / usage.quota) * 100}%` }}
-              className="bg-primary h-full"
-            ></div>
-          </div>
-        )}
-        {isLoading && (
-          <progress className="progress progress-primary w-full"></progress>
-        )}
-        <p>remaining operations today: {usage.quota - usage.used}</p>
-      </div>
-    </Nossr>
+    <div className={`${className} w-full flex flex-col gap-2`}>
+      <h3 className="text-primary text-xl font-medium">Tool Usage:</h3>
+      {!isLoading && (
+        <div className="h-4 rounded-3xl w-full bg-[#F2AEDE26] overflow-hidden">
+          <div
+            style={{ width: `${(usage.used / usage.quota) * 100}%` }}
+            className="bg-primary h-full"
+          ></div>
+        </div>
+      )}
+      {isLoading && (
+        <progress className="progress progress-primary w-full"></progress>
+      )}
+      <p>remaining operations today: {usage.quota - usage.used}</p>
+    </div>
   );
 }

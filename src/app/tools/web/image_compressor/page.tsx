@@ -49,9 +49,7 @@ export default function ImageCompressor() {
       } else {
         toast.error(resp.message);
       }
-      if (resp.zipPath) {
-        window.open(resp.zipPath, "_blank");
-      }
+      
     } catch (err) {
       toast.error("Something went wrong.");
     }
