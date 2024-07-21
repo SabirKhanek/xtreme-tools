@@ -39,7 +39,7 @@ export default function AIPageLayout({
               ></path>
             </svg>
             <span>
-              You have your setup {keys_name}. Usage charge will not be incurred
+              You have configured API keys for: {keys_name}. Usage charge will not be incurred
               if you opt for them!
             </span>
           </div>

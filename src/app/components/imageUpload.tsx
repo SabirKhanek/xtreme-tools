@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState, ChangeEvent, DragEvent, useEffect } from "react";
 import { IoCloudUploadOutline } from "react-icons/io5";
 export interface ImageUploadProps {
@@ -24,6 +24,8 @@ export function ImageUpload({
             setFile(reader.result as string);
           }
         };
+      } else {
+        setFile(null);
       }
     };
 
@@ -57,6 +59,7 @@ export function ImageUpload({
   };
 
   const handleFileInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log(e);
     const selectedFile = e.target.files ? e.target.files[0] : null;
     if (selectedFile) {
       handleChange(selectedFile);

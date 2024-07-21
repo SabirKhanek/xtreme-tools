@@ -135,6 +135,11 @@ const toolsList = [
     icon: BsGlobe2,
     sublinks: [
       {
+        name: "Image Compressor",
+        src: "/tools/web/image_compressor",
+      },
+      { name: "PDF Converter", src: "/tools/web/pdf_converter" },
+      {
         name: "Favicon Generator",
         src: "/tools/web/favicon_generator",
       },
