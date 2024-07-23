@@ -50,12 +50,12 @@ const tools = [
     image: wt5,
     header: "Image Compressor",
     body: "Optimize your images with our free Image Compressor. Enhance your project efficiency and save storage space effortlessly.",
-    href: "/tools/web/image-compressor",
+    href: "/tools/web/image_compressor",
   },
   {
     image: wt6,
     header: "PDF to DOCX Converter",
     body: "Convert PDFs to DOCX format seamlessly with our free PDF to DOCX Converter. Simplify your document management and editing process.",
-    href: "/tools/web/pdf-converter",
+    href: "/tools/web/pdf_converter",
   },
 ];
