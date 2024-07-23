@@ -2,8 +2,8 @@ import wt1 from "@/app/assets/wt1.png";
 import wt2 from "@/app/assets/wt2.png";
 import wt3 from "@/app/assets/wt3.png";
 import wt4 from "@/app/assets/wt4.png";
-// import wt5 from "@/app/assets/wt5.png";
-// import wt6 from "@/app/assets/wt6.png";
+import wt5 from "@/app/assets/wt5.webp";
+import wt6 from "@/app/assets/wt6.png";
 import { ToolSection } from "./toolsSection";
 export interface ToolsSectionProps {
   className?: string;
@@ -46,14 +46,16 @@ const tools = [
     body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
     href: "/tools/web/toc_generator",
   },
-  // {
-  //   image: wt5,
-  //   header: "Responsive Checker",
-  //   body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
-  // },
-  // {
-  //   image: wt6,
-  //   header: "SSL Checker",
-  //   body: "Empowering innovation, free of cost. Unleash your potential with our invaluable free tools. Elevate your projects effortlessly",
-  // },
+  {
+    image: wt5,
+    header: "Image Compressor",
+    body: "Optimize your images with our free Image Compressor. Enhance your project efficiency and save storage space effortlessly.",
+    href: "/tools/web/image-compressor",
+  },
+  {
+    image: wt6,
+    header: "PDF to DOCX Converter",
+    body: "Convert PDFs to DOCX format seamlessly with our free PDF to DOCX Converter. Simplify your document management and editing process.",
+    href: "/tools/web/pdf-converter",
+  },
 ];
